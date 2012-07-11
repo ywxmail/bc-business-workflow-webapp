@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div title='交车确认流程' data-type='form' class="bc-page"
-	data-js='<s:url value="/bc-business-workflow-webapp/jiaoche/CheckExitOperationCarsProcess.js" />,<s:url value="/bc/identity/identity.js" />,<s:url value="/bc-business/bs.js" />'
+	data-js='<s:url value="/bc-business-workflow/jiaoche/CheckExitOperationCarsProcess.js" />,<s:url value="/bc/identity/identity.js" />,<s:url value="/bc-business/bs.js" />'
 	data-initMethod='bs.CheckExitOperationCarsProcessForm.init'
 	data-option="{'minWidth':300
 	,'minHeight':300

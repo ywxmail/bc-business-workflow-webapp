@@ -5,16 +5,16 @@
 	<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 		<tr>
 			<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
-			<td class="value"><input type="text" name="subject" class="ui-widget-content" data-scope="process"
+			<td class="value"><input type="text" name="subject" class="ui-widget-content" data-scope="global"
 			data-validate="required" value="${year}年${month}月份交车确认"/></td>
 			<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
 			<td class="value" style="width: 10em;">
 				<div class="relative" style="width:10em;">
-					<input type="text" name="verifyUnitName" class="ui-widget-content" data-validate="required" data-scope="process"/>
+					<input type="text" name="verifyUnitName" class="ui-widget-content" data-validate="required" data-scope="global"/>
 					<ul class="inputIcons">
 						<li id="selectConfirmor" class="inputIcon ui-icon ui-icon-circle-plus" title='选择分公司'></li>
 					</ul>
-					<input type="hidden" name="verifyUnitId" data-scope="process" data-type="long"/>
+					<input type="hidden" name="verifyUnitId" data-scope="global" data-type="long"/>
 				</div>
 			</td>
 		</tr>
@@ -28,7 +28,7 @@
 			<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close" title='删除车辆"'></li>
 		</ul>
 	</div>
-	<input type="hidden" name="list_cars" data-scope="process"/>
+	<input type="hidden" name="list_cars" data-scope="global"/>
 	<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
 		<tr class="ui-state-default header row">
 			<td class="first" style="width: 15px;">&nbsp;</td>

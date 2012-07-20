@@ -1,0 +1,6 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRenew.AssignCarForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRenew/AssignCar.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	TODO: AssignCar.jsp
+</form>

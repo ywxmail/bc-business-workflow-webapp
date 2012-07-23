@@ -28,6 +28,28 @@ bswf.confirmretiredcars.GatherCarsForm = {
 						})
 					}
 					
+					//先验证是否添加相同的车辆信息
+					var addflag=true;
+					if($(tableEl).find("tr").size()>1){
+						var $carTRs = $form.find("#cars tr:gt(0)");
+						$carTRs.each(function(){
+							$tr = $(this);
+							var $inputs = $tr.find(":input");
+							var trid=$inputs[0].value;
+							for(var i=0;i <cars.length;i++){
+								if(trid == cars[i].id){
+									addflag=false;
+									return;
+								}
+							}
+						});
+					}
+					
+					if(!addflag){
+						bc.msg.alert("选择的车辆信息与已添加的车辆信息相同！");
+						return;
+					}
+					
 					for(var i=0;i <cars.length;i++){
 						if($(tableEl).find("tr").size()==1 && $form.find(":input[name='verifyUnitId']").val()==''){
 							$form.find(":input[name='verifyUnitId']").val(cars[i].unitCompanyId);
@@ -261,7 +283,7 @@ bswf.confirmretiredcars.GatherCarsForm = {
 
 		for(var i=0;i<$cars.length;i++){
 			if(verifyUnitId != $cars[i].unitCompanyId){
-				bc.msg.alert("第"+(i+1)+"条车辆信息的分公司与经办分公司不相同！");
+				bc.msg.alert("只能确认相同分公司的车辆信息！");
 				return false;
 			}
 		}

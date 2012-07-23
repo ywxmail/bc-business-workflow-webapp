@@ -16,7 +16,24 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				status: '0',
 				data:{multiple: true,loadLevel:'1'},
 				onOk : function(cars) {
+					function selectUnit(cell){
+						var $cell=$(cell);
+						$cell.click(function(){
+							bc.identity.selectUnit({
+								onOk : function(unit) {
+									$cell.find(":input[name='unitCompanyId']").val(unit.id);
+									$cell.find(":input[name='unitCompany']").val(unit.name);
+								}
+							});
+						})
+					}
+					
 					for(var i=0;i <cars.length;i++){
+						if($(tableEl).find("tr").size()==1 && $form.find(":input[name='verifyUnitId']").val()==''){
+							$form.find(":input[name='verifyUnitId']").val(cars[i].unitCompanyId);
+							$form.find(":input[name='verifyUnitName']").val(cars[i].unitCompany);
+						}
+						
 						//插入行
 						var newRow=tableEl.insertRow(tableEl.rows.length);
 						newRow.setAttribute("class","ui-widget-content row");
@@ -28,19 +45,16 @@ bswf.confirmretiredcars.GatherCarsForm = {
 						cell.innerHTML='<span class="ui-icon"></span><input class="ignore" type="hidden" name="id" value="'+cars[i].id+'"/>';//ID列
 						
 						//插入公司
-						var unitCompany='';
-						if(!(cars[i].unitCompany==null))
-							unitCompany=cars[i].unitCompany;
 						cell=newRow.insertCell(1);
 						cell.style.padding="0";
 						cell.style.textAlign="left";
 						cell.setAttribute("class","middle");
 						cell.innerHTML='<input name="unitCompany" class="ignore"  style="border:none;background:none;width:4.9em;padding:0 0 0 2px"'
 							+'value="'
-							+unitCompany+'"'
+							+cars[i].unitCompany+'"'
 							+'type="text"  data-validate="required">'
 							+'<input type="hidden" name="unitCompanyId" class="ignore" value="'+cars[i].unitCompanyId+'"/>';
-						bswf.confirmretiredcars.GatherCarsForm.selectUnit(cell);
+						selectUnit(cell);
 						
 						//插入车号
 						cell=newRow.insertCell(2);
@@ -212,6 +226,7 @@ bswf.confirmretiredcars.GatherCarsForm = {
 			var car = {
 				id: $inputs[0].value,
 				unitCompany: $inputs[1].value,
+				unitCompanyId: $inputs[2].value,
 				plateNo: $inputs[3].value,
 				businessType: $inputs[4].value,
 				registerDate: $inputs[5].value,
@@ -234,22 +249,21 @@ bswf.confirmretiredcars.GatherCarsForm = {
 		bswf.confirmretiredcars.GatherCarsForm.buildFormData.call(this);
 		var cars = $form.find(":input[name='list_gc_cars']").val();
 		if(cars.length < 3){
-			alert("请先选择车辆信息！");
+			bc.msg.alert("请先选择车辆信息！");
 			return false;
 		}
+		
+		//验证保存车辆的分公司是否与经办分公司相同
+		var verifyUnitId=$form.find(":input[name='verifyUnitId']").val();
+		var $cars=eval('('+cars+')');
 
+		for(var i=0;i<$cars.length;i++){
+			if(verifyUnitId != $cars[i].unitCompanyId){
+				bc.msg.alert("第"+(i+1)+"条车辆信息的分公司与经办分公司不相同！");
+				return false;
+			}
+		}
+	
 		return true;
-	},
-	/**绑定选择公司事件**/
-	selectUnit:function(cell){
-		var $cell=$(cell);
-		$cell.click(function(){
-			bc.identity.selectUnit({
-				onOk : function(unit) {
-					$cell.find(":input[name='unitCompanyId']").val(unit.id);
-					$cell.find(":input[name='unitCompany']").val(unit.name);
-				}
-			});
-		})
-	} 
+	}
 };

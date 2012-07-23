@@ -6,6 +6,7 @@
 		<div class="text" style="padding-left:10px">
 			<input type="checkbox" class="ignore" name="isfallback" />勾选进行退回处理，重新确认交车，不勾选完成确认。
 			<input type="hidden" name="fallback" data-type="boolean" data-scope="global">
+			<input type="hidden" name="fallback" data-type="boolean" data-scope="local">
 		</div>
 	<#else>
 		<#if fallback>

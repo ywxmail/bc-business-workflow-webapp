@@ -12,9 +12,16 @@ bswf.confirmretiredcars.fallbackForm = {
 		$form = $(this);
 		
 		if($form.find(":input:checked").size()==0){
-			$form.find(":input[name='fallback']").val(false);
-		}else
-			$form.find(":input[name='fallback']").val(true);
+			
+			$form.find(":input[name='fallback']").each(function(index){
+				$(this).val(false);
+			});
+		}else{
+			$form.find(":input[name='fallback']").each(function(index){
+				$(this).val(true);
+			});
+			
+		}
 		return true;
 	}
 };

@@ -4,13 +4,12 @@
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<input type="hidden" name="list_lv_cars" data-scope="global"/>
-		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
 				<td class="middle" style="width: 8em;">是否已续保险</td>
-				<td class="middle" style="width: 8em;">处理</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+				<td class="last" style="width: 8em;">处理</td>
 			</tr>
 			<#if list_vd_cars??>
 			<#list list_vd_cars as car>
@@ -32,7 +31,7 @@
 					</#if>
 				</td>
 				<!-- 处理 -->
-				<td class="middle" style="margin:0;padding:0 0 0 0px;">
+				<td class="last" style="margin:0;padding:0 0 0 0px;">
 					<select name="executionType" class="ignore ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 						<#if car.isClaim == 'true'>
@@ -46,18 +45,16 @@
 						</#if>   
 					</select>
 				</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;"></td>
 			</tr>
 			</#list>
 			</#if>
 		</table>
 	<#else>
-		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
-				<td class="middle" style="width: 8em;">处理</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+				<td class="last" style="width: 8em;">处理</td>
 			</tr>
 			<#if list_lv_cars??>
 			<#list list_lv_cars as car>
@@ -68,7 +65,7 @@
 				<td class="middle" style="margin:0;padding:0 0 0 2px;">
 					<div class="text">${car.plateNo}</div>
 				</td>
-				<td class="middle" style="margin:0;padding:0 0 0 2px;">
+				<td class="last" style="margin:0;padding:0 0 0 2px;">
 					<#if car.executionType == 'fireCarRetiredProcess'>
 						<div class="text">发起续保流程</div>
 					<#elseif car.executionType == 'fireCarRenewProcess'>
@@ -77,7 +74,6 @@
 						<div class="text">手动</div>
 					</#if>
 				</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;"></td>
 			</tr>
 			</#list>
 			</#if>

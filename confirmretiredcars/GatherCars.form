@@ -23,7 +23,7 @@
 				</td>
 			</tr>
 		</table>
-		<div class="ui-widget-header" style="position:relative;border-width: 0;padding: 0.25em;">
+		<div class="" style="position:relative;border-width: 0;padding: 0.25em;">
 			<span class="text">车辆信息:</span>
 			<ul class="inputIcons">
 				<li id="upLine" class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
@@ -33,8 +33,8 @@
 			</ul>
 		</div>
 		<input type="hidden" name="list_gc_cars" data-scope="global"/>
-		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:1px 0 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 1.1em;">&nbsp;</td>
 				<td class="middle" style="width: 5em;">分公司</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
@@ -56,11 +56,11 @@
 				<td class="value" style="width: 10em;">${verifyUnitName}</td>
 			</tr>
 		</table>
-		<div class="ui-widget-header" style="position:relative;border-width: 0;padding: 0.25em;">
+		<div class="" style="position:relative;border-width: 0;padding: 0.25em;">
 			<span class="text">车辆信息:</span>
 		</div>
-		<table class="bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:1px 1px 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 1.1em;">&nbsp;</td>
 				<td class="middle" style="width: 5em;">分公司</td>
 				<td class="middle" style="width: 5em;">车号</td>
@@ -69,8 +69,7 @@
 				<td class="middle" style="width: 8em;">合同期限</td>
 				<td class="middle" style="width: 8em;">商业结束日期</td>
 				<td class="middle" style="width: 8em;">强险结束日期</td>
-				<td class="middle" style="width: 8em;">预计交车日期</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+				<td class="last" style="width: 8em;">预计交车日期</td>
 			</tr>
 			<#if list_gc_cars??>
 			<#list list_gc_cars as car>
@@ -106,10 +105,9 @@
 					<div class="text">${car.greenslipEndDate}</div>
 				</td>
 				<!-- 预计交车日期 -->
-				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+				<td class="last" style="margin:0;padding:2 0 0 0px;">
 					<div class="text">${car.predictReturnDate}</div>
 				</td> 
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
 			</tr>
 			</#list>
 			</#if>

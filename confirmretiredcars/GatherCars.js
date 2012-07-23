@@ -136,8 +136,10 @@ bswf.confirmretiredcars.GatherCarsForm = {
 						//绑定日期选择
 						bc.form.initCalendarSelect($(cell));
 						
-						//插入预计交车日期
+						//插入空白列
 						cell=newRow.insertCell(9);
+						cell.style.minWidth="0.01em";
+						cell.style.borderLeftWidth="0";
 						cell.setAttribute("class","last");
 					}		
 				}

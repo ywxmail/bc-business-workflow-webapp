@@ -4,17 +4,16 @@
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<input type="hidden" name="list_vd_cars" />
-		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
 				<td class="middle" style="width: 8em;">是否已续保险</td>
-				<td class="middle" style="width: 8em;">确认交车日期</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
 			<#if list_gc_cars??>
 			<#list list_gc_cars as car>
-			<tr class="ui-widget-content row" data-id='${car.id}'>
+			<tr class="row" data-id='${car.id}'>
 				<td class="first" style="padding:0;text-align:left;"><input type="hidden" class="ignore" name="id" value="${car.id}"/>
 				</td>
 				<!-- 车号 -->
@@ -31,23 +30,21 @@
 					</select>
 				</td>
 				<!-- 确认交车日期 -->
-				<td class="middle" style="margin:0;padding:0 0 0 0px;">
+				<td class="last" style="margin:0;padding:0 0 0 0px;">
 					<input type="text" name="sureReturnDate" style="border:none;background:none;"
 						data-validate='{"type":"date","required":true}' class="ignore bc-date ui-widget-content"/>
 				</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;" ></td>
 			</tr>
 			</#list>
 			</#if>
 		</table>
 	<#else>
-		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
-			<tr class="ui-state-default header row">
+		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
+			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
 				<td class="middle" style="width: 8em;">是否已续保险</td>
-				<td class="middle" style="width: 8em;">确认交车日期</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
 			<#if list_vd_cars??>
 			<#list list_vd_cars as car>
@@ -67,10 +64,9 @@
 					</#if>
 				</td>
 				<!-- 确认交车日期 -->
-				<td class="middle" style="margin:0;padding:0 0 0 2px;">
+				<td class="last" style="margin:0;padding:0 0 0 2px;">
 					<div class="text">${car.sureReturnDate}</div>
 				</td>
-				<td class="last" style="min-width: 0.01em;border-left-width:0px;" ></td>
 			</tr>
 			</#list>
 			</#if>

@@ -1,0 +1,118 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.confirmretiredcars.GatherCarsForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/confirmretiredcars/GatherCars.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
+			<tr>
+				<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
+				<td class="value">
+					<input type="text" name="subject" class="ui-widget-content" data-scope="global"
+						data-validate="required" value="${year}年${month}月份交车确认"/>
+				</td>
+				<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
+				<td class="value" style="width: 10em;">
+					<div class="relative" style="width:10em;">
+						<input type="text" name="verifyUnitName"
+							class="ui-widget-content" readonly="readonly" data-validate="required" data-scope="global"/>
+						<ul class="inputIcons">
+							<li id="selectConfirmor" class="inputIcon ui-icon ui-icon-circle-plus" title='选择分公司'></li>
+						</ul>
+						<input type="hidden" name="verifyUnitId" data-scope="global" data-type="long"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="ui-widget-header" style="position:relative;border-width: 0;padding: 0.25em;">
+			<span class="text">车辆信息:</span>
+			<ul class="inputIcons">
+				<li id="upLine" class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+				<li id="downLine" class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+				<li id="addLine" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'></li>
+				<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close" title='删除车辆"'></li>
+			</ul>
+		</div>
+		<input type="hidden" name="list_gc_cars" data-scope="global"/>
+		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
+			<tr class="ui-state-default header row">
+				<td class="first" style="width: 1.1em;">&nbsp;</td>
+				<td class="middle" style="width: 5em;">分公司</td>
+				<td class="middle" style="width: 4.5em;">车号</td>
+				<td class="middle" style="width: 5em;">营运性质</td>
+				<td class="middle" style="width: 8em;">登记日期</td>
+				<td class="middle" style="width: 8em;">合同期限</td>
+				<td class="middle" style="width: 8em;">商业结束日期</td>
+				<td class="middle" style="width: 8em;">强险结束日期</td>
+				<td class="middle" style="width: 8em;">预计交车日期</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+			</tr>
+		</table>
+	<#else>
+		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
+			<tr>
+				<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
+				<td class="value">${subject}</td>
+				<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
+				<td class="value" style="width: 10em;">${verifyUnitName}</td>
+			</tr>
+		</table>
+		<div class="ui-widget-header" style="position:relative;border-width: 0;padding: 0.25em;">
+			<span class="text">车辆信息:</span>
+		</div>
+		<table class="bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
+			<tr class="ui-state-default header row">
+				<td class="first" style="width: 1.1em;">&nbsp;</td>
+				<td class="middle" style="width: 5em;">分公司</td>
+				<td class="middle" style="width: 5em;">车号</td>
+				<td class="middle" style="width: 5em;">营运性质</td>
+				<td class="middle" style="width: 8em;">登记日期</td>
+				<td class="middle" style="width: 8em;">合同期限</td>
+				<td class="middle" style="width: 8em;">商业结束日期</td>
+				<td class="middle" style="width: 8em;">强险结束日期</td>
+				<td class="middle" style="width: 8em;">预计交车日期</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+			</tr>
+			<#if list_gc_cars??>
+			<#list list_gc_cars as car>
+			<tr class="ui-widget-content row" data-id='${car.id}'>
+				<td class="first" >
+				</td>
+				<!-- 分公司 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.unitCompany}</div>
+				</td>
+				<!-- 车号 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.plateNo}</div>
+				</td>
+				<!-- 营运性质 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text" >${car.businessType}</div>
+				</td>
+				<!-- 登记日期 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">	
+					<div>${car.registerDate}</div>
+				</td>
+				<!-- 合同期限 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.ccEndDate}</div>
+				</td>
+				<!-- 商业结束日期 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.commerialEndDate}</div>
+				</td>
+				<!-- 强险结束日期 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.greenslipEndDate}</div>
+				</td>
+				<!-- 预计交车日期 -->
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<div class="text">${car.predictReturnDate}</div>
+				</td> 
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+			</tr>
+			</#list>
+			</#if>
+		</table>
+	</#if>
+</form>

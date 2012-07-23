@@ -1,0 +1,89 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.confirmretiredcars.LastVerifyForm"
+	data-js='bc-business-workflow/confirmretiredcars/LastVerify.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="list_lv_cars" data-scope="global"/>
+		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
+			<tr class="ui-state-default header row">
+				<td class="first" style="width: 0.5em;">&nbsp;</td>
+				<td class="middle" style="width: 4.5em;">车号</td>
+				<td class="middle" style="width: 8em;">是否已续保险</td>
+				<td class="middle" style="width: 8em;">处理</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+			</tr>
+			<#if list_vd_cars??>
+			<#list list_vd_cars as car>
+			<tr class="ui-widget-content row" data-id='${car.id}'>
+				<td class="first" style="padding:0;text-align:left;">
+					<input type="hidden" class="ignore" name="id" value="${car.id}"/>
+					<input type="hidden" class="ignore" name="id" value="${car.isClaim}"/>
+				</td>
+				<!-- 车号 -->
+				<td class="middle" style="margin:0;padding:0 0 0 0px;">
+					<input type="text" name="plate" readonly="readonly" value='${car.plateNo}' class="ignore" style="border:none;background: none;"
+						data-validate="required"/>
+				</td>
+				<td class="middle" style="margin:0;padding:0 0 0 2px;">
+					<#if car.isClaim == 'true'>
+						已续
+					<#else>
+						未续
+					</#if>
+				</td>
+				<!-- 处理 -->
+				<td class="middle" style="margin:0;padding:0 0 0 0px;">
+					<select name="executionType" class="ignore ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+						<#if car.isClaim == 'true'>
+							<option value="fireCarRetiredProcess">发起交车流程</option>
+							<option value="fireCarRenewProcess">发起续保流程</option>
+							<option value="manual">不处理</option>
+						<#else>
+							<option value="fireCarRenewProcess">发起续保流程</option>
+							<option value="fireCarRetiredProcess">发起交车流程</option>
+							<option value="manual">不处理</option>>
+						</#if>   
+					</select>
+				</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;"></td>
+			</tr>
+			</#list>
+			</#if>
+		</table>
+	<#else>
+		<div class="ui-widget-header" style="position:relative;border-width: 0;padding: 0.25em;">
+			<span class="text">车辆信息:</span>
+		</div>
+		<table class="bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%">
+			<tr class="ui-state-default header row">
+				<td class="first" style="width: 0.5em;">&nbsp;</td>
+				<td class="middle" style="width: 4.5em;">车号</td>
+				<td class="middle" style="width: 8em;">处理</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;">&nbsp;</td>
+			</tr>
+			<#if list_lv_cars??>
+			<#list list_lv_cars as car>
+			<tr class="ui-widget-content row" data-id='${car.id}'>
+				<td class="first">
+				</td>
+				<!-- 车号 -->
+				<td class="middle" style="margin:0;padding:0 0 0 2px;">
+					<div class="text">${car.plateNo}</div>
+				</td>
+				<td class="middle" style="margin:0;padding:0 0 0 2px;">
+					<#if car.executionType == 'fireCarRetiredProcess'>
+						<div class="text">发起续保流程</div>
+					<#elseif car.execntionType == 'fireCarRenewProcess'>
+						<div class="text">发起交车流程</div>	
+					<#else>
+						<div class="text">手动</div>
+					</#if>
+				</td>
+				<td class="last" style="min-width: 0.01em;border-left-width:0px;"></td>
+			</tr>
+			</#list>
+			</#if>
+		</table>
+	</#if>
+</form>

@@ -4,11 +4,13 @@
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<input type="hidden" name="list_vd_cars" />
+		<input type="hidden" name="list_vd_cars_gl" data-scope="global"/>
 		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
 			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
-				<td class="middle" style="width: 8em;">是否已续保险</td>
+				<td class="middle" style="width: 8em;">续保情况</td>
+				<td class="middle" style="width: 8em;">处理方式</td>
 				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
 			<#if list_gc_cars??>
@@ -18,15 +20,25 @@
 				</td>
 				<!-- 车号 -->
 				<td class="middle" style="margin:0;padding:0 0 0 0px;">
-					<input type="text" name="plate" readonly="readonly" value='${car.plateNo}' class="ignore" style="border:none;background: none;"
+					<input type="text" name="plate" readonly="readonly" value='${car.plateNo}' class="ignore" style="border:none;background: none;width:4.5em;"
 						data-validate="required"/>
 				</td>
 				<!-- 是否已续保险 -->
 				<td class="middle" style="margin:0;padding:0 0 0 0px;">
-					<select name="isClaim" class="ignore ui-widget-content" style="text-align:left;border:none;"
+					<select name="isClaim" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required"
 					           data-validate="required">
-							<option value="false">未续</option>
-							<option value="true">已续</option>
+					        <option></option>
+							<option value="false">已续保险</option>
+							<option value="true">未续保险</option>
+					</select>
+				</td>
+				<!-- 处理 -->
+				<td class="middle" style="margin:0;padding:0 0 0 0px;">
+					<select name="executionType" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required">
+							<option ></option>
+							<option value="fireCarRetiredProcess">发起交车流程</option>
+							<option value="fireCarRenewProcess">发起续保流程</option>
+							<option value="noProcess">不处理</option>
 					</select>
 				</td>
 				<!-- 确认交车日期 -->
@@ -43,7 +55,8 @@
 			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
-				<td class="middle" style="width: 8em;">是否已续保险</td>
+				<td class="middle" style="width: 8em;">续保清楚</td>
+				<td class="middle" style="width: 8em;">处理方式</td>
 				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
 			<#if list_vd_cars??>
@@ -58,9 +71,18 @@
 				<!-- 是否已续保险 -->
 				<td class="middle" style="margin:0;padding:0 0 0 2px;">
 					<#if car.isClaim == 'true'>
-						<div class="text">已续</div>
+						<div class="text">已续保险</div>
 					<#else>
-						<div class="text">未续</div>
+						<div class="text">未续保险</div>
+					</#if>
+				</td>
+				<td class="last" style="margin:0;padding:0 0 0 2px;">
+					<#if car.executionType == 'fireCarRetiredProcess'>
+						<div class="text">发起续保流程</div>
+					<#elseif car.executionType == 'fireCarRenewProcess'>
+						<div class="text">发起交车流程</div>	
+					<#elseif car.executionType == 'noProcess'>
+						<div class="text">不处理</div>	
 					</#if>
 				</td>
 				<!-- 确认交车日期 -->

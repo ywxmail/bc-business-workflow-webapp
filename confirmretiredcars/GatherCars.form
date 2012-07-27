@@ -8,7 +8,7 @@
 				<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
 				<td class="value">
 					<input type="text" name="subject" class="ui-widget-content" data-scope="global"
-						data-validate="required" value="${year}年${month}月份交车确认"/>
+						data-validate="required" value="${nextMonthOfYear}年${nextMonth}月份交车确认"/>
 				</td>
 				<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
 				<td class="value" style="width: 10em;">

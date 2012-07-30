@@ -28,8 +28,8 @@
 					<select name="isClaim" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required"
 					           data-validate="required">
 					        <option></option>
-							<option value="false">已续保险</option>
-							<option value="true">未续保险</option>
+							<option value="true">已续保险</option>
+							<option value="false">未续保险</option>
 					</select>
 				</td>
 				<!-- 处理 -->
@@ -77,12 +77,13 @@
 					</#if>
 				</td>
 				<td class="last" style="margin:0;padding:0 0 0 2px;">
-					<#if car.executionType == 'fireCarRetiredProcess'>
+					<#if car.executionType == 'fireCarRenewProcess'>
 						<div class="text">发起续保流程</div>
-					<#elseif car.executionType == 'fireCarRenewProcess'>
+					<#elseif car.executionType == 'fireCarRetiredProcess'>
 						<div class="text">发起交车流程</div>	
 					<#elseif car.executionType == 'noProcess'>
 						<div class="text">不处理</div>	
+					<#else>
 					</#if>
 				</td>
 				<!-- 确认交车日期 -->

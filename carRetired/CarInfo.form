@@ -1,0 +1,106 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.CarInfoForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRetired/CarInfo.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="carId" data-scope="global" data-type="long"/>
+		<input type="hidden" name="plateNo" data-scope="global" data-type="long"/>
+		<input type="hidden" name="plateType" data-scope="global" data-type="long"/>
+		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
+			<tr class="widthMarker">
+				<td style="width: 10em;"></td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="min-width:0.01em">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >*车牌：</td>
+				<td class="value">
+					<div style="position:relative;">
+						<input type="text" name="plate" class="ui-widget-content" data-scope="global" data-validate="required"/>
+						<ul class="inputIcons">
+							<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
+						</ul>
+					</div>
+				</td>
+				<td class="label" >*车型：</td>
+				<td class="value" >
+						<input type="text" name="factoryType" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+				<td class="label" >*交车性质：</td>
+				<td class="value" >
+						<input type="text" name="logoutReason" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*合同终止日期：</td>
+				<td class="value">
+					<input type="text" name="ccEndDate" class="ui-widget-content" data-scope="global" data-validate="required"/>
+				</td>
+				<td class="label" >*交车日期：</td>
+				<td class="value" >
+						<input type="text" name="sureReturnDate" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+				<td class="label" >*营运性质：</td>
+				<td class="value" >
+						<input type="text" name="businessType" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*车辆退出后归属：</td>
+				<td class="value">
+					<input type="text" name="logoutOwner" class="ui-widget-content" data-scope="global" data-validate="required"/>
+				</td>
+				<td class="label" >*是否需要估价：</td>
+				<td class="value" >
+						<input type="text" name="isValuation" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+				<td class="label" >*责任人：</td>
+				<td class="value" >
+						<input type="text" name="charger" class="ui-widget-content"  data-scope="global" data-validate="required"/>
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	<#else>
+		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
+			<tr class="widthMarker">
+				<td style="width: 10em;"></td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 8.5em;">&nbsp;</td>
+				<td style="min-width:0.01em">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >车牌：</td>
+				<td class="value" >${plate}</td>
+				<td class="label" >车型：</td>
+				<td class="value" >${factoryType}</td>
+				<td class="label" >交车性质：</td>
+				<td class="value" >${logoutReason}</td>
+			</tr>
+			<tr>
+				<td class="label" >合同终止日期：</td>
+				<td class="value">${ccEndDate}</td>
+				<td class="label" >交车日期：</td>
+				<td class="value" >${sureReturnDate}</td>
+				<td class="label" >营运性质：</td>
+				<td class="value" >${businessType}</td>
+			</tr>
+			<tr>
+				<td class="label" >车辆退出后归属：</td>
+				<td class="value" >${logoutOwner}</td>
+				<td class="label" >是否需要估价：</td>
+				<td class="value" >${isValuation}</td>
+				<td class="label" >责任人：</td>
+				<td class="value" >${charger}</td>
+			</tr>
+		</table>
+
+	</#if>
+</form>

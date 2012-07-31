@@ -87,6 +87,13 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				onOk : function(unit) {
 					$form.find(":input[name='verifyUnitId']").val(unit.id);
 					$form.find(":input[name='verifyUnitName']").val(unit.name);
+					var subject = $form.find(":input[name='subject']").val();
+					if(/\(.*\)$/.test(subject)){
+						subject = subject.replace(/\(.*\)$/, "(" + unit.name + ")");
+						$form.find(":input[name='subject']").val(subject);
+					}else{
+						$form.find(":input[name='subject']").val(subject + "(" + unit.name + ")");
+					}
 					bc.ajax({
 						url :bc.root+"/bc-business/car/findRetiredCarsOfNextMonth?unitId="+unit.id,
 						dataType : "json",

@@ -37,7 +37,7 @@
 			<tr class="header row">
 				<td class="first" style="width: 1.1em;">&nbsp;</td>
 				<td class="middle" style="width: 5em;">分公司</td>
-				<td class="middle" style="width: 4.5em;">车号</td>
+				<td class="middle" style="width: 5.5em;">车号</td>
 				<td class="middle" style="width: 5em;">营运性质</td>
 				<td class="middle" style="width: 8em;">登记日期</td>
 				<td class="middle" style="width: 8em;">合同期限</td>
@@ -63,7 +63,7 @@
 			<tr class="header row">
 				<td class="first" style="width: 1.1em;">&nbsp;</td>
 				<td class="middle" style="width: 5em;">分公司</td>
-				<td class="middle" style="width: 5em;">车号</td>
+				<td class="middle" style="width: 5.5em;">车号</td>
 				<td class="middle" style="width: 5em;">营运性质</td>
 				<td class="middle" style="width: 8em;">登记日期</td>
 				<td class="middle" style="width: 8em;">合同期限</td>
@@ -82,11 +82,11 @@
 				</td>
 				<!-- 车号 -->
 				<td class="middle" style="margin:0;padding:2 0 0 0px;">
-					<div class="text">${car.plateNo}</div>
+					<div class="text">${car.plate}</div>
 				</td>
 				<!-- 营运性质 -->
 				<td class="middle" style="margin:0;padding:2 0 0 0px;">
-					<div class="text" >${car.businessType}</div>
+					<div class="text" >${car.bsType}</div>
 				</td>
 				<!-- 登记日期 -->
 				<td class="middle" style="margin:0;padding:2 0 0 0px;">	

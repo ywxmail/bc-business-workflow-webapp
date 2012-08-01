@@ -24,10 +24,11 @@ bswf.confirmretiredcars.VerifyDateForm = {
 	
 	/** 表单验证方法 */
 	validateForm: function(){
-		//alert("GatherCars.validateForm");
 		if(!bc.validator.validate(this))
 			return false;
+		
 		bswf.confirmretiredcars.VerifyDateForm.buildFormData.call(this);
+		
 		return true;
 	}
 };

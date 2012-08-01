@@ -131,6 +131,10 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				//插入行
 				var newRow=tableEl.insertRow(tableEl.rows.length);
 				newRow.setAttribute("class","ui-widget-content row");
+				
+				//车辆的更多的信息保存位置
+				newRow.setAttribute("data-hidden",$.toJSON(cars[i]))
+				
 				//插入列
 				var cell=newRow.insertCell(0);
 				cell.style.padding="0";
@@ -155,8 +159,8 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				cell.style.padding="0";
 				cell.style.textAlign="left";
 				cell.setAttribute("class","middle");
-				cell.innerHTML='<input name="plateNo" class="ignore" style="border:none;background:none;width:4.4em;padding:0 0 0 2px"'
-					+'value="'+cars[i].plateNo+'"'
+				cell.innerHTML='<input name="plate" class="ignore" style="border:none;background:none;width:5.5em;padding:0 0 0 2px"'
+					+'value="'+cars[i].plate+'"'
 					+'type="text" readonly="readonly"  data-validate="required">';
 				
 				//插入营运性质
@@ -164,7 +168,7 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				cell.style.padding="0";
 				cell.style.textAlign="left";
 				cell.setAttribute("class","middle");
-				cell.innerHTML='<input name="businessType" class="ignore" style="border:none;background:none;width:4.9em;padding:0 0 0 2px;"'
+				cell.innerHTML='<input name="bsType" class="ignore" style="border:none;background:none;width:4.9em;padding:0 0 0 2px;"'
 					+'value="'+cars[i].bsType+'"'
 					+'type="text"  data-validate="required">';
 				
@@ -232,7 +236,7 @@ bswf.confirmretiredcars.GatherCarsForm = {
 				
 				//插入空白列
 				cell=newRow.insertCell(9);
-				cell.style.minWidth="0.01em";
+				cell.style.minWidth="0.001em";
 				cell.style.borderLeftWidth="0";
 				cell.setAttribute("class","last");
 			}		
@@ -257,20 +261,19 @@ bswf.confirmretiredcars.GatherCarsForm = {
 		$carTRs.each(function(){
 			$tr = $(this);
 			var $inputs = $tr.find(":input");
-			
 			var car = {
 				id: $inputs[0].value,
 				unitCompany: $inputs[1].value,
 				unitCompanyId: $inputs[2].value,
-				plateNo: $inputs[3].value,
-				businessType: $inputs[4].value,
+				plate: $inputs[3].value,
+				bsType: $inputs[4].value,
 				registerDate: $inputs[5].value,
 				ccEndDate: $inputs[6].value,
 				commerialEndDate: $inputs[7].value,
 				greenslipEndDate: $inputs[8].value,
 				predictReturnDate: $inputs[9].value
 			};
-			cars.push(car);
+			cars.push($.extend($tr.data("hidden"),car));
 		});
 		$form.find(":input[name='list_gc_cars']").val($.toJSON(cars));
 	},
@@ -296,6 +299,20 @@ bswf.confirmretiredcars.GatherCarsForm = {
 			if(verifyUnitId != $cars[i].unitCompanyId){
 				bc.msg.alert("必须选择相同分公司的车辆信息！");
 				return false;
+			}
+		}
+		
+		//验证提交的车辆必须唯一
+		var count;
+		for(var i=0;i<$cars.length;i++){
+			count=0;
+			for(var j=0;j<$cars.length;j++){
+				if($cars[i].id==$cars[j].id)
+					count++;			
+				if(count>1){
+					bc.msg.alert("有相同的车辆信息！");
+					return false;
+				}
 			}
 		}
 	

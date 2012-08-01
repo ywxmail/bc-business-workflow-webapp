@@ -10,7 +10,7 @@
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
 				<td class="middle" style="width: 8em;">续保情况</td>
-				<td class="middle" style="width: 8em;">处理方式</td>
+				<td class="middle" style="width: 18em;">处理方式</td>
 				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
 			<#if list_gc_cars??>
@@ -26,7 +26,7 @@
 				<!-- 是否已续保险 -->
 				<td class="middle" style="margin:0;padding:0 0 0 0px;">
 					<select name="isClaim" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required"
-					           data-validate="required">
+					     data-validate="required">
 					        <option></option>
 							<option value="true">已续保险</option>
 							<option value="false">未续保险</option>
@@ -36,15 +36,21 @@
 				<td class="middle" style="margin:0;padding:0 0 0 0px;">
 					<select name="executionType" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required">
 							<option ></option>
-							<option value="fireCarRetiredProcess">发起交车流程</option>
-							<option value="fireCarRenewProcess">发起续保流程</option>
+							<option value="fireCarRetiredProcess">分公司经理确认后自动发起-交车流程</option>
+							<option value="fireCarRenewProcess">分公司经理确认后自动发起-续保流程</option>
+							<option value="manual">手动处理</option>
 							<option value="noProcess">不处理</option>
 					</select>
 				</td>
 				<!-- 确认交车日期 -->
 				<td class="last" style="margin:0;padding:0 0 0 0px;">
-					<input type="text" name="sureReturnDate" style="border:none;background:none;"
-						data-validate='{"type":"date","required":true}' class="ignore bc-date ui-widget-content"/>
+					<div class="relative">
+						<input type="text" name="sureReturnDate" style="border:none;background:none;"
+							data-validate='{"type":"date","required":true}' class="ignore bc-date ui-widget-content"/>
+						<ul class="inputIcons">
+							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+						</ul>
+					</div>
 				</td>
 			</tr>
 			</#list>
@@ -56,11 +62,17 @@
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
 				<td class="middle" style="width: 8em;">续保清楚</td>
-				<td class="middle" style="width: 8em;">处理方式</td>
+				<td class="middle" style="width: 17.5em;">处理方式</td>
 				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>
+			
 			<#if list_vd_cars??>
-			<#list list_vd_cars as car>
+				<#assign cars=list_vd_cars>
+			<#else>
+				<#assign cars=list_gc_cars>
+			</#if>
+			
+			<#list cars as car>
 			<tr class="ui-widget-content row" data-id='${car.id}'>
 				<td class="first">
 				</td>
@@ -70,29 +82,33 @@
 				</td>
 				<!-- 是否已续保险 -->
 				<td class="middle" style="margin:0;padding:0 0 0 2px;">
-					<#if car.isClaim == 'true'>
-						<div class="text">已续保险</div>
-					<#else>
-						<div class="text">未续保险</div>
+					<#if car.isClaim??>
+						<#if car.isClaim == 'true'>
+							<div class="text">已续保险</div>
+						<#elseif car.isClaim == 'false'>
+							<div class="text">未续保险</div>
+						</#if>
 					</#if>
 				</td>
 				<td class="last" style="margin:0;padding:0 0 0 2px;">
-					<#if car.executionType == 'fireCarRenewProcess'>
-						<div class="text">发起续保流程</div>
-					<#elseif car.executionType == 'fireCarRetiredProcess'>
-						<div class="text">发起交车流程</div>	
-					<#elseif car.executionType == 'noProcess'>
-						<div class="text">不处理</div>	
-					<#else>
+					<#if car.executionType??>
+						<#if car.executionType == 'fireCarRetiredProcess'>
+							<div class="text">分公司经理确认后自动发起-交车流程</div>
+						<#elseif car.executionType == 'fireCarRenewProcess'>
+							<div class="text">分公司经理确认后自动发起-续保流程</div>	
+						<#elseif car.executionType == 'manual'>
+							<div class="text">手动处理</div>	
+						<#elseif car.executionType == 'noProcess'>
+							<div class="text">不处理</div>	
+						</#if>
 					</#if>
 				</td>
 				<!-- 确认交车日期 -->
 				<td class="last" style="margin:0;padding:0 0 0 2px;">
-					<div class="text">${car.sureReturnDate}</div>
+					<div class="text">${car.sureReturnDate!}</div>
 				</td>
 			</tr>
 			</#list>
-			</#if>
 		</table>
 	</#if>
 </form>

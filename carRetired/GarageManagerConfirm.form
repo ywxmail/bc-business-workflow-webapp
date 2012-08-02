@@ -8,7 +8,7 @@
 			<textarea name="gmcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
 		</div>
 	<#else>
-		<#if gmcDesc??>
+		<#if gmcDesc??&&gmcDesc!="">
 			<div  style="padding-left:0.5em;">
 				<div style="display:inline-block;vertical-align:top;">厂长意见：</div>
 				${gmcDesc}

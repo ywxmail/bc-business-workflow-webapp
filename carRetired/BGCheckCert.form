@@ -1,0 +1,160 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.BGCheckCertForm"
+	data-js='bc-business-workflow/carRetired/BGCheckCert.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;>
+			<tr class="header row">
+				<td style="width: 10em;text-align: center;">证件名称</td>
+				<td style="width: 5em;text-align: center;">*证件情况</td>
+				<td style="width: 50%;text-align: center;">备注</td>
+				<td style="min-width:0.01em">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="value" >行驶证</td>
+				<td class="value">
+					<select name="bgtcCertNo1Status" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo1Desc" data-scope="global" class="ui-widget-content"/></td>
+			</tr>
+			<tr>
+				<td class="value" >购置税证</td>
+				<td class="value">
+					<select name="bgtcCertNo2Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo2Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >车用汽车瓶IC卡</td>
+				<td class="value">
+					<select name="bgtcCertNo3Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo3Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >道路运输证</td>
+				<td class="value">
+					<select name="bgtcCertNo4Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo4Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >强检证</td>
+				<td class="value">
+					<select name="bgtcCertNo5Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo5Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >保险卡</td>
+				<td class="value">
+					<select name="bgtcCertNo6Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo6Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >年票</td>
+				<td class="value">
+					<select name="bgtcCertNo7Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo7Desc" class="ui-widget-content" /></td>
+			</tr>
+			<tr>
+				<td class="value" >合同（总之协议书）</td>
+				<td class="value">
+					<select name="bgtcCertNo8Status" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="bgtcCertNo8Desc" class="ui-widget-content" /></td>
+			</tr>
+		</table>
+	<#else>
+		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;>
+			<tr class="header row">
+				<td style="width: 10em;text-align: center;">证件名称</td>
+				<td style="width: 5em;text-align: center;">证件情况</td>
+				<td style="width: 50%;text-align: center;">备注</td>
+				<td style="min-width:0.01em">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="value" >行驶证</td>
+				<td class="value">${bgtcCertNo1Status}</td>
+				<td class="value" ><#if bgtcCertNo1Desc??>${bgtcCertNo1Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >购置税证</td>
+				<td class="value">${bgtcCertNo2Status}</td>
+				<td class="value" ><#if bgtcCertNo2Desc??>${bgtcCertNo2Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >车用汽车瓶IC卡</td>
+				<td class="value">${bgtcCertNo3Status}</td>
+				<td class="value" ><#if bgtcCertNo3Desc??>${bgtcCertNo3Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >道路运输证</td>
+				<td class="value">${bgtcCertNo4Status}</td>
+				<td class="value" ><#if bgtcCertNo4Desc??>${bgtcCertNo4Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >强检证</td>
+				<td class="value">${bgtcCertNo5Status}</td>
+				<td class="value" ><#if bgtcCertNo5Desc??>${bgtcCertNo5Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >保险卡</td>
+				<td class="value">${bgtcCertNo6Status}</td>
+				<td class="value" ><#if bgtcCertNo6Desc??>${bgtcCertNo6Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >年票</td>
+				<td class="value">${bgtcCertNo7Status}</td>
+				<td class="value" ><#if bgtcCertNo7Desc??>${bgtcCertNo7Desc}</#if></td>
+			</tr>
+			<tr>
+				<td class="value" >合同（总之协议书）</td>
+				<td class="value">${bgtcCertNo8Status}</td>
+				<td class="value" ><#if bgtcCertNo8Desc??>${bgtcCertNo1Desc}</#if></td>
+			</tr>
+		</table>
+	</#if>
+</form>

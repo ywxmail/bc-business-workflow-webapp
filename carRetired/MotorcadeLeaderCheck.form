@@ -1,0 +1,49 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.MotorcadeLeaderCheckForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRetired/MotorcadeLeaderCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="mlcFYJisComplete" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="mlcIsZjs" data-scope="global" data-type="boolean"/>
+		<div style="padding-left:0.5em;">
+			服务投诉、营运违章、交通违法处理完毕： 
+			<input type="radio" class="ignore" name="FYJisComplete" value="true" checked style="width:auto;"  />
+			<label>是</label>
+			<input type="radio" class="ignore" data-scope="global" name="FYJisComplete" value="false"  style="width:auto;"  />
+			<label>否</label>
+		 </div>
+		<div style="padding-left:0.5em;">
+			当年已年审次数：
+			<input type="text"  data-scope="global" name="mlcCount" class="ui-widget-content" 
+				data-validate="{'required':true,'type':'number'}" style="width:2em;" data-type="long"/>
+			次
+		</div>
+		<div style="padding-left:0.5em;">
+			是否租价审：
+			<input type="radio" class="ignore" name="isZjs" value="true" checked style="width:auto;" />
+			<label>是</label>
+			<input type="radio" class="ignore" name="isZjs" value="false"  style="width:auto;" />
+			<label>否</label>
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			<textarea name="mlcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			服务投诉、营运违章、交通违法处理完毕：<#if mlcFYJisComplete>是<#else>否</#if>
+		 </div>
+		<div style="padding-left:0.5em;">
+			当年已年审次数：${mlcCount}次
+		</div>
+		<div style="padding-left:0.5em;">
+			是否租价审：<#if mlcIsZjs>是<#else>否</#if>
+		</div>
+		<#if mlcDesc??&&mlcDesc!="">
+		<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			${mlcDesc}
+		</div>
+		</#if>
+	</#if>
+</form>

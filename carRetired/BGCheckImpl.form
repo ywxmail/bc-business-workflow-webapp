@@ -1,0 +1,34 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.BGCheckImplForm"
+	data-js='bc-business-workflow/carRetired/BGCheckImpl.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;">
+			各项费用结算至：
+			<div class="relative" style="display:inline-block;">
+				<input type="text" name="bgciEndDate" class="bc-date ui-widget-content" style="width:8em;" data-scope="global" data-validate='{"type":"date","required":true}'/>
+				<ul class="inputIcons">
+					<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+				</ul>
+			</div>，24时止。
+		</div>
+		<div style="padding-left:0.5em;">
+			异常汇总（计财部结算注意以下事项）：	
+		</div>
+		<div style="padding-left:0.5em;">
+			<textarea name="bgciDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			各项费用结算至：${bgciEndDate}，24时止。
+		</div>
+		<#if bgciDesc??&&bgciDesc != "">
+			<div style="padding-left:0.5em;">
+				异常汇总（计财部结算注意以下事项）：	
+			</div>
+			<div style="padding-left:0.5em;">
+				${bgciDesc}
+			</div>
+		</#if>
+	</#if>
+</form>

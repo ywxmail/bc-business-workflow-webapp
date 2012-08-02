@@ -1,0 +1,18 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.returnCertificatesForm"
+	data-js='bc-business-workflow/carRetired/returnCertificates.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			<textarea name="rcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<#if rcDesc??>
+		<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			${rcDesc}	
+		</div>
+		</#if>
+	</#if>
+</form>

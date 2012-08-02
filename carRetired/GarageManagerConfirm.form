@@ -1,0 +1,18 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.GarageManagerConfirmForm"
+	data-js='bc-business-workflow/carRetired/GarageManagerConfirm.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">厂长意见：</div>
+			<textarea name="gmcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<#if gmcDesc??&&gmcDesc!="">
+			<div  style="padding-left:0.5em;">
+				<div style="display:inline-block;vertical-align:top;">厂长意见：</div>
+				${gmcDesc}
+			</div>
+		</#if>	
+	</#if>
+</form>

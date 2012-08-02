@@ -1,0 +1,18 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.UnitManagerConfirmForm"
+	data-js='bc-business-workflow/carRetired/UnitManagerConfirm.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">分公司经理意见：</div>
+			<textarea name="umcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<#if umcDesc??&&umcDesc!="">
+		<div  style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">分公司经理意见：</div>
+			${umcDesc!}
+		</div>
+		</#if>	
+	</#if>
+</form>

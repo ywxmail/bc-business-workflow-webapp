@@ -1,0 +1,54 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.SecurityGroupCheckForm"
+	data-js='bc-business/bs.js,bc-business-workflow/carRetired/SecurityGroupCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="sgCaseIsComplete" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="sgBlackListIsDone" data-scope="global" data-type="boolean"/>
+		<div style="padding-left:0.5em;">
+			该车辆是否存在事故或交通违法未处理完毕： 
+			<input type="radio" class="ignore" name="CaseIsComplete" value="true" checked style="width:auto;"  />
+			<label>是</label>
+			<input type="radio" class="ignore" data-scope="global" name="CaseIsComplete" value="false"  style="width:auto;"  />
+			<label>否</label>
+		</div>
+		<div style="padding-left:0.5em;">
+			有关安全类别的BC黑名单录入情况：
+			<input type="radio" class="ignore" name="BlackListIsDone" value="true" checked style="width:auto;" />
+			<label>已录入</label>
+			<input type="radio" class="ignore" name="BlackListIsDone" value="false"  style="width:auto;" />
+			<label>无</label>
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			<textarea name="sgDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			该车辆是否存在事故或交通违法未处理完毕： 
+			<#if sgCaseIsComplete??>
+				<#if sgCaseIsComplete>
+					是
+				<#else>
+					否
+				</#if>
+			</#if>
+		</div>
+		<div style="padding-left:0.5em;">
+			有关安全类别的BC黑名单录入情况：
+			<#if sgBlackListIsDone??>
+				<#if sgBlackListIsDone>
+					已录入
+				<#else>
+					无
+				</#if>
+			</#if>
+		</div>
+		<#if sgDesc??&&sgDesc!="">
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			${sgDesc}
+		</div>
+		</#if>	
+	</#if>
+</form>

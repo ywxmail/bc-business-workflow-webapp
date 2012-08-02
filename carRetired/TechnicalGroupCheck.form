@@ -1,0 +1,54 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.TechnicalGroupCheckForm"
+	data-js='bc-business-workflow/carRetired/TechnicalGroupCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="tgcIsTouchMedia" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="tgcIsCityTV" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="tgcIsYCT213" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="tgcIsYCT216" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="tgcIsComplete" data-scope="global" data-type="boolean"/>
+		<div style="padding-left:0.5em;">
+			该车辆设备：触动传媒<input type="checkbox" class="ignore" name="isTouchMedia">
+					、城市电视<input type="checkbox" class="ignore" name="isCityTV">
+					、羊城通终端213<input type="checkbox" class="ignore"  name="isYCT213">
+					216<input type="checkbox" class="ignore"  name="isYCT216">
+				已查收完毕，无异常或缺失情况。
+		</div>
+		<div style="padding-left:0.5em;">
+			分公司已上交人车对应关系变更的相关信息：
+			<input type="radio" class="ignore" name="isComplete" value="true" checked style="width:auto;" />
+			<label>是</label>
+			<input type="radio" class="ignore" name="isComplete" value="false"  style="width:auto;" />
+			<label>否</label>
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			<textarea name="tgcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			该车辆设备：触动传媒<input type="checkbox" class="ignore" <#if tgcIsTouchMedia??&&tgcIsTouchMedia>checked="checked"</#if> onclick="return false;">
+					、城市电视<input type="checkbox" class="ignore" <#if tgcIsCityTV??&&tgcIsCityTV>checked="checked"</#if> onclick="return false;">
+					、羊城通终端213<input type="checkbox" class="ignore"  <#if tgcIsYCT213??&&tgcIsYCT213>checked="checked"</#if> onclick="return false;">
+					216<input type="checkbox" class="ignore"  <#if tgcIsComplete??&&tgcIsComplete>checked="checked"</#if> onclick="return false;">
+				已查收完毕，无异常或缺失情况。
+		</div>
+		<div style="padding-left:0.5em;">
+			分公司已上交人车对应关系变更的相关信息：
+			<#if tgcIsComplete??>
+				<#if tgcIsComplete>
+					是
+				<#else>
+					否
+				</#if>
+			</#if>
+		</div>
+		<#if tgcDesc??&&tgcDesc!="">
+			<div style="padding-left:0.5em;">
+				<div style="display:inline-block;vertical-align:top;">备注：</div>
+				${tgcDesc}
+			</div>
+		</#if>
+	</#if>
+</form>

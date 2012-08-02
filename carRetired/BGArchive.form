@@ -1,0 +1,8 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.BGArchiveForm"
+	data-js='bc-business-workflow/carRetired/BGArchive.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<#else>
+	</#if>
+</form>

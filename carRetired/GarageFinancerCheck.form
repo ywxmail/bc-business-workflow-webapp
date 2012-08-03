@@ -1,0 +1,30 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.GarageFinancerCheckForm"
+	data-js='bc-business-workflow/carRetired/GarageFinancerCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<#if isValuation>
+			<div style="padding-left:0.5em;">
+			回收估价：
+			<input type="text"  data-scope="global" name="gfcValuationMoney" class="ui-widget-content" 
+				value="0" data-validate="{'required':true,'type':'number'}" style="width:8em;" />(元)
+			</div>
+		</#if>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;text-align:right;">欠费情况：</div>
+			<textarea name="gfcDesc"  data-scope="global" rows="3" style="width:70%;" class="ui-widget-content noresize" />
+		</div>
+	<#else>
+		<#if isValuation>
+			<div style="padding-left:0.5em;">
+				回收估价：${gfcValuationMoney!}(元)
+			</div>
+		</#if>
+		<#if gfcDesc??&&gfcDesc!="">
+			<div style="padding-left:0.5em;">
+				<div style="display:inline-block;vertical-align:top;text-align:right;">欠费情况：</div>
+				${gfcDesc}
+			</div>
+		</#if>
+	</#if>
+</form>

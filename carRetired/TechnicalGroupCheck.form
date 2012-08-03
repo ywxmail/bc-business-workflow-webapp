@@ -28,7 +28,7 @@
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			该车辆设备：触动传媒<input type="checkbox" class="ignore" <#if tgcIsTouchMedia??&&tgcIsTouchMedia>checked="checked"</#if> onclick="return false;">
+			该车辆设备：触动传媒<input type="checkbox" class="ignore" enable=false <#if tgcIsTouchMedia??&&tgcIsTouchMedia>checked="checked"</#if> onfocus="return false;" onclick="return false;">
 					、城市电视<input type="checkbox" class="ignore" <#if tgcIsCityTV??&&tgcIsCityTV>checked="checked"</#if> onclick="return false;">
 					、羊城通终端213<input type="checkbox" class="ignore"  <#if tgcIsYCT213??&&tgcIsYCT213>checked="checked"</#if> onclick="return false;">
 					216<input type="checkbox" class="ignore"  <#if tgcIsComplete??&&tgcIsComplete>checked="checked"</#if> onclick="return false;">

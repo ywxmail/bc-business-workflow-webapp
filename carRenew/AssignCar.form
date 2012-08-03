@@ -1,6 +1,181 @@
-<form class="bc-page" data-type='form' style="overflow: auto;"
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
 	data-namespace="bswf.carRenew.AssignCarForm"
 	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRenew/AssignCar.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
-	TODO: AssignCar.jsp
+	<#if readonly == 'false'>
+	<div style="width:655px;">
+		<table cellspacing="2" cellpadding="0" style="width:655px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 15em;"></td>
+				<td style="width: 18em;">&nbsp;</td>
+				<td style="width: 15em;">&nbsp;</td>
+				<td style="width: 18em;">&nbsp;</td>
+			</tr>
+			<#if !car??>
+				<#assign car={"temp":1}>
+			</#if> 
+			<tr>
+				<td class="label" >*车牌：</td>
+				<td class="value">
+					<div style="position:relative;">
+						<input type="text"   name="plate"         value="${car.plate!plate_gl!}"        style="width: 18em;" class="ui-widget-content" readonly="readonly" />
+						<input type="hidden" name="plate_gl"      value="${car.plate!}"         data-scope="global" style="width: 18em;" class="ui-widget-content" readonly="readonly" />
+						<input type="hidden" name="carId"         value="${car.id!carId_gl!}"            data-type="long" class="ui-widget-content" />
+						<input type="hidden" name="carId_gl"      value="${car.id!}"            data-scope="global" data-type="long" class="ui-widget-content" />
+						<input type="hidden" name="plateType"     value="${car.plateType!plateType_gl!}"     />
+						<input type="hidden" name="plateType_gl"  value="${car.plateType!}"     data-scope="global"/>
+						<input type="hidden" name="plateNo"       value="${car.plateNo!plateNo_gl!}"        />
+						<input type="hidden" name="plateNo_gl"    value="${car.plateNo!}"       data-scope="global"/>
+						<input type="hidden" name="unitCompany"   value="${car.unitCompany!unitCompany_gl!}"    />
+						<input type="hidden" name="unitCompany_gl" value="${car.unitCompany!}"  data-scope="global"/>
+						<input type="hidden" name="verifyUnitId" value="${car.verifyUnitId!}" data-scope="global" data-type="long"/>
+						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!motorcadeId_gl!}"    data-type="long"/>
+						<input type="hidden" name="motorcadeId_gl" value="${car.motorcadeId!}"   data-scope="global" data-type="long"/>
+						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!motorcadeName_gl!}" />
+						<input type="hidden" name="motorcadeName_gl" value="${car.motorcadeName!}" data-scope="global"}" />
+						<#if car.temp??>
+							<ul class="inputIcons">
+								<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
+							</ul>
+						</#if>
+					</div>
+				</td>
+				<td class="label" >*保险期间：</td>
+				<td class="value">
+					<div style="position : relative; display: inline-block">
+						从&nbsp;<input type="text" name="greenslipStartDate" class="bc-date ui-widget-content" style="width: 7.25em;" data-validate='{"type":"date","required":true}'
+						value="${car.greenslipStartDate!greenslipStartDate_gl!}"/>
+						<ul class="inputIcons">
+							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+						</ul>
+						<input type="hidden" name="greenslipStartDate_gl" value="${car.greenslipStartDate!}"  data-scope="global"/>
+					</div>					
+					<div style="position : relative; display: inline-block">
+						到&nbsp;<input type="text" name="greenslipEndDate" class="bc-date ui-widget-content" style="width: 7.25em;"  data-validate='{"type":"date","required":true}'
+						value="${car.greenslipEndDate!greenslipEndDate_gl!}"/>
+						<ul class="inputIcons">
+							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+						</ul>
+						<input type="hidden" name="greenslipEndDate_gl" value="${car.greenslipEndDate!}" data-scope="global"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*投保人：</td>
+				<td class="value" >
+					<input type="text" name="policyHolder" value="${policyHolder!policyHolder_gl!}" class="ui-widget-content" style="width: 18em;" />
+					<input type="hidden" name="policyHolder_gl" value="${policyHolder!}" style="width: 18em;" data-scope="global"/>
+				</td>
+				<td class="label" >*司机：</td>
+				<td class="value" >
+					<input type="text" name="driverName" readonly="readonly" class="ui-widget-content" value="${car.driverName!driverName_gl!}" style="width: 18em;" />
+					<input type="hidden" name="driverName_gl" value="${car.driverName!}" data-scope="global" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*营运性质：</td>
+				<td class="value" >
+					<input type="text" name="bsType" readonly="readonly" class="ui-widget-content" value="${car.bsType!bsType_gl!}" style="width: 18em;" />
+					<input type="hidden" name="bsType_gl" class="ui-widget-content" value="${car.bsType!}" style="width: 18em;" data-scope="global" />
+				</td>
+				<td class="label" >*初登日期：</td>
+				<td class="value" >
+					<div class="relative">
+						<input type="text" name="registerDate" class="ui-widget-content"  readonly="readonly" style="width: 18em;" data-validate='{"type":"date","required":true}'
+							value="${car.registerDate!registerDate_gl!}"/>
+						<input type="hidden" name="registerDate_gl" value="${car.registerDate!}" data-scope="global"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >厂牌型号：</td>
+				<td class="value" >
+					<input type="text" name="factoryType" class="ui-widget-content"  data-validate="required"
+						value="${car.factoryType!factoryType_gl!}" readonly="readonly" style="width: 18em;" />
+					<input type="hidden" name="factoryType_gl" value="${car.factoryType!}" data-scope="global" />
+				</td>
+				<td class="label" >核定载客：</td>
+				<td class="value" >
+					<input type="text" name="accessCount" readonly="readonly" class="ui-widget-content" value="${car.accessCount!accessCount_gl!}" data-type="long" style="width: 18em;" />
+					<input type="hidden" name="accessCount_gl"  value="${car.accessCount!}"  data-scope="global" data-type="long" />
+				</td>
+				</tr>
+			<tr>
+				<td class="label" >*发动机号：</td>
+				<td class="value" >
+					<input type="text" name="engineNo" readonly="readonly" class="ui-widget-content" value="${car.engineNo!engineNo_gl!}" style="width: 18em;" />
+					<input type="hidden" name="engineNo_gl"  value="${car.engineNo!}"  data-scope="global"  />
+				</td>
+				<td class="label" >*车架号：</td>
+				<td class="value" >
+					<input type="text" name="vin" readonly="readonly" class="ui-widget-content" value="${car.vin!vin_gl!}" style="width: 18em;" />
+					<input type="hidden" name="vin_gl" class="ui-widget-content" value="${car.vin!}" style="width: 18em;" data-scope="global" />
+				</td>
+			</tr>
+		</table>
+		<div class="ui-widget-content" style="border-left-width:0;border-right-width:1px;">
+			<div class="ui-widget-header title" style="position:relative;">
+				<span class="text">承保险种：</span>
+				<ul class="inputIcons">
+					<li id="selectInsuranceType" class="inputIcon ui-icon ui-icon-circle-plus"
+						title='点击添加险种'></li>
+					<li id="deleteInsuranceType" class="inputIcon ui-icon ui-icon-circle-close"
+						title='点击删除险种'></li>
+				</ul>
+			</div>
+			<div class="bc-grid header" style="padding : 0px 0px;">
+				<table class="table" id="buyPlantTables" cellspacing="0" cellpadding="0" style="width: 655px;">
+					<tr class="ui-state-default row">
+						<td class="first" style="width: 250px;height: 20px;">险种名称</td>
+						<td class="middle" style="width: 105px;">保额(元)</td>
+						<td class="last">备注</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<#else>
+		<table cellspacing="4" cellpadding="0" style="width:650px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 200px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td style="width: 200px;">&nbsp;</td>
+				<td style="min-width:0.01em">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >车牌：</td>
+				<td class="value">${plate!car.plate}</td>
+				<td class="label" >保险期间：</td>
+				<td class="value">
+					&nbsp;从&nbsp;${greenslipStartDate!car.greenslipStartDate}
+					&nbsp;到&nbsp;${greenslipEndDate!car.greenslipEndDate}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >投保人：</td>
+				<td class="value" >${policyHolder!}</td>
+				<td class="label" >司机：</td>
+				<td class="value" >${driverName!car.driverName}</td>
+			</tr>
+			<tr>
+				<td class="label" >营运性质：</td>
+				<td class="value" >${bsType!car.bsType}</td>
+				<td class="label" >初登日期：</td>
+				<td class="value" >${registerDate!car.registerDate}</td>
+			</tr>
+			<tr>
+				<td class="label" >厂牌型号：</td>
+				<td class="value" >${factoryType!car.factoryType}</td>
+				<td class="label" >核定载客：</td>
+				<td class="value" >${accessCount!car.accessCount}</td>
+			</tr>
+			<tr>
+				<td class="label" >发动机号：</td>
+				<td class="value" >${engineNo!car.engineNo}</td>
+				<td class="label" >车架号：</td>
+				<td class="value" >${vin!car.vin}</td>
+			</tr>
+		</table>
+	</#if>
 </form>

@@ -1,6 +1,0 @@
-<form class="bc-page" data-type='form' style="overflow: auto;"
-	data-namespace="bswf.carRenew.SignPolicyForm"
-	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRenew/SignPolicy.js'
-	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
-	TODO: SignPolicy.jsp
-</form>

@@ -1,4 +1,0 @@
-<form class="bc-page" data-type='form' style="overflow: auto;"
-	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
-	TODO: AssignCar.jsp
-</form>

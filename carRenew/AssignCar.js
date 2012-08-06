@@ -3,6 +3,11 @@ bswf.carRenew.AssignCarForm = {
 	init : function(option,readonly){
 		var $form = $(this);
 		
+		//绑定投保人输入离开焦点事件
+		$form.find(":input[name='policyHolder']").blur(function() {
+			$form.find(":input[name='policyHolder_gl']").val($(this).val());
+		});
+		
 		//绑定选择车辆事件
 		$form.find("#addCar").click(function() {
 			bs.selectCar({
@@ -145,10 +150,41 @@ bswf.carRenew.AssignCarForm = {
 		});
 	},
 	
+	buildFormData : function(){
+		$page = $(this);
+		//先将购买险种合并到隐藏域
+		var buyPlants=[];
+		//将购买险种表中的内容添加到buyPlants里
+		$page.find("#buyPlantTables tr:gt(0)").each(function(){
+			var $inputs = $(this).find("td>input");
+			var json = {
+				name: $inputs[0].value,
+				coverage: $inputs[1].value,
+				description: $inputs[2].value
+			};
+			var id = $(this).attr("data-id");
+			if(id && id.length > 0)
+				json.id = id;
+			buyPlants.push(json);
+		});
+		$page.find(":input[name='list_buyPlants']").val($.toJSON(buyPlants));
+		$page.find(":input[name='list_buyPlants_gl']").val($.toJSON(buyPlants));
+	},
+	
 	/** 表单验证方法 */
 	validateForm: function(){
 		if(!bc.validator.validate(this))
 			return false;
+		
+		bswf.carRenew.AssignCarForm.buildFormData.call(this);
+		
+		//表单验证
+		var buyPlants =$page.find(":input[name='list_buyPlants_gl']").val();
+		if(buyPlants.length < 3){
+			bc.msg.alert("承保险种不能为空,请添加承保险种！");
+			return false;
+		}
+		
 		return true;
 	}
 };

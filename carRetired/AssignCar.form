@@ -28,6 +28,7 @@
 						<input type="hidden" name="verifyUnitId"  value="${car.unitCompanyId!}" data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!}"   data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!}" data-scope="global" />
+						<input type="hidden" name="subject"       value="${subject!}"			data-scope="global" />
 						<#if car.temp??>
 							<ul class="inputIcons">
 								<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>

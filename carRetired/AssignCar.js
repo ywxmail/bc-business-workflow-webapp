@@ -44,6 +44,8 @@ bswf.carRetired.AssignCarForm = {
 						$form.find(":input[name='chargerName']").val(tempStr);
 					}
 					$form.find(":input[name='charger']").val(car.charger);
+					
+					$form.find(":input[name='subject']").val(car.plate+"交车处理流程"+"（"+car.unitCompany+"）");
 				}
 			})
 		});

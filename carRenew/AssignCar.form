@@ -3,13 +3,13 @@
 	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRenew/AssignCar.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
-	<div style="width:655px;">
-		<table cellspacing="2" cellpadding="0" style="width:655px;min-width: 600px;">
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;min-width: 600px;">
 			<tr class="widthMarker">
 				<td style="width: 15em;"></td>
-				<td style="width: 18em;">&nbsp;</td>
+				<td style="width: 17em;">&nbsp;</td>
 				<td style="width: 15em;">&nbsp;</td>
-				<td style="width: 18em;">&nbsp;</td>
+				<td style="width: 17em;">&nbsp;</td>
 			</tr>
 			<#if !car??>
 				<#assign car={"temp":1}>
@@ -32,9 +32,8 @@
 						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!motorcadeId_gl!}"    data-type="long"/>
 						<input type="hidden" name="motorcadeId_gl" value="${car.motorcadeId!motorcadeId_gl!}"   data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!motorcadeName_gl!}" />
-						<input type="hidden" name="motorcadeName_gl" value="${car.motorcadeName!motorcadeName_gl!}" data-scope="global"}" />
-						<input type="hidden" name="list_buyPlants" class="ui-widget-content" value="${list_buyPlants_gl!}" />
-						<input type="hidden" name="list_buyPlants_gl" class="ui-widget-content" value="${list_buyPlants_gl!}" data-scope="global" />
+						<input type="hidden" name="list_buyPlants_gl" data-scope="global" />
+						<input type="hidden" name="list_buyPlants"/>
 						<#if car.temp??>
 							<ul class="inputIcons">
 								<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
@@ -126,18 +125,36 @@
 				</ul>
 			</div>
 			<div class="bc-grid header" style="padding : 0px 0px;">
-				<table class="table" id="buyPlantTables" cellspacing="0" cellpadding="0" style="width: 655px;">
+				<table class="table" id="buyPlantTables" cellspacing="0" cellpadding="0" style="width: 640px;">
 					<tr class="ui-state-default row">
 						<td class="first" style="width: 250px;height: 20px;">险种名称</td>
 						<td class="middle" style="width: 105px;">保额(元)</td>
 						<td class="last">备注</td>
 					</tr>
+					<#if list_buyPlants_gl??>
+						<#list list_buyPlants_gl as buyPlant>
+						<tr class="ui-widget-content row">
+							<td class="id first" style="padding:0;text-align:left;"><span class="ui-icon"></span>
+								<input style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" readonly="readonly" 
+									type="text" class="ui-widget-content" value='${buyPlant.name}'/>
+							</td>
+							<td class="middle" style="padding:0;text-align:left;">
+								<input style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;"type="text" class="ui-widget-content" 
+									value='${buyPlant.coverage}'/>
+							</td>
+							<td class="last" style="padding:0;text-align:left;">
+								<input style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;"type="text" class="ui-widget-content"
+									value='${buyPlant.description}'/>
+							</td>
+						</tr>
+						</#list>
+					</#if>
 				</table>
 			</div>
 		</div>
 	</div>
 	<#else>
-		<table cellspacing="4" cellpadding="0" style="width:650px;min-width: 600px;">
+		<table cellspacing="4" cellpadding="0" style="width:640px;min-width: 600px;">
 			<tr class="widthMarker">
 				<td style="width: 80px;"></td>
 				<td style="width: 200px;">&nbsp;</td>
@@ -178,6 +195,31 @@
 				<td class="label" >车架号：</td>
 				<td class="value" >${vin!car.vin}</td>
 			</tr>
+		</table>
+		<div class="" style="position:relative;border-width: 0;padding: 0.25em;">
+			<span class="text">险种信息:</span>
+		</div>
+		<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="width: 654px;;margin-bottom:4px;border-width:1px 0 0 0;">
+			<tr class="header row">
+				<td class="first" style="width: 250px;height: 20px;">险种名称</td>
+				<td class="middle" style="width: 105px;">保额(元)</td>
+				<td class="last">备注</td>
+			</tr>
+			<#if list_buyPlants??>
+				<#list list_buyPlants as buyPlant>
+					<tr class="ui-widget-content row">
+						<td class="first" >
+							<div class="text">${buyPlant.name}</div>
+						</td>
+						<td class="middle" style="margin:0;padding:2 0 0 0px;">
+							<div class="text">${buyPlant.coverage}</div>
+						</td>
+						<td class="last" style="margin:0;padding:2 0 0 0px;">
+							<div class="text">${buyPlant.description}</div>
+						</td> 
+					</tr>
+				</#list>
+			</#if>
 		</table>
 	</#if>
 </form>

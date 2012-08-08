@@ -6,9 +6,10 @@
 		<input type="hidden" name="hrIsReclaim" data-scope="global" data-type="boolean"/>
 		<div style="padding-left:0.5em;">
 			该车辆驾驶员
-			<input type="text" name="hrDriver" class="ui-widget-content" style="width:8em;" data-validate="required"/>
+			<input type="text" name="hrDriver" data-scope="global"  class="ui-widget-content" style="width:8em;" data-validate="required"/>
 			已经签署离职相关文件，停保月份： 
-			<input type="text" name="hrStopSecurityMonth" class="ui-widget-content" style="width:2em;" data-validate="{'required':true,'type':'number'}"/>月.
+			<input type="text" name="hrStopSecurityMonth" data-scope="global" class="ui-widget-content" style="width:2em;" 
+				data-validate="{'required':true,'type':'number'}"/>月.
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>

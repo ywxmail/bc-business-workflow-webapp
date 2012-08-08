@@ -44,13 +44,14 @@
 				<td class="label" >*交车性质：</td>
 				<td class="value" >
 					<select name="logoutReason" class="ui-widget-content"  data-validate="required"
-					           data-validate="required">
+					        data-scope="global" >
 					        <option></option>
 							<option value="转蓝">转蓝</option>
 							<option value="报废">报废</option>
 							<option value="其它">其它</option>
 					</select>
 				</td>
+				<td style="min-width:0.01em">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label" >*合同终止日期：</td>
@@ -76,19 +77,20 @@
 				<td class="label" >*营运性质：</td>
 				<td class="value" >
 					<select name="bsType" class="ui-widget-content" data-validate="required"
-				           data-validate="required">
+				          data-scope="global">
 				        <option></option>
 						<option value="承包">承包</option>
 						<option value="合作">合作</option>
 						<option value="挂靠">挂靠</option>
 					</select>
 				</td>
+				<td style="min-width:0.01em">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label" >*车辆退出后归属：</td>
 				<td class="value">
 					<select name="logoutOwner" class="ui-widget-content" data-validate="required"
-				           data-validate="required">
+				           data-scope="global">
 				        <option></option>
 						<option value="公司">公司</option>
 						<option value="个人">个人</option>
@@ -97,7 +99,7 @@
 				<td class="label" >*是否需要估价：</td>
 				<td class="value" >
 					<select name="isValuation" class="ui-widget-content" data-type="boolean" data-validate="required"
-				           data-validate="required">
+				         data-scope="global">
 				        <option></option>
 						<option value="true">是</option>
 						<option value="false">否</option>
@@ -105,9 +107,10 @@
 				</td>
 				<td class="label" >*责任人：</td>
 				<td class="value" >
-						<input type="text" name="chargerName" readonly="readonly" class="ui-widget-content"/>
+						<input type="text" name="chargerName" data-scope="global" readonly="readonly" class="ui-widget-content"/>
 						<input type="hidden" name="charger" class="ui-widget-content"  data-scope="global" value="${car.charger!}"/>
 				</td>
+				<td style="min-width:0.01em">&nbsp;</td>
 			</tr>
 		</table>
 	<#else>

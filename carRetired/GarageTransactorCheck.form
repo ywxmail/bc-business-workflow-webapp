@@ -25,14 +25,14 @@
 			<tr>
 				<td class="value" >车钥匙</td>
 				<td class="value" style="padding-left:4px;">
-					<input type="text" name="gtcCarKeyCount" class="ui-widget-content" style="width:2em;" data-validate="{'required':true,'type':'number'}"/>条
+					<input type="text" data-scope="global" name="gtcCarKeyCount" class="ui-widget-content" style="width:2em;" data-validate="{'required':true,'type':'number'}"/>条
 				</td>
-				<td class="value" ><input type="text" name="gtcCarKeyDesc" class="ui-widget-content"  /></td>
+				<td class="value" ><input type="text" name="gtcCarKeyDesc" data-scope="global" class="ui-widget-content"  /></td>
 			</tr>
 			<tr>
 				<td class="value" >顶灯装置</td>
 				<td class="value">
-					<select name="gtcDDZZ" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcDDZZ" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -40,24 +40,24 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcDDZZDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" data-scope="global" name="gtcDDZZDesc" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >计价器</td>
 				<td class="value">
-					<select name="gtcJJQ" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcJJQ" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcJJQDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcJJQDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >远距离密标</td>
 				<td class="value">
-					<select name="gtcYJLMB" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcYJLMB" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -65,12 +65,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcYJLMBDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcYJLMBDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >近距离密标</td>
 				<td class="value">
-					<select name="gtcJJLMB" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcJJLMB" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -78,12 +78,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcJJLMBDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcJJLMBDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >城市电视</td>
 				<td class="value">
-					<select name="gtcCityTv" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcCityTv" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -91,12 +91,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcCityTvDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcCityTvDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >触动传媒</td>
 				<td class="value">
-					<select name="gtcTouchMedia" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcTouchMedia" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -104,12 +104,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcTouchMediaDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcTouchMediaDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >防盗网</td>
 				<td class="value">
-					<select name="gtcFDW" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcFDW" data-scope="global"  class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -117,12 +117,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcFDWDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcFDWDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >LPG设备</td>
 				<td class="value">
-					<select name="gtcLPG" class=" ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcLPG" data-scope="global" class=" ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -130,12 +130,12 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcLPGDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcLPGDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >备胎</td>
 				<td class="value">
-					<select name="gtcBT" class="ui-widget-content" style="text-align:left;border:none;"
+					<select name="gtcBT" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
 							<option value="已回收">已回收</option>
 							<option value="未回收">未回收</option>
@@ -143,16 +143,16 @@
 							<option value="无安装">无安装</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="gtcBTDesc" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="gtcBTDesc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 		</table>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;text-align:right;width:10em;">发动机拓印号码：</div>
-			<input type="text" name="engineRubNo" class="ui-widget-content" style="width:8em;"   />
+			<input type="text" name="engineRubNo" data-scope="global" class="ui-widget-content" style="width:8em;"   />
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;text-align:right;width:10em;">车身拓印号码：</div>
-			<input type="text" name="carBodyRubNo" class="ui-widget-content" style="width:8em;"  />
+			<input type="text" name="carBodyRubNo" data-scope="global" class="ui-widget-content" style="width:8em;"  />
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;text-align:right;width:10em;">*羊城通驻点员名称： </div>

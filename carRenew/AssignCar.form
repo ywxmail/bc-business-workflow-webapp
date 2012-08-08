@@ -64,8 +64,8 @@
 			<tr>
 				<td class="label" >*投保人：</td>
 				<td class="value" >
-					<input type="text" name="policyHolder" value="${policyHolder_gl!}" class="ui-widget-content" style="width: 18em;" />
-					<input type="hidden" name="policyHolder_gl" value="${policyHolder!}" style="width: 18em;" data-scope="global"/>
+					<input type="text" name="policyHolder" value="${policyHolder_gl!car.companyFullName!}" class="ui-widget-content" style="width: 18em;" />
+					<input type="hidden" name="policyHolder_gl" value="${policyHolder!car.companyFullName!}" style="width: 18em;" data-scope="global"/>
 				</td>
 				<td class="label" >*司机：</td>
 				<td class="value" >

@@ -6,7 +6,7 @@ bswf.carRetired.HRTakeBackCardForm = {
 	buildFormData : function(){
 		$form = $(this);
 		var isReclaim=$form.find(":input[name='isReclaim']:checked").val();
-		$form.find(":input[name='hrIsReclaim']").val(isReclaim);
+		$form.find(":input[name='htbcIsReclaim']").val(isReclaim);
 	},
 	/** 表单验证方法 */
 	validateForm: function(){

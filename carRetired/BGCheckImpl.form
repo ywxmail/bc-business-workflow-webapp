@@ -20,7 +20,7 @@
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			各项费用结算至：${bgciEndDate}，24时止。
+			各项费用结算至：${bgciEndDate!}日24时止。
 		</div>
 		<#if bgciDesc??&&bgciDesc != "">
 			<div style="padding-left:0.5em;">

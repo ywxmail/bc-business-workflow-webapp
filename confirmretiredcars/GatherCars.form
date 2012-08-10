@@ -5,12 +5,12 @@
 	<#if readonly == 'false'>
 		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr>
-				<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
+				<td class="label" style="min-width: 3.5em;width: 6em;">*标题：</td>
 				<td class="value">
 					<input type="text" name="subject" class="ui-widget-content" data-scope="global"
 						data-validate="required" value='${subject!"${nextMonthOfYear}年${nextMonth}月份交车确认"}'/>
 				</td>
-				<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
+				<td class="label" style="min-width: 6.5em;width: 6.5em;">*经办分公司：</td>
 				<td class="value" style="width: 10em;">
 					<div class="relative" style="width:10em;">
 						<input type="text" name="verifyUnitName"
@@ -20,6 +20,24 @@
 						</ul>
 						<input type="hidden" name="verifyUnitId" data-scope="global" data-type="long"/>
 					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" style="min-width: 3.5em;width: 6em;"></td>
+				<td class="value">
+					
+				</td>
+				<td class="label" style="min-width: 6.5em;width: 6.5em;">办理期限：</td>
+				<td class="value" style="width: 10em;">
+					<div class="relative">
+						<input type="text" name="tempDueDate" class="ignore bc-date ui-widget-content"   data-validate='{"type":"date"}'/>
+						<ul class="inputIcons">
+							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+						</ul>
+					</div>
+					<input type="hidden" name="dueDate" class="ui-widget-content"  data-scope="global" data-type="endDate"/>
+					<input type="hidden" name="day" class="ignore ui-widget-content" value='${day}' />
+					<input type="hidden" name="now2d" class="ignore ui-widget-content" value='${now2d}' />
 				</td>
 			</tr>
 		</table>

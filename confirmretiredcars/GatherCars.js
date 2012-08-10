@@ -3,6 +3,23 @@ bswf.confirmretiredcars.GatherCarsForm = {
 	init : function(option,readonly){
 		var $form = $(this);
 		
+		//--自动填写默认的办理期限，每月的25号--开始--
+		var day=$form.find(":input[name='day']").val();
+		var now2d=$form.find(":input[name='now2d']").val();
+		if(day<=25){
+			var date= new Date(Date.parse(now2d.replace(/-/g,"/")));
+			date.setDate(25);
+			var month=date.getMonth()+1;
+			if(month<10){
+				month="0"+month;
+			}
+			$form.find(":input[name='tempDueDate']").val(
+					date.getFullYear()
+						+'-'
+						+month+'-'+date.getDate());
+		}
+		//--自动填写默认的办理期限，每月的25号--结束--
+		
 		//------------添加行-------------------
 		var tableEl=$form.find("#cars")[0];
 		$form.find("#addLine").click(function() {
@@ -279,6 +296,9 @@ bswf.confirmretiredcars.GatherCarsForm = {
 		}else{
 			$form.find(":input[name='subject']").val(subject + "(" + unitName + ")");
 		}
+		
+		$form.find(":input[name='dueDate']").val(
+				$form.find(":input[name='tempDueDate']").val()+" 23:59:59");
 	},
 	
 	/** 表单验证方法 */

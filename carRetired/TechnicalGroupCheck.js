@@ -2,6 +2,32 @@ bc.namespace("bswf.carRetired");
 bswf.carRetired.TechnicalGroupCheckForm = {
 	init : function(option,readonly){
 		var $form = $(this);
+		
+		$form.find(":input[name='isTouchMedia']").click(function(){
+			if($form.find(":input[name='isTouchMedia']")[0].checked){
+				$form.find(":input[name='isCityTV']")[0].checked=false;
+			}
+		});
+		
+		$form.find(":input[name='isCityTV']").click(function(){
+			if($form.find(":input[name='isCityTV']")[0].checked){
+				$form.find(":input[name='isTouchMedia']")[0].checked=false;
+			}
+		});
+		
+		$form.find(":input[name='isYCT213']").click(function(){
+			if($form.find(":input[name='isYCT213']")[0].checked){
+				$form.find(":input[name='isYCT216']")[0].checked=false;
+			}
+		});
+		
+		$form.find(":input[name='isYCT216']").click(function(){
+			if($form.find(":input[name='isYCT216']")[0].checked){
+				$form.find(":input[name='isYCT213']")[0].checked=false;
+			}
+		});
+		
+		
 	},
 	buildFormData : function(){
 		$form = $(this);

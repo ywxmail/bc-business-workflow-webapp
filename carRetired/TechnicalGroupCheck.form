@@ -11,9 +11,9 @@
 		<div style="padding-left:0.5em;">
 			该车辆设备：触动传媒<input type="checkbox" class="ignore" name="isTouchMedia">
 					、城市电视<input type="checkbox" class="ignore" name="isCityTV">
-					、羊城通终端213<input type="checkbox" class="ignore"  name="isYCT213">
-					216<input type="checkbox" class="ignore"  name="isYCT216">
-				已查收完毕，无异常或缺失情况。
+					，羊城通终端213<input type="checkbox" class="ignore"  name="isYCT213">
+					、216<input type="checkbox" class="ignore"  name="isYCT216">
+				，已查收完毕，无异常或缺失情况。
 		</div>
 		<div style="padding-left:0.5em;">
 			分公司已上交人车对应关系变更的相关信息：
@@ -24,11 +24,12 @@
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			<textarea name="tgcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+			<textarea name="tgcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" >
+			</textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			该车辆设备：触动传媒<input type="checkbox" class="ignore" enable=false <#if tgcIsTouchMedia??&&tgcIsTouchMedia>checked="checked"</#if> onfocus="return false;" onclick="return false;">
+			该车辆设备：触动传媒<input type="checkbox" class="ignore" enable="false" <#if tgcIsTouchMedia??&&tgcIsTouchMedia>checked="checked"</#if> onfocus="return false;" onclick="return false;">
 					、城市电视<input type="checkbox" class="ignore" <#if tgcIsCityTV??&&tgcIsCityTV>checked="checked"</#if> onclick="return false;">
 					、羊城通终端213<input type="checkbox" class="ignore"  <#if tgcIsYCT213??&&tgcIsYCT213>checked="checked"</#if> onclick="return false;">
 					216<input type="checkbox" class="ignore"  <#if tgcIsComplete??&&tgcIsComplete>checked="checked"</#if> onclick="return false;">

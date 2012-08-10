@@ -3,8 +3,8 @@ bswf.carRetired.GarageTransactorCheckForm= {
 	init : function(option,readonly){
 		var $form = $(this);
 		$form.find("#gtcDebt").hide();
-		$form.find(":input[name='YCTisDebt']").change(function(){
-			var YCTisDebt=$form.find(":input[name='YCTisDebt']:checked").val();
+		$form.find("select[name='gtcYCTisDebt']").change(function(){
+			var YCTisDebt=$form.find("select[name='gtcYCTisDebt']").val();
 			if(YCTisDebt == 'true'){
 				$form.find("#gtcDebt").show();
 			}else{
@@ -15,10 +15,6 @@ bswf.carRetired.GarageTransactorCheckForm= {
 	},
 	buildFormData : function(){
 		$form = $(this);
-		var YCTisComplete=$form.find(":input[name='YCTisComplete']:checked").val();
-		var YCTisDebt=$form.find(":input[name='YCTidDebt']:checked").val();
-		$form.find(":input[name='gtcYCTisComplete']").val(YCTisComplete);
-		$form.find(":input[name='gtcYCTisDebt']").val(YCTisDebt);
 	},
 	/** 表单验证方法 */
 	validateForm: function(){

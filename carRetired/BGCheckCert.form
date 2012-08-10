@@ -3,7 +3,7 @@
 	data-js='bc-business-workflow/carRetired/BGCheckCert.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
-		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;>
+		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr class="header row">
 				<td style="width: 10em;text-align: center;">证件名称</td>
 				<td style="width: 5em;text-align: center;">*证件情况</td>
@@ -108,7 +108,7 @@
 			</tr>
 		</table>
 	<#else>
-		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;>
+		<table class="" cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr class="header row">
 				<td style="width: 10em;text-align: center;">证件名称</td>
 				<td style="width: 5em;text-align: center;">证件情况</td>

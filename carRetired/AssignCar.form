@@ -20,7 +20,8 @@
 				<td class="label" >*车牌：</td>
 				<td class="value">
 					<div style="position:relative;">
-						<input type="text"   name="plate"         value="${car.plate!}"         data-scope="global" class="ui-widget-content" readonly="readonly"/>
+						<input type="text"   name="plate"         value="${car.plate!}"         data-scope="global" class="ui-widget-content" 
+							data-validate="required" readonly="readonly"/>
 						<input type="hidden" name="carId"         value="${car.id!}"            data-scope="global" data-type="long"/>
 						<input type="hidden" name="plateType"     value="${car.plateType!}"     data-scope="global" />
 						<input type="hidden" name="plateNo"       value="${car.plateNo!}"       data-scope="global" />
@@ -29,6 +30,7 @@
 						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!}"   data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!}" data-scope="global" />
 						<input type="hidden" name="subject"       value="${subject!}"			data-scope="global" />
+						<input type="hidden" name="driver"       value="${car.driver!}"			data-scope="global" />
 						<#if car.temp??>
 							<ul class="inputIcons">
 								<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
@@ -48,7 +50,7 @@
 					        <option></option>
 							<option value="转蓝">转蓝</option>
 							<option value="报废">报废</option>
-							<option value="其它">其它</option>
+							<option value="其他">其他</option>
 					</select>
 				</td>
 				<td style="min-width:0.01em">&nbsp;</td>

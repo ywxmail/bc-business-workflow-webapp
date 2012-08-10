@@ -13,7 +13,8 @@
 		 </div>
 		<div  style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">遗留问题说明：</div>
-			<textarea name="usocDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
+			<textarea name="usocDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" >
+			</textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">

@@ -32,6 +32,7 @@ bswf.carRetired.AssignCarForm = {
 					$form.find(":input[name='motorcadeName']").val(car.motorcadeName);
 					$form.find(":input[name='factoryType']").val(car.factoryType);
 					$form.find(":input[name='ccEndDate']").val(car.ccEndDate.substring(0,10));
+					$form.find(":input[name='driver']").val(car.driver);
 					var str = car.charger;
 					if(str != null && str.length > 0){
 						var strAry = str.split(";");

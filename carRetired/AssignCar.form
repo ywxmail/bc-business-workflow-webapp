@@ -30,7 +30,8 @@
 						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!}"   data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!}" data-scope="global" />
 						<input type="hidden" name="subject"       value="${subject!}"			data-scope="global" />
-						<input type="hidden" name="driver"       value="${car.driver!}"			data-scope="global" />
+						<input type="hidden" name="driverName"    value="${car.driverName!}"	data-scope="global" />
+						<input type="hidden" name="driverFWZG"    value="${car.driverFWZG!}"	data-scope="global" />
 						<#if car.temp??>
 							<ul class="inputIcons">
 								<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
@@ -110,7 +111,7 @@
 				<td class="label" >*责任人：</td>
 				<td class="value" >
 						<input type="text" name="chargerName" data-scope="global" readonly="readonly" class="ui-widget-content"/>
-						<input type="hidden" name="charger" class="ui-widget-content"  data-scope="global" value="${car.charger!}"/>
+						<input type="hidden" name="charger"  data-scope="global" value="${car.charger!}"/>
 				</td>
 				<td style="min-width:0.01em">&nbsp;</td>
 			</tr>

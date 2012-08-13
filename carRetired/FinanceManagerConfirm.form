@@ -5,14 +5,12 @@
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">计财部经理意见：</div>
-			<textarea name="fmcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize" />
+			<textarea name="fmcDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize"></textarea>
 		</div>
 	<#else>
-		<#if fmcDesc??>
 		<div  style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">计财部经理意见：</div>
-			${fmcDesc}	
+			${fmcDesc!}	
 		</div>
-		</#if>
 	</#if>
 </form>

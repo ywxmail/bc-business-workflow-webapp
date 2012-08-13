@@ -6,18 +6,19 @@
 		<input type="hidden" name="hrIsReclaim" data-scope="global" data-type="boolean"/>
 		<div style="padding-left:0.5em;">
 			该车辆驾驶员
-			<input type="text" name="hrDriver" data-scope="global"  class="ui-widget-content" style="width:8em;" data-validate="required"/>
+			<input type="text" name="hrDriver" data-scope="global"  class="ui-widget-content" style="width:12em;" 
+				data-validate="required" value="${driverName!}"/>
 			已经签署离职相关文件，停保月份： 
-			<input type="text" name="hrStopSecurityMonth" data-scope="global" class="ui-widget-content" style="width:2em;" 
-				data-validate="{'required':true,'type':'number'}"/>月.
+			<input type="text" name="hrStopSecurityMonth" data-scope="global" class="ui-widget-content" style="width:4em;" 
+				data-validate="required"/>月.
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			<textarea name="hrDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+			<textarea name="hrDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" ></textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			该车辆驾驶员${hrDriver!}已经签署离职相关文件，停保月份：${hrStopSecurityMonth!}月。
+			该车辆驾驶员　${hrDriver!}　已经签署离职相关文件，停保月份：${hrStopSecurityMonth!}月。
 		</div>
 		<#if hrDesc??>
 			<#if hrDesc!="">

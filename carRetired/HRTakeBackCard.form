@@ -3,36 +3,23 @@
 	data-js='bc-business-workflow/carRetired/HRTakeBackCard.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
-		<input type="hidden" name="htbcIsReclaim" data-scope="global" data-type="boolean"/>
 		<div style="padding-left:0.5em;">
-			车辆驾驶员及服务资格证：
-			<input type="text" name="htbcDriverAndFWZG" class="ui-widget-content" style="width:16em;" data-validate="required"/>
-			（提示：请按照"张三,123456;李四,987654;"格式填写。）
+			车辆驾驶员、服务资格证及情况（提示：请按照"张三,123456,已回收;李四,987654,遗失;"格式填写。）：
+			<input type="hidden" class="ignore" name="htcDriverName" value="${driverName!}"/>
+			<input type="hidden" class="ignore" name="htcDriverFWZG" value="${driverFWZG!}"/>
 		</div>
 		<div style="padding-left:0.5em;">
-			服务资格证情况：
-			<input type="radio" class="ignore" name="isReclaim" value="true" checked style="width:auto;"  />
-			<label>已回收</label>
-			<input type="radio" class="ignore" name="isReclaim" value="false"  style="width:auto;"  />
-			<label>遗失</label>
+			<div style="display:inline-block;vertical-align:top;">　　　</div>
+			<textarea name="htbcDriverAndFWZG"  data-scope="global" data-validate="required" rows="2" style="width:90%;" class="ui-widget-content noresize" 
+				placeholder="这里填写车辆驾驶员、服务资格证及情况。"></textarea>
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			<textarea name="htbcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+			<textarea name="htbcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" ></textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
 			车辆驾驶员及服务资格证：${htbcDriverAndFWZG!}
-		</div>
-		<div style="padding-left:0.5em;">
-			服务资格证情况：
-				<#if htbcIsReclaim??>
-					<#if htbcIsReclaim>
-						已回收
-					<#else>
-						遗失
-					</#if>
-				</#if>
 		</div>
 		<#if htbcDesc??&&htbcDesc!="">
 			<div style="padding-left:0.5em;">

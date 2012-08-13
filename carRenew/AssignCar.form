@@ -67,19 +67,19 @@
 					<input type="text" name="policyHolder" value="${policyHolder_gl!car.companyFullName!}" class="ui-widget-content" style="width: 18em;" />
 					<input type="hidden" name="policyHolder_gl" value="${policyHolder!car.companyFullName!}" style="width: 18em;" data-scope="global"/>
 				</td>
-				<td class="label" >*司机：</td>
+				<td class="label" >司机：</td>
 				<td class="value" >
 					<input type="text" name="driverName" readonly="readonly" class="ui-widget-content" value="${car.driverName!driverName_gl!}" style="width: 18em;" />
 					<input type="hidden" name="driverName_gl" value="${car.driverName!driverName_gl!}" data-scope="global" />
 				</td>
 			</tr>
 			<tr>
-				<td class="label" >*营运性质：</td>
+				<td class="label" >营运性质：</td>
 				<td class="value" >
 					<input type="text" name="bsType" readonly="readonly" class="ui-widget-content" value="${car.bsType!bsType_gl!}" style="width: 18em;" />
 					<input type="hidden" name="bsType_gl" class="ui-widget-content" value="${car.bsType!bsType_gl!}" style="width: 18em;" data-scope="global" />
 				</td>
-				<td class="label" >*初登日期：</td>
+				<td class="label" >初登日期：</td>
 				<td class="value" >
 					<div class="relative">
 						<input type="text" name="registerDate" class="ui-widget-content"  readonly="readonly" style="width: 18em;" data-validate='{"type":"date","required":true}'
@@ -89,25 +89,25 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="label" >厂牌型号：</td>
+				<td class="label" >分公司：</td>
 				<td class="value" >
-					<input type="text" name="factoryType" class="ui-widget-content"  data-validate="required"
-						value="${car.factoryType!factoryType_gl!}" readonly="readonly" style="width: 18em;" />
-					<input type="hidden" name="factoryType_gl" value="${car.factoryType!factoryType_gl!}" data-scope="global" />
+					<input type="text" name="unitCompany" class="ui-widget-content"  data-validate="required"
+						value="${car.unitCompany!unitCompany_gl!}" readonly="readonly" style="width: 18em;" />
+					<input type="hidden" name="unitCompany_gl" value="${car.unitCompany!unitCompany_gl!}" data-scope="global" />
 				</td>
-				<td class="label" >核定载客：</td>
+				<td class="label" >合同结束期：</td>
 				<td class="value" >
-					<input type="text" name="accessCount" readonly="readonly" class="ui-widget-content" value="${car.accessCount!accessCount_gl!}" data-type="long" style="width: 18em;" />
-					<input type="hidden" name="accessCount_gl"  value="${car.accessCount!accessCount_gl!}"  data-scope="global" data-type="long" />
+					<input type="text" name="ccEndDate" readonly="readonly" class="ui-widget-content" style="width: 18em;" value="${car.ccEndDate!ccEndDate_gl!}" data-validate='{"type":"date","required":true}' />
+					<input type="hidden" name="ccEndDate_gl"  value="${car.ccEndDate!ccEndDate_gl!}"  data-scope="global" />
 				</td>
 				</tr>
 			<tr>
-				<td class="label" >*发动机号：</td>
+				<td class="label" >发动机号：</td>
 				<td class="value" >
 					<input type="text" name="engineNo" readonly="readonly" class="ui-widget-content" value="${car.engineNo!engineNo_gl!}" style="width: 18em;" />
 					<input type="hidden" name="engineNo_gl"  value="${car.engineNo!engineNo_gl!}"  data-scope="global"  />
 				</td>
-				<td class="label" >*车架号：</td>
+				<td class="label" >车架号：</td>
 				<td class="value" >
 					<input type="text" name="vin" readonly="readonly" class="ui-widget-content" value="${car.vin!vin_gl!}" style="width: 18em;" />
 					<input type="hidden" name="vin_gl" class="ui-widget-content" value="${car.vin!vin_gl!}" style="width: 18em;" data-scope="global" />
@@ -184,10 +184,10 @@
 				<td class="value" >${registerDate!car.registerDate}</td>
 			</tr>
 			<tr>
-				<td class="label" >厂牌型号：</td>
-				<td class="value" >${factoryType!car.factoryType}</td>
-				<td class="label" >核定载客：</td>
-				<td class="value" >${accessCount!car.accessCount}</td>
+				<td class="label" >分公司：</td>
+				<td class="value" >${unitCompany!car.unitCompany}</td>
+				<td class="label" >合同结束期：</td>
+				<td class="value" >${ccEndDate!car.ccEndDate}</td>
 			</tr>
 			<tr>
 				<td class="label" >发动机号：</td>

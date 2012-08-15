@@ -18,7 +18,7 @@
 				<td class="label" >*车牌：</td>
 				<td class="value">
 					<div style="position:relative;">
-						<input type="text"   name="plate"         value="${car.plate!plate_gl!}"         style="width: 18em;" class="ui-widget-content" readonly="readonly" />
+						<input type="text"   name="plate"         value="${car.plate!plate_gl!}"         style="width: 18em;" class="ui-widget-content" readonly="readonly" data-validate="required"/>
 						<input type="hidden" name="plate_gl"      value="${car.plate!plate_gl!}"         data-scope="global" style="width: 18em;" class="ui-widget-content" readonly="readonly" />
 						<input type="hidden" name="carId"         value="${car.id!carId_gl!}"            class="ui-widget-content" />
 						<input type="hidden" name="carId_gl"      value="${car.id!carId_gl!}"            data-scope="global"  class="ui-widget-content" />
@@ -62,15 +62,21 @@
 				</td>
 			</tr>
 			<tr>
+				<td class="label" >*保险公司:</td>
+				<td class="value relative">
+					<input type="text" name="commerialCompany" value="${commerialCompany!}"
+						class="bc-select ui-widget-content" data-validate="required"
+						data-maxHeight="150px"
+						data-source='/bs/bc/selectOptionGroupByKey?code=ca.company'/>
+					<ul class="inputIcons">
+						<li class="bc-select inputIcon ui-icon ui-icon-triangle-1-s" title='点击选择'></li>
+					</ul>
+					<input type="hidden" name="commerialCompany_gl" value="${commerialCompany_gl!}"  data-scope="global"/>
+				</td>
 				<td class="label" >*投保人：</td>
 				<td class="value" >
-					<input type="text" name="policyHolder" value="${policyHolder_gl!car.companyFullName!}" class="ui-widget-content" style="width: 18em;" />
+					<input type="text" name="policyHolder" value="${policyHolder_gl!car.companyFullName!}" class="ui-widget-content" style="width: 18em;" data-validate="required"/>
 					<input type="hidden" name="policyHolder_gl" value="${policyHolder!car.companyFullName!}" style="width: 18em;" data-scope="global"/>
-				</td>
-				<td class="label" >司机：</td>
-				<td class="value" >
-					<input type="text" name="driverName" readonly="readonly" class="ui-widget-content" value="${car.driverName!driverName_gl!}" style="width: 18em;" />
-					<input type="hidden" name="driverName_gl" value="${car.driverName!driverName_gl!}" data-scope="global" />
 				</td>
 			</tr>
 			<tr>
@@ -100,7 +106,7 @@
 					<input type="text" name="ccEndDate" readonly="readonly" class="ui-widget-content" style="width: 18em;" value="${car.ccEndDate!ccEndDate_gl!}" data-validate='{"type":"date","required":true}' />
 					<input type="hidden" name="ccEndDate_gl"  value="${car.ccEndDate!ccEndDate_gl!}"  data-scope="global" />
 				</td>
-				</tr>
+			</tr>
 			<tr>
 				<td class="label" >发动机号：</td>
 				<td class="value" >
@@ -111,6 +117,13 @@
 				<td class="value" >
 					<input type="text" name="vin" readonly="readonly" class="ui-widget-content" value="${car.vin!vin_gl!}" style="width: 18em;" />
 					<input type="hidden" name="vin_gl" class="ui-widget-content" value="${car.vin!vin_gl!}" style="width: 18em;" data-scope="global" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >司机：</td>
+				<td class="value" >
+					<input type="text" name="driverName" readonly="readonly" class="ui-widget-content" value="${car.driverName!driverName_gl!}" style="width: 18em;" />
+					<input type="hidden" name="driverName_gl" value="${car.driverName!driverName_gl!}" data-scope="global" />
 				</td>
 			</tr>
 		</table>
@@ -172,10 +185,10 @@
 				</td>
 			</tr>
 			<tr>
+				<td class="label" >保险公司：</td>
+				<td class="value" >${commerialCompany!}</td>
 				<td class="label" >投保人：</td>
 				<td class="value" >${policyHolder!}</td>
-				<td class="label" >司机：</td>
-				<td class="value" >${driverName!car.driverName}</td>
 			</tr>
 			<tr>
 				<td class="label" >营运性质：</td>
@@ -194,6 +207,10 @@
 				<td class="value" >${engineNo!car.engineNo}</td>
 				<td class="label" >车架号：</td>
 				<td class="value" >${vin!car.vin}</td>
+			</tr>
+			<tr>
+				<td class="label" >司机：</td>
+				<td class="value" >${driverName!car.driverName}</td>
 			</tr>
 		</table>
 		<div class="" style="position:relative;border-width: 0;padding: 0.25em;">

@@ -8,6 +8,15 @@ bswf.carRenew.AssignCarForm = {
 			$form.find(":input[name='policyHolder_gl']").val($(this).val());
 		});
 		
+//		$.ajax({
+//			url:bc.root +"/bc/selectOptionGroupByKey",
+//			dataType:"json",
+//			data:{key:"CA_COMPANY"},
+//			success: function(optionList){
+//				logger.info("drivers=" + $.toJSON(optionList));
+//			}
+//		});
+		
 		//绑定选择车辆事件
 		$form.find("#addCar").click(function() {
 			bs.selectCar({

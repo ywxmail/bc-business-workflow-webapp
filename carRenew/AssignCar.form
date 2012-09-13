@@ -66,8 +66,8 @@
 				<td class="value relative">
 					<input type="text" name="commerialCompany" value="${commerialCompany!}"
 						class="bc-select ui-widget-content" data-validate="required"
-						data-maxHeight="150px"
-						data-source='/bs/bc/selectOptionGroupByKey?code=ca.company'/>
+						data-maxHeight="150px" data-cfg='{"autoFocus":false,"delay":300}'
+						data-source='bc/selectOptionGroupByKey?code=ca.company'/>
 					<ul class="inputIcons">
 						<li class="bc-select inputIcon ui-icon ui-icon-triangle-1-s" title='点击选择'></li>
 					</ul>

@@ -1,0 +1,25 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRetired.FinanceTransactorInovieRecliamForm"
+	data-js='bc-business-workflow/carRetired/FinanceTransactorInovieRecliam.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;">
+		车辆发票回收：
+			<input type="text"  data-scope="global" name="ftirInvoiceCount" class="ui-widget-content" 
+				data-validate="{'required':true,'type':'number'}" style="width:2em;" data-type="long"/>
+			卷
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">发票号码：</div>
+			<textarea name="ftirDesc"  data-scope="global" rows="3" style="width:80%;" class="ui-widget-content noresize"></textarea>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			车辆发票回收：${ftirInvoiceCount!'    '}卷
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">发票号码：</div>
+			${ftirDesc!}	
+		</div>
+	</#if>
+</form>

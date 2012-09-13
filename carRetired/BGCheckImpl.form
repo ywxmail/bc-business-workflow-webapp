@@ -16,7 +16,7 @@
 			异常汇总（计财部结算注意以下事项）：	
 		</div>
 		<div style="padding-left:0.5em;">
-			<textarea name="bgciDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+			<textarea name="bgciDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" ></textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">

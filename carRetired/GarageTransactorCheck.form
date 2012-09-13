@@ -156,6 +156,20 @@
 				<td class="value" ><input type="text" name="gtcBTDesc" data-scope="global" class="ui-widget-content" /></td>
 				<td></td>
 			</tr>
+			<tr>
+				<td class="value" >车用气瓶IC卡</td>
+				<td class="value">
+					<select name="gtcQPICCard" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
+					           data-validate="required">
+							<option value="已回收">已回收</option>
+							<option value="未回收">未回收</option>
+							<option value="已遗失">已遗失</option>
+							<option value="无安装">无安装</option>
+					</select>
+				</td>
+				<td class="value" ><input type="text" name="gtcQPICCardDesc" data-scope="global" class="ui-widget-content" /></td>
+				<td></td>
+			</tr>
 		</table>
 		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr class="widthMarker">
@@ -200,7 +214,7 @@
 				</td>
 				<td class="label">羊城通设备是否齐全：</td>
 				<td class="value">
-					<select name="gtcYCTisComplete" data-scope="global"  class="ui-widget-content" style="text-align:left;width:8em;">
+					<select name="gtcYCTisComplete" data-scope="global" data-type="boolean"  class="ui-widget-content" style="text-align:left;width:8em;">
 						<option ></option>
 						<option value="true">是</option>
 						<option value="false">否</option>
@@ -211,7 +225,7 @@
 			<tr>
 				<td class="label">羊城通有无欠费：</td>
 				<td class="value">
-					<select name="gtcYCTisDebt" data-scope="global" class="ui-widget-content" style="text-align:left;width:8em;">
+					<select name="gtcYCTisDebt" data-scope="global" data-type="boolean" class="ui-widget-content" style="text-align:left;width:8em;">
 						<option ></option>
 						<option value="true">有</option>
 						<option value="false">无</option>
@@ -309,28 +323,24 @@
 		<#if gtcValuationMoney??>
 		<div style="padding-left:0.5em;">车辆回收估价：${gtcValuationMoney}</div>
 		</#if>
-		<#if gtcDesc??&&gtcDesc!="">
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">车质车况说明：</div>
 			<div class="text"  style="display:inline-block;">
-				${gtcDesc}
+				${gtcDesc!}
 			</div>
 		</div>
-		</#if>
 		<div style="padding-left:0.5em;">羊城通驻点员名称：${gtcYCTStationName!}</div>
 		<div style="padding-left:0.5em;">
-			羊城通设备是否齐全： <#if gtcYCTisComplete?? && gtcYCTisComplete!= ''><#if gtcYCTisComplete == 'true'>是<#else>否</#if></#if>
+			羊城通设备是否齐全：<#if gtcYCTisComplete??><#if gtcYCTisComplete>是<#else>否</#if></#if>
 		</div>
 		<div style="padding-left:0.5em;">
-			羊城通有无欠费：<#if gtcYCTisDebt?? && gtcYCTisDebt != ''><#if gtcYCTisDebt == 'true'>有  &nbsp; 羊城通欠费金额：<#if gtcYCTDebtMoney??>${gtcYCTDebtMoney}</#if><#else>无</#if></#if>
+			羊城通有无欠费：<#if gtcYCTisDebt??><#if gtcYCTisDebt>有  &nbsp; 羊城通欠费金额：${gtcYCTDebtMoney!}<#else>无</#if></#if>
 		</div>
-		<#if gtcYCTDesc??&&gtcYCTDesc!="">
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">羊城通备注：</div>
 			<div class="text" style="display:inline-block;">
-				${gtcYCTDesc}
+				${gtcYCTDesc!}
 			</div>
 		</div>
-		</#if>
 	</#if>
 </form>

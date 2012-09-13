@@ -11,7 +11,7 @@ bswf.carRetired.AssignCarForm = {
 			for(var i=0;i<strAry.length;i++){
 				tempStr += strAry[i].split(",")[0];
 				if((i+1) < strAry.length)
-					tempStr += ",";
+					tempStr += "、";
 			}
 			$form.find(":input[name='chargerName']").val(tempStr);	
 		}
@@ -41,7 +41,7 @@ bswf.carRetired.AssignCarForm = {
 						for(var i=0;i<strAry.length;i++){
 							tempStr += strAry[i].split(",")[0];
 							if((i+1) < strAry.length)
-								tempStr += ",";
+								tempStr += "、";
 						}
 						$form.find(":input[name='chargerName']").val(tempStr);
 					}

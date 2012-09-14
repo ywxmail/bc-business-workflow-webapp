@@ -5,6 +5,7 @@
 	<#if readonly == 'false'>
 		<input type="hidden" name="mlcFYJisComplete" data-scope="global" data-type="boolean"/>
 		<input type="hidden" name="mlcIsZjs" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="mlcIsInovieRecliam" data-scope="global" data-type="boolean" value="false"/>
 		<div style="padding-left:0.5em;">
 			服务投诉、营运违章、交通违法处理完毕： 
 			<input type="radio" class="ignore" name="FYJisComplete" value="true" checked style="width:auto;"  />
@@ -27,8 +28,8 @@
 		</div>
 		<div style="padding-left:0.5em;">	
 			车辆发票回收：
-			<input type="text"  data-scope="global" name="mlcInvoiceCount" class="ui-widget-content" 
-				data-validate="{'required':true,'type':'number'}" style="width:2em;" data-type="long"/>
+			<input type="text"  data-scope="global" name="mlcInvoiceCount" class="ui-widget-content" value="0" 
+				data-validate="{'required':true,'type':'number'}" style="width:2em;"/>
 			卷
 		</div>
 		<div style="padding-left:0.5em;">

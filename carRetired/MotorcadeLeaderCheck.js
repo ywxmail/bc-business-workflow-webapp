@@ -10,6 +10,11 @@ bswf.carRetired.MotorcadeLeaderCheckForm = {
 		var isZjs=$form.find(":input[name='isZjs']:checked").val();
 		$form.find(":input[name='mlcFYJisComplete']").val(FYJisComplete);
 		$form.find(":input[name='mlcIsZjs']").val(isZjs);
+		
+		var mlcInvoiceCount=$form.find(":input[name='mlcInvoiceCount']").val();
+		if(mlcInvoiceCount>=1){
+			$form.find(":input[name='mlcIsInovieRecliam']").val("true");
+		}
 	},
 	/** 表单验证方法 */
 	validateForm: function(){

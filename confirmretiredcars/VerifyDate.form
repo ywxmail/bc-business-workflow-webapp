@@ -61,7 +61,7 @@
 			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>
 				<td class="middle" style="width: 4.5em;">车号</td>
-				<td class="middle" style="width: 8em;">续保清楚</td>
+				<td class="middle" style="width: 8em;">续保情况</td>
 				<td class="middle" style="width: 17.5em;">处理方式</td>
 				<td class="last" style="width: 8em;">确认交车日期</td>
 			</tr>

@@ -44,7 +44,7 @@
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="bgtcCertNo4Desc" data-scope="global" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="bgtcCertNo3Desc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >强检证</td>
@@ -56,7 +56,7 @@
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="bgtcCertNo5Desc" data-scope="global" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="bgtcCertNo4Desc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >保险卡</td>
@@ -68,7 +68,7 @@
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="bgtcCertNo6Desc" data-scope="global" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="bgtcCertNo5Desc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
 				<td class="value" >年票</td>
@@ -80,10 +80,10 @@
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="bgtcCertNo7Desc" data-scope="global" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="bgtcCertNo6Desc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 			<tr>
-				<td class="value" >合同（总之协议书）</td>
+				<td class="value" >合同（终止协议书）</td>
 				<td class="value">
 					<select name="bgtcCertNo7Status" data-scope="global" class="ui-widget-content" style="text-align:left;border:none;"
 					           data-validate="required">
@@ -92,7 +92,7 @@
 							<option value="已遗失">已遗失</option>
 					</select>
 				</td>
-				<td class="value" ><input type="text" name="bgtcCertNo8Desc" data-scope="global" class="ui-widget-content" /></td>
+				<td class="value" ><input type="text" name="bgtcCertNo7Desc" data-scope="global" class="ui-widget-content" /></td>
 			</tr>
 		</table>
 	<#else>
@@ -114,34 +114,29 @@
 				<td class="value">${bgtcCertNo2Desc!}</td>
 			</tr>
 			<tr>
-				<td class="value" >车用汽车瓶IC卡</td>
+				<td class="value">道路运输证</td>
 				<td class="value">${bgtcCertNo3Status!}</td>
 				<td class="value">${bgtcCertNo3Desc!}</td>
 			</tr>
 			<tr>
-				<td class="value">道路运输证</td>
+				<td class="value">强检证</td>
 				<td class="value">${bgtcCertNo4Status!}</td>
 				<td class="value">${bgtcCertNo4Desc!}</td>
 			</tr>
 			<tr>
-				<td class="value">强检证</td>
+				<td class="value">保险卡</td>
 				<td class="value">${bgtcCertNo5Status!}</td>
 				<td class="value">${bgtcCertNo5Desc!}</td>
 			</tr>
 			<tr>
-				<td class="value">保险卡</td>
+				<td class="value">年票</td>
 				<td class="value">${bgtcCertNo6Status!}</td>
 				<td class="value">${bgtcCertNo6Desc!}</td>
 			</tr>
 			<tr>
-				<td class="value">年票</td>
+				<td class="value">合同（终止协议书）</td>
 				<td class="value">${bgtcCertNo7Status!}</td>
 				<td class="value">${bgtcCertNo7Desc!}</td>
-			</tr>
-			<tr>
-				<td class="value">合同（总之协议书）</td>
-				<td class="value">${bgtcCertNo8Status!}</td>
-				<td class="value">${bgtcCertNo1Desc!}</td>
 			</tr>
 		</table>
 	</#if>

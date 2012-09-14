@@ -12,7 +12,7 @@ bswf.carRetired.MotorcadeLeaderCheckForm = {
 		$form.find(":input[name='mlcIsZjs']").val(isZjs);
 		
 		var mlcInvoiceCount=$form.find(":input[name='mlcInvoiceCount']").val();
-		if(mlcInvoiceCount>=1){
+		if(mlcInvoiceCount>0){
 			$form.find(":input[name='mlcIsInovieRecliam']").val("true");
 		}
 	},

@@ -2,6 +2,9 @@
 	data-namespace="bswf.carRetired.AssignCarForm"
 	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRetired/AssignCar.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if !car??>
+		<#assign car={"temp":1}>
+	</#if>
 	<#if readonly == 'false'>
 		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr class="widthMarker">
@@ -10,12 +13,8 @@
 				<td style="width: 8.5em;">&nbsp;</td>
 				<td style="width: 8.5em;">&nbsp;</td>
 				<td style="width: 8em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="min-width:0.01em">&nbsp;</td>
+				<td style="min-width: 8.5em;">&nbsp;</td>
 			</tr>
-			<#if !car??>
-				<#assign car={"temp":1}>
-			</#if> 
 			<tr>
 				<td class="label" >*车牌：</td>
 				<td class="value">
@@ -116,7 +115,7 @@
 				<td style="min-width:0.01em">&nbsp;</td>
 			</tr>
 		</table>
-	<#else>
+	<#else> 
 		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr class="widthMarker">
 				<td style="width: 10em;"></td>
@@ -124,22 +123,21 @@
 				<td style="width: 8.5em;">&nbsp;</td>
 				<td style="width: 8.5em;">&nbsp;</td>
 				<td style="width: 8em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="min-width:0.01em">&nbsp;</td>
+				<td style="min-width: 8.5em;">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="label" >车牌：</td>
-				<td class="value" >${plate!car.plate}</td>
+				<td class="value" >${plate!car.plate!}</td>
 				<td class="label" >车型：</td>
-				<td class="value" >${factoryType!car.factoryType}</td>
+				<td class="value" >${factoryType!car.factoryType!}</td>
 				<td class="label" >交车性质：</td>
 				<td class="value" >${logoutReason!}</td>
 			</tr>
 			<tr>
 				<td class="label" >合同终止日期：</td>
-				<td class="value">${ccEndDate!car.ccEndDate}</td>
+				<td class="value">${ccEndDate!car.ccEndDate!}</td>
 				<td class="label" >交车日期：</td>
-				<td class="value" >${sureReturnDate!car.sureReturnDate}</td>
+				<td class="value" >${sureReturnDate!car.sureReturnDate!}</td>
 				<td class="label" >营运性质：</td>
 				<td class="value" >${bsType!}</td>
 			</tr>
@@ -149,11 +147,7 @@
 				<td class="label" >是否需要估价：</td>
 				<td class="value" >
 					<#if isValuation??>
-						<#if isValuation>
-							是
-						<#else>
-							否
-						</#if>
+						<#if isValuation>是<#else>否</#if>
 					</#if>
 				</td>
 				<td class="label" >责任人：</td>

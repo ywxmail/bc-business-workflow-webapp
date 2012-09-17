@@ -50,7 +50,7 @@
 				<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close" title='删除车辆"'></li>
 			</ul>
 		</div>
-		<input type="hidden" name="list_gc_cars" data-scope="global"/>
+		<input type="hidden" name="list_gc_cars" data-scope="global" data-type="list"/>
 		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:1px 0 0 0;">
 			<tr class="header row">
 				<td class="first" style="width: 1.1em;">&nbsp;</td>
@@ -69,9 +69,9 @@
 		<table cellspacing="4" cellpadding="0" style="width:100%;min-width: 400px;">
 			<tr>
 				<td class="label" style="min-width: 3.5em;width: 3.5em;">标题：</td>
-				<td class="value">${subject}</td>
+				<td class="value">${subject!}</td>
 				<td class="label" style="min-width: 6.5em;width: 6.5em;">经办分公司：</td>
-				<td class="value" style="width: 10em;">${verifyUnitName}</td>
+				<td class="value" style="width: 10em;">${verifyUnitName!}</td>
 			</tr>
 		</table>
 		<div class="" style="position:relative;border-width: 0;padding: 0.25em;">

@@ -10,9 +10,9 @@
 			<tr class="widthMarker">
 				<td style="width: 10em;"></td>
 				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 6.5em;">&nbsp;</td>
+				<td style="width: 12em;">&nbsp;</td>
+				<td style="width: 6em;">&nbsp;</td>
 				<td style="min-width: 8.5em;">&nbsp;</td>
 			</tr>
 			<tr>
@@ -20,7 +20,7 @@
 				<td class="value">
 					<div style="position:relative;">
 						<input type="text"   name="plate"         value="${car.plate!}"         data-scope="global" class="ui-widget-content" 
-							data-validate="required" readonly="readonly"/>
+							data-validate="required" readonly="readonly" />
 						<input type="hidden" name="carId"         value="${car.id!}"            data-scope="global" data-type="long"/>
 						<input type="hidden" name="plateType"     value="${car.plateType!}"     data-scope="global" />
 						<input type="hidden" name="plateNo"       value="${car.plateNo!}"       data-scope="global" />
@@ -60,7 +60,7 @@
 				<td class="value">
 					<div class="relative">
 						<input type="text" name="ccEndDate" class="bc-date ui-widget-content"  data-scope="global" data-validate='{"type":"date","required":true}'
-						value="${car.ccEndDate!}"/>
+						value="${car.ccEndDate!}" />
 						<ul class="inputIcons">
 							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
 						</ul>
@@ -69,8 +69,8 @@
 				<td class="label" >*交车日期：</td>
 				<td class="value" >
 					<div class="relative">
-						<input type="text" name="sureReturnDate" class="bc-date ui-widget-content"  data-scope="global" data-validate='{"type":"date","required":true}'
-							value="${car.sureReturnDate!}"/>
+						<input type="text" name="sureReturnDate" class="bc-datetime ui-widget-content"  data-scope="global" data-validate='{"type":"datetime","required":true}'
+							value="${car.sureReturnDate!}" />
 						<ul class="inputIcons">
 							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
 						</ul>
@@ -98,7 +98,7 @@
 						<option value="个人">个人</option>
 					</select>
 				</td>
-				<td class="label" >*是否需要估价：</td>
+				<td class="label" >*是否估价：</td>
 				<td class="value" >
 					<select name="isValuation" class="ui-widget-content" data-type="boolean" data-validate="required"
 				         data-scope="global">
@@ -120,9 +120,9 @@
 			<tr class="widthMarker">
 				<td style="width: 10em;"></td>
 				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8.5em;">&nbsp;</td>
-				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 6.5em;">&nbsp;</td>
+				<td style="width: 12em;">&nbsp;</td>
+				<td style="width: 6em;">&nbsp;</td>
 				<td style="min-width: 8.5em;">&nbsp;</td>
 			</tr>
 			<tr>
@@ -144,7 +144,7 @@
 			<tr>
 				<td class="label" >车辆退出后归属：</td>
 				<td class="value" >${logoutOwner!}</td>
-				<td class="label" >是否需要估价：</td>
+				<td class="label" >是否估价：</td>
 				<td class="value" >
 					<#if isValuation??>
 						<#if isValuation>是<#else>否</#if>

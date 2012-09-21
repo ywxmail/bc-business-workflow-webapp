@@ -5,6 +5,7 @@
 	<#if readonly == 'false'>
 		<input type="hidden" name="list_vd_cars" />
 		<input type="hidden" name="list_vd_cars_gl" data-scope="global"/>
+		<input type="hidden" name="now2d" class="ignore ui-widget-content" value='${now2d}' />
 		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
 			<tr class="header row">
 				<td class="first" style="width: 0.5em;">&nbsp;</td>

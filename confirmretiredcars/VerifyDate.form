@@ -47,7 +47,7 @@
 				<td class="last" style="margin:0;padding:0 0 0 0px;">
 					<div class="relative">
 						<input type="text" name="sureReturnDate" style="border:none;background:none;"
-							 class="ignore bc-datetime ui-widget-content" data-validate='{"type":"datetime"}'/>
+							 class="ignore bc-date ui-widget-content" data-validate='{"type":"date"}'/>
 						<ul class="inputIcons">
 							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
 						</ul>

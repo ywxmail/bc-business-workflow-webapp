@@ -8,10 +8,10 @@ bswf.confirmretiredcars.VerifyDateForm = {
 			var $tr = $(this).closest("tr");
 			var $sureReturnDate = $tr.find(":input[name='sureReturnDate']");
 			if($select.val() == "fireCarRetiredProcess"){
-				$sureReturnDate.attr("data-validate","{'type':'datetime','required':true}");
+				$sureReturnDate.attr("data-validate","{'type':'date','required':true}");
 			}else{
 				$sureReturnDate.removeAttr("data-validate");
-				$sureReturnDate.attr("data-validate","{'type':'datetime'}");
+				$sureReturnDate.attr("data-validate","{'type':'date'}");
 			}
 		});
 		
@@ -70,7 +70,7 @@ bswf.confirmretiredcars.VerifyDateForm = {
 		var indexStr="";
 		for(var i=0;i<$cars.length;i++){
 			var sureReturnDate=$cars[i].sureReturnDate;
-			if(sureReturnDate.length>0&&duibi(now2d,sureReturnDate.substring(0,10))){
+			if(sureReturnDate.length>0&&duibi(now2d,sureReturnDate.length==10?sureReturnDate:sureReturnDate.substring(0,10))){
 				var index=i+1;
 				if(indexStr.length==0){
 					indexStr+=index;

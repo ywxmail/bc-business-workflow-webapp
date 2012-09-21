@@ -3,8 +3,8 @@
 	data-js='bc-business-workflow/confirmretiredcars/VerifyDate.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
-		<input type="hidden" name="list_vd_cars" />
-		<input type="hidden" name="list_vd_cars_gl" data-scope="global"/>
+		<input type="hidden" name="list_vd_cars" data-type="list"/>
+		<input type="hidden" name="list_vd_cars_gl" data-scope="global" data-type="list"/>
 		<input type="hidden" name="now2d" class="ignore ui-widget-content" value='${now2d}' />
 		<table class="ui-widget-content bc-grid" id="cars" cellspacing="0" cellpadding="0" style="margin-bottom:4px;border-width:0 1px 0 0;">
 			<tr class="header row">
@@ -35,7 +35,7 @@
 				</td>
 				<!-- 处理 -->
 				<td class="middle" style="margin:0;padding:0 0 0 0px;">
-					<select name="executionType" class="ignore ui-widget-content" style="text-align:left;border:none;" data-validate="required">
+					<select name="executionType" class="ignore ui-widget-content bswf-confirmretiredcars-executionType" style="text-align:left;border:none;" data-validate="required">
 							<option ></option>
 							<option value="fireCarRetiredProcess">分公司经理确认后自动发起-交车流程</option>
 							<option value="fireCarRenewProcess">分公司经理确认后自动发起-续保流程</option>
@@ -47,7 +47,7 @@
 				<td class="last" style="margin:0;padding:0 0 0 0px;">
 					<div class="relative">
 						<input type="text" name="sureReturnDate" style="border:none;background:none;"
-							data-validate='{"type":"date","required":true}' class="ignore bc-date ui-widget-content"/>
+							 class="ignore bc-datetime ui-widget-content" data-validate='{"type":"datetime"}'/>
 						<ul class="inputIcons">
 							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
 						</ul>

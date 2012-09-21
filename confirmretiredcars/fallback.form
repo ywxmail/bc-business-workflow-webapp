@@ -9,10 +9,14 @@
 			<input type="hidden" name="fallback" data-type="boolean" data-scope="local">
 		</div>
 	<#else>
-		<#if fallback>
-			<div class="text" style="padding-left:10px">分公司经理退回确认交车日期</div>
+		<#if fallback??>
+			<#if fallback>
+				<div class="text" style="padding-left:10px">分公司经理退回确认交车日期</div>
+			<#else>
+				<div class="text" style="padding-left:10px">分公司经理完成确认</div>
+			</#if>
 		<#else>
-			<div class="text" style="padding-left:10px">分公司经理完成确认</div>
+			<input type="checkbox" class="ignore" enable="false" onfocus="return false;" onclick="return false;">勾选进行退回处理，重新确认交车，不勾选完成确认。
 		</#if>
 	</#if>
 </form>

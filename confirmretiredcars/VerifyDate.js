@@ -1,6 +1,20 @@
 bc.namespace("bswf.confirmretiredcars");
 bswf.confirmretiredcars.VerifyDateForm = {
 	init : function(option,readonly){
+		$form = $(this);
+		
+		$form.find("#cars").delegate(".bswf-confirmretiredcars-executionType","change",function(){
+			var $select = $(this);
+			var $tr = $(this).closest("tr");
+			var $sureReturnDate = $tr.find(":input[name='sureReturnDate']");
+			if($select.val() == "fireCarRetiredProcess"){
+				$sureReturnDate.attr("data-validate","{'type':'datetime','required':true}");
+			}else{
+				$sureReturnDate.removeAttr("data-validate");
+				$sureReturnDate.attr("data-validate","{'type':'datetime'}");
+			}
+		});
+		
 	},
 	buildFormData : function(){
 		$form = $(this);
@@ -40,7 +54,7 @@ bswf.confirmretiredcars.VerifyDateForm = {
 			    var lktime = new Date(arrs[0], arrs[1], arrs[2]);
 			    var predictReturnDatetimes = lktime.getTime();
 	
-			    if (nowtimes >= predictReturnDatetimes) {
+			    if (nowtimes > predictReturnDatetimes) {
 			        return true;
 			    }
 			    else
@@ -55,7 +69,8 @@ bswf.confirmretiredcars.VerifyDateForm = {
 		//标记出现情况的索引字符串
 		var indexStr="";
 		for(var i=0;i<$cars.length;i++){
-			if(duibi(now2d,$cars[i].sureReturnDate)){
+			var sureReturnDate=$cars[i].sureReturnDate;
+			if(sureReturnDate.length>0&&duibi(now2d,sureReturnDate.substring(0,10))){
 				var index=i+1;
 				if(indexStr.length==0){
 					indexStr+=index;

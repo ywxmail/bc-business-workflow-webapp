@@ -1,0 +1,53 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carManEntry.PaperTestForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carManEntry/PaperTest.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;">
+			<tr class="widthMarker">
+				<td style="width: 4em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >*成绩：</td>
+				<td class="value">
+					<input type="text" name="paperTestScore" class="ui-widget-content" data-validate="{'required':true,'type':'number'}" 
+						data-scope="global">
+				</td>
+				<td class="label" >*考核意见：</td>
+				<td class="value">
+					<select name="paperTestIsQualified" class="ui-widget-content" data-validate="required"
+				          data-scope="global" style="width:8em;" data-type="boolean">
+				        <option value="true">合格</option>
+						<option value="false">不合格</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<#else>
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;">
+			<tr class="widthMarker">
+				<td style="width: 4em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >成绩：</td>
+				<td class="value">
+					${paperTestScore!}
+				</td>
+				<td class="label" >考核意见：</td>
+				<td class="value">
+					<#if paperTestIsQualified??><#if paperTestIsQualified>合格<#else>不合格</#if></#if>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</#if>
+</form>

@@ -1,0 +1,23 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carManEntry.QualificationCheckForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carManEntry/QualificationCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div style="width:640px;">
+		<div class="label" style="display:inline-block;">是否同意司机参加入职考试：</div>
+		<div class="value" style="display:inline-block;">
+			<input type="hidden"  name="qcIsAgree" data-scope="global" data-type="boolean">
+			<input type="radio" class="ignore" name="qcIsAgree_temp" value="true" checked style="width:auto;" />
+			<label>同意</label>
+			<input type="radio" class="ignore" name="qcIsAgree_temp" value="false"  style="width:auto;" />
+			<label>不同意</label>
+		</div>
+	</div>
+	<#else>
+	<div style="width:640px;">
+		<div class="text">
+			是否同意司机参加入职考试：<#if qcIsAgree??><#if qcIsAgree>同意<#else>不同意</#if></#if>。
+		</div>
+	</div>
+	</#if>
+</form>

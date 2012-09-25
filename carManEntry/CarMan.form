@@ -1,0 +1,508 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carManEntry.CarManForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carManEntry/CarMan.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div style="width:640px;">
+		<input type="hidden" name="subject"  data-scope="global"/>
+		<table cellspacing="2" cellpadding="0" style="width:640px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 8em;"></td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >*姓名：</td>
+				<td class="value relative">
+					<input type="text" name="name" class="ui-widget-content" data-validate="required"
+				          data-scope="global" placeholder="这里可输可选"/>
+		          	<input type="hidden" name="carManId" data-scope="global" data-type="Long"/>
+		          	<input type="hidden" class="ignore" name="tempName"/>
+				    <ul class="inputIcons" >
+						<li class="inputIcon ui-icon ui-icon-circle-plus"
+						 title='点击按钮选择系统司机' id="selectCarMan"></li>
+						 <li class="inputIcon ui-icon ui-icon-note toTaxiNet"
+						  title="点击查看出租协会网信誉档案" id="selectCarManToTaxiNet4Name" ></li>
+					</ul>
+				</td>
+				<td class="label" >*性别：</td>
+				<td class="value">
+					<select name="sex" class="ui-widget-content" data-validate="required"
+				          data-scope="global">
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*年龄：</td>
+				<td class="value">
+					<input type="text" name="age" class="ui-widget-content" data-validate='{"type":"number","required":true,"min":15,"max":100}'
+				          data-scope="global" data-type="long" />
+				</td>
+				<td class="label" >*籍贯：</td>
+				<td class="value">
+					<input type="text" name="origin" class="ui-widget-content" data-validate="required"
+				          data-scope="global"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*学历：</td>
+				<td class="value">
+					<input type="text" name="education" class="ui-widget-content" data-validate="required"
+				          data-scope="global"/>
+				</td>
+				<td class="label" >*婚姻状况：</td>
+				<td class="value">
+					<select name="marryStatus" class="ui-widget-content" data-validate="required"
+				          data-scope="global">
+				        <option value="已婚">已婚</option>
+						<option value="未婚">未婚</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >*身份证号：</td>
+				<td class="value relative">
+					<input type="text" name="cert4Identity" class="ui-widget-content" data-scope="global"
+						data-validate='{"required":true,"method":"bswf.carManEntry.CarManForm.validateIndentity","msg":"必须为15位或18位身份证格式"}' />
+					<ul class="inputIcons" >
+						<li class="inputIcon ui-icon ui-icon-lightbulb"
+						 title='点击加载籍贯信息' id="loadCarManOrigin">
+					</ul>	
+				</td>
+				<td class="label" >*移动电话：</td>
+				<td class="value">
+					<input type="text" name="phone" class="ui-widget-content" data-validate='{"type":"phone","required":true}' data-scope="global" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >从业资格证：</td>
+				<td class="value relative">
+					<input type="text" name="cert4CYZG" class="ui-widget-content" data-scope="global"/>
+					<ul class="inputIcons" >
+						 <li class="inputIcon ui-icon ui-icon-note toTaxiNet"
+						  title="点击查看出租协会网信誉档案" id="selectCarManToTaxiNet4CYZG" ></li>
+					</ul>
+				</td>
+				<td class="label" >服务资格证：</td>
+				<td class="value relative">
+					<input type="text" name="cert4FWZG" class="ui-widget-content" data-scope="global"/>
+					<ul class="inputIcons" >
+						 <li class="inputIcon ui-icon ui-icon-note toTaxiNet"
+						  title="点击查看出租协会网信誉档案" id="selectCarManToTaxiNet4FWZG" ></li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" colspan="1">*现住地址：</td>
+				<td class="value" colspan="3">
+					<input type="text" name="address" data-validate="required" data-scope="global"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label" colspan="1">*户籍地址：</td>
+				<td class="value" colspan="3">
+					<input type="text" name="originAddress" data-validate="required" data-scope="global"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="value" colspan="2">*本市驾驶证初领日期：
+					<div class="relative" style="display:inline;">
+						<input type="text" name="cert4DrivingFirstDate" data-validate='{"type":"date","required":true}' data-scope="global"
+	 						style="width:10em;margin:0;padding:0 0 0 2px;" class="bc-date ui-widget-content" >
+						<ul class="inputIcons">
+							<li class="selectCalendar inputIcon ui-icon ui-icon-calendar"></li>
+						</ul>
+					</div>
+				</td>
+				<td class="value" colspan="2">本市出租车从业初始年份：
+						<input type="text" name="cyStartYear" data-validate='{"type":"number","min":1950,"max":2200}' data-scope="global"
+	 						style="width:11em;margin:0;padding:0 0 0 2px;" class="ui-widget-content" >
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" >过往一年
+							交通违法<input type="text" name="caseTraffic" style="width: 2em;" value="0" data-scope="global"
+								data-validate='{"type":"number","required":true}' data-type="long"/>宗，
+							服务投诉<input type="text" name="casePraise" style="width: 2em;" value="0" data-scope="global"
+								data-validate='{"type":"number","required":true}' data-type="long"/>宗，
+							营运违章<input type="text" name="caseBusiness" style="width: 2em;" value="0" data-scope="global"
+								data-validate='{"type":"number","required":true}' data-type="long"/>宗，
+							事故<input type="text" name="caseAccident" style="width: 2em;" value="0" data-scope="global"
+								data-validate='{"type":"number","required":true}' data-type="long"/>宗，
+							获表扬 <input type="text" name="caseAdvice" style="width: 2em;" value="0" data-scope="global"
+								data-validate='{"type":"number","required":true}' data-type="long"/>次。</td>
+			</tr>
+			<tr>
+				<td class="label">*车辆需求：</td>
+				<td class="value">
+					<select name="is2NeedOldCar" class="ui-widget-content" data-scope="global" data-type="boolean">
+				        <option value="false">新车</option>
+						<option value="true">旧车(已营运车辆)</option>
+					</select>
+				</td>
+				<td class="label oldCar">*车号：</td>
+				<td class="value oldCar relative">
+					<input type="text" name="oldCarPlate" class="ui-widget-content" data-scope="global" readonly="readonly">
+					<input type="hidden" name="oldCarId"  data-scope="global" data-type="Long">
+					<input type="hidden" name="oldCarUnitCompanyId"  data-scope="global" data-type="Long">
+					<ul class="inputIcons">
+						<li class="inputIcon ui-icon ui-icon-circle-plus" title='点击选择系统车辆' id="selectCar"></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;">
+				<div  style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">主要工作经历</span>
+					<ul class="inputIcons">
+						<li id="upLine_we" class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+						<li id="downLine_we" class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+						<li id="addLine_we" class="inputIcon ui-icon ui-icon-circle-plus" title='添加一条工作经历'></li>
+						<li id="deleteLine_we" class="inputIcon ui-icon ui-icon-circle-close" title='删除一条工作经历'></li>
+					</ul>
+				</div>
+				<input type="hidden" name="list_carman_workExperience"  data-scope="global" data-type="list">
+				<table id="wes" class="table bc-grid" cellspacing="0" cellpadding="0" style="width:640px;">
+					<tr class="header row">
+						<td class="first" style="width: 1em;">&nbsp;</td>
+						<td class="middle" style="width: 15em;">起止日期</td>
+						<td class="middle" style="width:15em;">工作单位</td>
+						<td class="middle" style="width: 6em;">证明人</td>
+						<td class="middle" style="width: 8em;">证明人电话</td>
+						<td class="last" style="min-width: 0.001em;border-right:1px solid #CCC;"></td>
+					</tr>
+				</table>
+		</div>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;">
+				<div style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">家庭主要成员</span>
+					<ul class="inputIcons">
+						<li id="upLine_fm" class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+						<li id="downLine_fm" class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+						<li id="addLine_fm" class="inputIcon ui-icon ui-icon-circle-plus" title='添加一条家庭成员信息'></li>
+						<li id="deleteLine_fm" class="inputIcon ui-icon ui-icon-circle-close" title='删除一条家庭成员信息'></li>
+					</ul>
+				</div>
+				<input type="hidden" name="list_carman_family"  data-scope="global" data-type="list">
+				<table id="fms" class="table bc-grid" cellspacing="0" cellpadding="0" style="width:640px;">
+					<tr class="header row">
+						<td class="first" style="width: 1em;">&nbsp;</td>
+						<td class="middle" style="width: 10em;">姓名</td>
+						<td class="middle" style="width: 10em;">关系</td>
+						<td class="middle" style="width: 10em;">电话</td>
+						<td class="last" style="min-width: 0.001em;border-right:1px solid #CCC;"></td>
+					</tr>
+				</table>
+		</div>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;border-bottom:1px solid #CCC;">
+				<div  style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">初次审查</span>
+				</div>
+				<table cellspacing="2" cellpadding="0" style="width:600px;">
+					<tr class="widthMarker">
+						<td style="width: 10em;"></td>
+						<td style="width: 14em;">&nbsp;</td>
+						<td style="width: 10em;">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="label">申请属性：</td>
+						<td class="value">
+							<select name="applyAttr" class="ui-widget-content" data-scope="global">
+						        <option value="外公司加加入">外公司加入</option>
+						        <option value="新考">新考</option>
+								<option value="留用">留用</option>
+							</select>
+						</td>
+						<td class="label">初审结果：</td>
+						<td class="value" >
+							<select name="initalCheckResult" class="ui-widget-content"  data-scope="global">
+						        <option value="通过初审">通过初审</option>
+						        <option value="还需评估">还需评估</option>
+								<option value="不符合">不符合</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">是否成对报名：</td>
+						<td class="value">
+							<select name="isPair" class="ui-widget-content"  data-type="boolean" data-scope="global" >
+						        <option value="false">否</option>
+						        <option value="true">是</option>
+							</select>
+						</td>
+						<td class="label pairNameTd">对班姓名：</td>
+						<td class="value pairNameTd relative">
+							<input type="text"   name="pairName"     class="ignore ui-widget-content" data-scope="global" placeholder="可输可选">
+							<input type="hidden" name="pairCarManId" class="ignore" data-scope="global" data-type="Long">
+							<input type="hidden" name="tempPairName" class="ignore">
+							<ul class="inputIcons" >
+								<li class="inputIcon ui-icon ui-icon-circle-plus"
+								 title='点击选择系统司机' id="selectPairCarMan"></li>
+								 <li class="inputIcon ui-icon ui-icon-note toTaxiNet"
+								  title="点击查看出租协会网信誉档案" id="selectPairCarManToTaxiNet4Name" ></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">信誉档案情况：</td>
+						<td class="value" colspan="3">
+							<input type="text" name="creditFileDesc" class="ui-widget-content" data-scope="global" > 
+						</td>
+					</tr>
+					<tr>
+						<td class="label">背景调查记录：</td>
+						<td class="value" colspan="3">
+							<input type="text" name="background" class="ui-widget-content" data-scope="global" > 
+						</td>
+					</tr>
+					<tr>
+						<td class="label">犯罪记录情况：</td>
+						<td class="value">
+							<select name="crimeRecode" class="ui-widget-content" data-scope="global" >
+						        <option value="无犯罪记录">无犯罪记录</option>
+						        <option value="待查实">待查实</option>
+								<option value="有犯罪记录">有犯罪记录</option>
+							</select>
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="crimeRecodeDescTr">
+						<td class="topLabel">犯罪记录描述：</td>
+						<td class="value" colspan="3">
+							<textarea rows="3" name="crimeRecodeDesc" class="ui-widget-content noresize"
+						          data-scope="global" ></textarea>
+						</td>
+					</tr>
+				</table>
+		</div>
+	</div>
+	<#else>
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 8em;"></td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label" >姓名：</td>
+				<td class="value">
+					${name!}
+				</td>
+				<td class="label" >性别：</td>
+				<td class="value">
+					${sex!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >年龄：</td>
+				<td class="value">
+					${age!}
+				</td>
+				<td class="label" >籍贯：</td>
+				<td class="value">
+					${origin!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >学历：</td>
+				<td class="value">
+					${education!}
+				</td>
+				<td class="label" >婚姻状况：</td>
+				<td class="value">
+					${marryStatus!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >身份证号：</td>
+				<td class="value relative">
+					${cert4Identity!}
+				</td>
+				<td class="label" >移动电话：</td>
+				<td class="value">
+					${phone!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" >从业资格证：</td>
+				<td class="value">
+					${cert4CYZG!}
+				</td>
+				<td class="label" >服务资格证：</td>
+				<td class="value">
+					${cert4FWZG!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" colspan="1">现住地址：</td>
+				<td class="value" colspan="3">
+					${address!}
+				</td>
+			</tr>
+			<tr>
+				<td class="label" colspan="1">户籍地址：</td>
+				<td class="value" colspan="3">
+					${originAddress!}
+				</td>
+			</tr>
+			<tr>
+				<td class="value" colspan="2">本市驾驶证初领日期：${cert4DrivingFirstDate!}
+				</td>
+				<td class="value" colspan="2">本市出租车从业初始年份：${cyStartYear!}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" >
+					过往一年交通违法${caseTraffic!'　　'}宗，服务投诉${casePraise!'　　'}宗，营运违章${caseBusiness!'　　'}宗，事故${caseAccident!'　　'}宗，获表扬 ${caseAdvice!'　　'}次。
+				</td>
+			</tr>
+			<tr>
+				<td class="label">车俩需求：</td>
+				<td class="value">
+					<#if is2NeedOldCar??><#if is2NeedOldCar>旧车(已营运车辆)<#else>新车</#if></#if>
+				</td>
+				<td class="label"><#if is2NeedOldCar??&&is2NeedOldCar>车号：</#if></td>
+				<td class="value">
+					${oldCarPlate!}
+				</td>
+			</tr>
+		</table>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;">
+				<div style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">主要工作经历</span>
+				</div>
+				<table class="table bc-grid" cellspacing="0" cellpadding="0" style="width:640px;">
+					<tr class="header row">
+						<td class="first" style="width: 1em;">&nbsp;</td>
+						<td class="middle" style="width: 15em;">起止日期</td>
+						<td class="middle" style="width:15em;">工作单位</td>
+						<td class="middle" style="width: 6em;">证明人</td>
+						<td class="middle" style="width: 8em;">证明人电话</td>
+						<td class="last" style="min-width: 0.001em;border-right:1px solid #CCC;"></td>
+					</tr>
+				<#if list_carman_workExperience??>
+				<#list list_carman_workExperience as we>
+					<tr class="ui-widget-content">
+						<td class="first"">
+						</td>
+						<!-- 起止日期-->
+						<td class="middle" style="padding:0;text-align:left;">
+							${we.startDate!} ~ ${we.endDate!}
+						</td>
+						<!-- 工作单位 -->
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">
+							${we.unit!}
+						</td>
+						<!-- 证明人-->
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">	
+							${we.certifier!}
+						</td>
+						<!-- 证明人电话 -->
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">
+							${we.phone!}
+						</td>
+						<td class="last" style="border-right:1px solid #CCC;">
+						</td>
+					</tr>
+				</#list>
+				</#if>
+				</table>
+		</div>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;">
+				<div style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">家庭主要成员</span>
+				</div>
+				<table class="table bc-grid" cellspacing="0" cellpadding="0" style="width:640px;">
+					<tr class="header row">
+						<td class="first" style="width: 1em;">&nbsp;</td>
+						<td class="middle" style="width: 10em;">姓名</td>
+						<td class="middle" style="width: 10em;">关系</td>
+						<td class="middle" style="width: 10em;">电话</td>
+						<td class="last" style="min-width: 0.001em;border-right:1px solid #CCC;"></td>
+					</tr>
+				<#if list_carman_family??>
+				<#list list_carman_family as fm>
+					<tr class="ui-widget-content">
+						<td class="first"">
+						</td>
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">
+							${fm.name!}
+						</td>
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">
+							${fm.relation!}
+						</td>
+						<td class="middle" style="padding:0 0 0 2px;text-align:left;">	
+							${fm.phone!}
+						</td>
+						<td class="last" style="border-right:1px solid #CCC;">
+						</td>
+					</tr>
+				</#list>
+				</#if>
+				</table>
+		</div>
+		<div class="ui-widget-content" style="border-width:1px 1px 0 0;margin-bottom:8px;border-bottom:1px solid #CCC;">
+				<div style="position:relative;border-bottom:1px solid #CCC;padding: 0.25em;">
+					<span class="text">初次审查</span>
+				</div>
+				<table cellspacing="2" cellpadding="0" style="width:600px;" >
+					<tr class="widthMarker">
+						<td style="width: 10em;"></td>
+						<td style="width: 14em;">&nbsp;</td>
+						<td style="width: 10em;">&nbsp;</td>
+						<td >&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="label">申请属性：</td>
+						<td class="value">
+							${applyAttr!}
+						</td>
+						<td class="label">初审结果：</td>
+						<td class="value">
+							${initalCheckResult!}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">是否成对报名：</td>
+						<td class="value">
+							<#if isPair??><#if isPair>是<#else>否</#if></#if>
+						</td>
+						<td class="label"><#if pairName??&&pairName!=''>对班姓名：</#if></td>
+						<td class="value">
+							${pairName!}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">信誉档案情况：</td>
+						<td class="value" colspan="3">
+							${creditFileDesc!}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">背景调查记录：</td>
+						<td class="value" colspan="3">
+							${background!}
+						</td>
+					</tr>
+					<tr>
+						<td class="label">犯罪记录情况：</td>
+						<td class="value">
+							${crimeRecode!}
+						</td>
+						<td class="topLabel"><#if crimeRecodeDesc??&&crimeRecodeDesc!=''>犯罪记录描述：</#if></td>
+						<td class="value">
+							${crimeRecodeDesc!}
+						</td>
+					</tr>
+				</table>
+		</div>
+	</div>
+	</#if>
+</form>

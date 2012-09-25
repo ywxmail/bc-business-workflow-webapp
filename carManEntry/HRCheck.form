@@ -1,0 +1,28 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carManEntry.HRCheckForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carManEntry/HRCheck.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div style="width:640px;">
+		<div style="display: inline-block;">
+			<div class="label" style="width:8em;">体检意见：</div>
+			<div class="value" >
+				<select name="hrcResult" class="ui-widget-content" data-scope="global" style="width:8em;" >
+			        <option value="合格">合格</option>
+					<option value="还需评估">还需评估</option>
+					<option value="不合格">不合格</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<#else>
+	<div style="width:640px;">
+		<div style="display: inline-block;">
+			<div class="label" style="width:8em;">体检意见：</div>
+			<div class="value" >
+				${hrcResult!}
+			</div>
+		</div>
+	</div>
+	</#if>
+</form>

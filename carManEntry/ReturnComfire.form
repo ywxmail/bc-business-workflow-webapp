@@ -1,0 +1,56 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carManEntry.ReturnComfireForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carManEntry/ReturnComfire.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 8em;"></td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label">*车辆需求：</td>
+				<td class="value">
+					<select name="is2NeedOldCar" class="ui-widget-content" data-scope="global" data-type="boolean">
+				        <option value="false">新车</option>
+						<option value="true">旧车(已营运车辆)</option>
+					</select>
+				</td>
+				<td class="label oldCar">*车号：</td>
+				<td class="value oldCar relative">
+					<input type="text" name="oldCarPlate" class="ui-widget-content" data-scope="global" readonly="readonly">
+					<input type="hidden" name="oldCarId"  data-scope="global" data-type="Long">
+					<input type="hidden" name="oldCarUnitCompanyId"  data-scope="global" data-type="Long">
+					<ul class="inputIcons">
+						<li class="inputIcon ui-icon ui-icon-circle-plus" title='点击选择系统车辆' id="selectCar"></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<#else>
+	<div style="width:640px;">
+		<table cellspacing="2" cellpadding="0" style="width:640px;min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 8em;"></td>
+				<td style="width: 16em;">&nbsp;</td>
+				<td style="width: 8em;">&nbsp;</td>
+				<td style="width: 16em;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="label">车俩需求：</td>
+				<td class="value">
+					<#if is2NeedOldCar??><#if is2NeedOldCar>旧车(已营运车辆)<#else>新车</#if></#if>
+				</td>
+				<td class="label"><#if is2NeedOldCar??&&is2NeedOldCar>车号：</#if></td>
+				<td class="value">
+					${oldCarPlate!}
+				</td>
+			</tr>
+	</table>
+	</div>
+	</#if>
+</form>

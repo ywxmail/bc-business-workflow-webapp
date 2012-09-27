@@ -1,0 +1,267 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.generalOrder.UnitManagerConfirmForm"
+	data-js='js:bc_identity,bc-business/bs.js,wf:UnitManagerConfirm2JS_${pd_id}.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="list_umc_applyMatters" data-scope="global" data-type="list"/>
+		<input type="hidden" name="list_umc_applyMatters2local" data-type="list"/>
+		<table class="ui-widget-content bc-grid" id="applyMatters" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+			<tr class="header row">
+				<td class="first" style="width: 1.1em;">序号</td>
+				<td class="middle" style="width: 40em;">申请事项</td>
+				<td class="middle" style="width: 15em;">确认情况</td>
+				<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+			</tr>
+			<#if list_am_applyMatters??>
+			<#list list_am_applyMatters as am>
+			<tr class="ui-widget-content row">
+				<td class="first" >${am.id!}</td>
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;" value="${am.matter!}" readonly="readonly" >
+				</td>
+				<td class="middle" style="margin:0;padding:2 0 0 0px;">
+					<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;" placeholder="这里输入情况">
+				</td>
+				<td class="last" style="border-width:1px 1px 0 1px;"></td>
+			</tr>
+			</#list>
+			</#if>
+		</table>
+		<div style="padding-left:0.5em;">
+			<input type="hidden"  name="umcHanding" data-scope="global" />
+			<input type="hidden"  name="umcHanding2local" />
+			确认下一步的处理方式：
+			<input type="radio"  name="umc_handing" value="部门内部处理"  class="ignore" checked style="width:auto;" />
+			<label>部门内部处理</label>
+			<input type="radio"  name="umc_handing" value="送相关部门协办" class="ignore" style="width:auto;" />
+			<label>送相关部门协办</label>
+			<input type="radio"  name="umc_handing" value="送营安部审批"  class="ignore" style="width:auto;" />
+			<label>送营安部审批</label>
+			<input type="radio"  name="umc_handing" value="送分管副总审批" class="ignore" style="width:auto;" />
+			<label>送分管副总审批</label>
+		</div>
+		
+		<div id="departmentCooperation" style="display:none;">
+			<div style="position:relative;border-width: 0;padding: 0.25em;">
+				<span class="text">指定协办部门和协办人:</span>
+			</div>
+			<input type="hidden" name="list_umc_departments" data-scope="global" data-type="list" class="ignore bswf-go-umc-ignore"/>
+			<input type="hidden" name="list_umc_departments2local" data-type="list" class="ignore bswf-go-umc-ignore"/>
+			<input type="hidden" name="is_DC_flow"         data-type="boolean" class="bswf-go-umc-flow" value="false" data-scope="global"/>
+			<input type="hidden" name="is_DC_flow2local"   data-type="boolean" class="bswf-go-umc-flow" value="false" />
+			
+			<table class="ui-widget-content bc-grid" id="departments" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+				<tr class="header row">
+					<td class="first" style="width: 1.1em;border-top:1px solid #CCC;">&nbsp;</td>
+					<td class="middle" style="width: 20em;border-top:1px solid #CCC;">协办部门</td>
+					<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办人</td>
+					<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+				<tr class="ui-widget-content row">
+					<td class="first" >
+						<input type="hidden" name="is_ITDC_flow" data-type="boolean" value="false" data-scope="global"/>
+						<input type="hidden" name="is_ITDC_flow2local" data-type="boolean" class="ignore bswf-go-umc-ignore" value="false"/>
+						<input type="hidden" name="itdcOfficer"                      class="ignore bswf-go-umc-ignore" data-scope="global"/>
+						<input type="hidden" name="itdcOfficer2local"                class="ignore bswf-go-umc-ignore" />
+					</td>
+					<td class="middle" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  value="信息技术部" readonly="readonly">
+					</td>
+					<td class="middle" style="position:relative;" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  readonly="readonly">
+						<ul class="inputIcons" >
+							<li class="inputIcon ui-icon ui-icon-circle-plus bswf-go-umc-add"
+							 title='点击选择' ></li>
+							<li class="inputIcon ui-icon ui-icon-circle-close bswf-go-umc-delete" 
+							 title='点击清除'></li>
+						</ul>
+					</td>
+					<td class="last" style="border-width:1px 1px 0 1px;"></td>
+				</tr>
+				<tr class="ui-widget-content row">
+					<td class="first" >
+						<input type="hidden" name="is_HRDC_flow" data-type="boolean" value="false" data-scope="global"/>
+						<input type="hidden" name="is_HRDC_flow2local" data-type="boolean" class="ignore bswf-go-umc-ignore" value="false"/>
+						<input type="hidden" name="hrdcOfficer"                      class="ignore bswf-go-umc-ignore" data-scope="global"/>
+						<input type="hidden" name="hrdcOfficer2local"                      class="ignore bswf-go-umc-ignore" />
+					</td>
+					<td class="middle" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  value="人力资源部" readonly="readonly">
+					</td>
+					<td class="middle" style="position:relative;">
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  readonly="readonly">
+						<ul class="inputIcons" >
+							<li class="inputIcon ui-icon ui-icon-circle-plus bswf-go-umc-add"
+							 title='点击选择' ></li>
+							<li class="inputIcon ui-icon ui-icon-circle-close bswf-go-umc-delete" 
+							 title='点击清除'></li>
+						</ul>
+					</td>
+					<td class="last" style="border-width:1px 1px 0 1px;"></td>
+				</tr>
+				
+				<tr class="ui-widget-content row">
+					<td class="first" >
+						<input type="hidden" name="is_COC_flow" data-type="boolean" value="false" data-scope="global"/>
+						<input type="hidden" name="is_COC_flow2local" data-type="boolean" class="ignore bswf-go-umc-ignore" value="false"/>
+						<input type="hidden" name="cocOfficer"                      class="ignore bswf-go-umc-ignore" data-scope="global"/>
+						<input type="hidden" name="cocOfficer2local"                      class="ignore bswf-go-umc-ignore" />
+					</td>
+					<td class="middle" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  value="综合办公室" readonly="readonly">
+					</td>
+					<td class="middle" style="position:relative;">
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  readonly="readonly">
+						<ul class="inputIcons" >
+							<li class="inputIcon ui-icon ui-icon-circle-plus bswf-go-umc-add"
+							 title='点击选择' ></li>
+							<li class="inputIcon ui-icon ui-icon-circle-close bswf-go-umc-delete" 
+							 title='点击清除'></li>
+						</ul>
+					</td>
+					<td class="last" style="border-width:1px 1px 0 1px;"></td>
+				</tr>
+				
+				<tr class="ui-widget-content row">
+					<td class="first" >
+						<input type="hidden" name="is_FDC_flow"       data-type="boolean" value="false" data-scope="global"/>
+						<input type="hidden" name="is_FDC_flow2local" data-type="boolean" class="ignore bswf-go-umc-ignore" value="false"/>
+						<input type="hidden" name="fdcOfficer"                      	  class="ignore bswf-go-umc-ignore" data-scope="global"/>
+						<input type="hidden" name="fdcOfficer2local"                      class="ignore bswf-go-umc-ignore" />
+					</td>
+					<td class="middle" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  value="财务部" readonly="readonly">
+					</td>
+					<td class="middle" style="position:relative;">
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  readonly="readonly">
+						<ul class="inputIcons" >
+							<li class="inputIcon ui-icon ui-icon-circle-plus bswf-go-umc-add"
+							 title='点击选择' ></li>
+							<li class="inputIcon ui-icon ui-icon-circle-close bswf-go-umc-delete" 
+							 title='点击清除'></li>
+						</ul>
+					</td>
+					<td class="last" style="border-width:1px 1px 0 1px;"></td>
+				</tr>
+				
+				<tr class="ui-widget-content row">
+					<td class="first" >
+						<input type="hidden" name="is_GC_flow"       data-type="boolean" value="false" data-scope="global"/>
+						<input type="hidden" name="is_GC_flow2local" data-type="boolean" class="ignore bswf-go-umc-ignore" value="false"/>
+						<input type="hidden" name="gcOfficer"                            class="ignore bswf-go-umc-ignore" data-scope="global"/>
+						<input type="hidden" name="gcOfficer2local"                      class="ignore bswf-go-umc-ignore" />
+					</td>
+					<td class="middle" >
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  value="修理厂" readonly="readonly">
+					</td>
+					<td class="middle" style="position:relative;">
+						<input type="text" class="ignore" style="width:100%;height:100%;border:none;padding:0 0 0 2px;"  readonly="readonly">
+						<ul class="inputIcons" >
+							<li class="inputIcon ui-icon ui-icon-circle-plus bswf-go-umc-add"
+							 title='点击选择' ></li>
+							<li class="inputIcon ui-icon ui-icon-circle-close bswf-go-umc-delete" 
+							 title='点击清除'></li>
+						</ul>
+					</td>
+					<td class="last" style="border-width:1px 1px 0 1px;"></td>
+				</tr>
+			</table>
+		</div>
+		<div id="operationSecurityCheck" style="display:none;padding-left:0.5em;">
+			营按部：<div class="label relative" style="display:inline-block;">
+					<input type="text"   name="operationSecurityOfficerName"  			data-scope="global" class="ignore bswf-go-umc-ignore ui-widget-content bswf-go-umc-v-required" readonly="readonly"/>
+					<input type="hidden" name="operationSecurityOfficerName2local"  						class="ignore bswf-go-umc-ignore" />
+		          	<input type="hidden" name="operationSecurityOfficer"      			data-scope="global" class="ignore bswf-go-umc-ignore"/>
+		          	<input type="hidden" name="is_OSC_flow"                   			data-scope="global" class="bswf-go-umc-flow" value="false" data-type="boolean"/>
+				    <ul class="inputIcons" >
+						<li class="inputIcon ui-icon ui-icon-circle-plus"
+						 title='点击选择' id="selectOperationSecurityOfficer"></li>
+					</ul>
+				</div>
+		</div>
+		<div id="inCharDeputyGeneralManagerCheck" style="display:none;padding-left:0.5em;">
+			分管副总经理：<div class="label relative" style="display:inline-block;">
+					<input type="text"   name="inChargeDeputyGeneralManagerName" 			data-scope="global" class="ignore bswf-go-umc-ignore ui-widget-content bswf-go-umc-v-required"  readonly="readonly"/>
+		          	<input type="hidden" name="inChargeDeputyGeneralManagerName2local"     						class="ignore bswf-go-umc-ignore"/>
+		          	<input type="hidden" name="inChargeDeputyGeneralManager"     			data-scope="global" class="ignore bswf-go-umc-ignore"/>
+		          	<input type="hidden" name="is_ICDGMC_flow"                   			data-scope="global" class="bswf-go-umc-flow" value="false" data-type="boolean"/>
+				    <ul class="inputIcons" >
+						<li class="inputIcon ui-icon ui-icon-circle-plus"
+						 title='点击选择' id="selectInChargeDeputyGeneralManager"></li>
+					</ul>
+				</div>
+		</div>
+	<#else>	
+		<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+			<tr class="header row">
+				<td class="first" style="width: 1.1em;">序号</td>
+				<td class="middle" style="width: 40em;">申请事项</td>
+				<td class="middle" style="width: 15em;">确认情况</td>
+				<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px"></td>
+			</tr>
+			<#if list_umc_applyMatters2local??>
+				<#list list_umc_applyMatters2local as am>
+					<tr class="ui-widget-content row">
+						<td class="first" >${am.id!}</td>
+						<td class="middle" style="margin:0;padding:2 0 0 0px;">
+							${am.matter!}
+						</td>
+						<td class="middle" style="margin:0;padding:2 0 0 0px;">
+							${am.confirm!}
+						</td>
+						<td class="last" style="border-width:1px 1px 0 1px;"></td>
+					</tr>
+				</#list>
+			<#else>
+				<#list list_am_applyMatters as am>
+					<tr class="ui-widget-content row">
+						<td class="first" >${am.id!}</td>
+						<td class="middle" style="margin:0;padding:2 0 0 0px;">
+							${am.matter!}
+						</td>
+						<td class="middle">
+						</td>
+						<td class="last" style="border-width:1px 1px 0 1px;"></td>
+					</tr>
+				</#list>
+			</#if>
+		</table>
+		<div style="padding-left:0.5em;">
+			确认下一步的处理方式：${umcHanding2local!}
+		</div>
+		<#if list_umc_departments2local??>
+			<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0px 0 0 0;">
+				<tr class="header row" >
+					<td class="first" style="width: 1.1em;border-top:1px solid #CCC;">&nbsp;</td>
+					<td class="middle" style="width: 15em;border-top:1px solid #CCC;">协办部门</td>
+					<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办人</td>
+					<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+				<#list list_umc_departments2local as dp>
+					<tr class="ui-widget-content row">
+						<td class="first" >
+						</td>
+						<td class="middle" >
+							${dp.department!}
+						</td>
+						<td class="middle" >
+							${dp.receiver!}
+						</td>
+						<td class="last" style="border-width:1px 1px 0 1px;">
+						</td>
+					</tr>
+				</#list>
+			</table>
+		</#if>
+		<#if operationSecurityOfficerName2local??>
+			<div style="padding-left:0.5em;">
+				营按部审批人：${operationSecurityOfficerName2local!}
+			</div>
+		</#if>
+		<#if inChargeDeputyGeneralManagerName2local??>
+			<div style="padding-left:0.5em;">
+				分管副总经理：${inChargeDeputyGeneralManagerName2local!}
+			</div>
+		</#if>
+	</#if>
+</form>

@@ -21,11 +21,9 @@
 		<div style="padding-left:0.5em;">
 			车辆驾驶员及服务资格证：${htbcDriverAndFWZG!}
 		</div>
-		<#if htbcDesc??&&htbcDesc!="">
-			<div style="padding-left:0.5em;">
-				<div style="display:inline-block;vertical-align:top;">备注：</div>
-				${htbcDesc}
-			</div>
-		</#if>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			${htbcDesc!}
+		</div>
 	</#if>
 </form>

@@ -5,6 +5,7 @@
 	<#if readonly == 'false'>
 		<input type="hidden" name="mlcFYJisComplete" data-scope="global" data-type="boolean"/>
 		<input type="hidden" name="mlcIsZjs" data-scope="global" data-type="boolean"/>
+		<input type="hidden" name="mlcIsInovieRecliam" data-scope="global" data-type="boolean" value="false"/>
 		<div style="padding-left:0.5em;">
 			服务投诉、营运违章、交通违法处理完毕： 
 			<input type="radio" class="ignore" name="FYJisComplete" value="true" checked style="width:auto;"  />
@@ -25,25 +26,32 @@
 			<input type="radio" class="ignore" name="isZjs" value="false"  style="width:auto;" />
 			<label>否</label>
 		</div>
+		<div style="padding-left:0.5em;">	
+			车辆发票回收：
+			<input type="text"  data-scope="global" name="mlcInvoiceCount" class="ui-widget-content" value="0" 
+				data-validate="{'required':true,'type':'number'}" style="width:2em;"/>
+			卷
+		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			<textarea name="mlcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" />
+			<textarea name="mlcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" ></textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
 			服务投诉、营运违章、交通违法处理完毕：<#if mlcFYJisComplete??><#if mlcFYJisComplete>是<#else>否</#if></#if>
 		 </div>
 		<div style="padding-left:0.5em;">
-			当年已年审次数：${mlcCount!}次
+			当年已年审次数：${mlcCount!'  '}次
+		</div>
+		<div style="padding-left:0.5em;">
+			车辆发票回收：${mlcInvoiceCount!'      '}卷
 		</div>
 		<div style="padding-left:0.5em;">
 			是否租价审：<#if mlcIsZjs??><#if mlcIsZjs>是<#else>否</#if></#if>
 		</div>
-		<#if mlcDesc??&&mlcDesc!="">
 		<div  style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			${mlcDesc}
+			${mlcDesc!}
 		</div>
-		</#if>
 	</#if>
 </form>

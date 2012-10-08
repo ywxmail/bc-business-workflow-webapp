@@ -287,6 +287,7 @@ bswf.confirmretiredcars.GatherCarsForm = {
 			};
 			cars.push($.extend($tr.data("hidden"),car));
 		});
+		
 		$form.find(":input[name='list_gc_cars']").val($.toJSON(cars));
 		var subject = $form.find(":input[name='subject']").val();
 		var unitName = $form.find(":input[name='verifyUnitName']").val();
@@ -339,6 +340,42 @@ bswf.confirmretiredcars.GatherCarsForm = {
 			}
 		}
 	
-		return true;
+		//验证预计交车日期是否出现早于当前日期情况
+		//比较日期方法
+		 function duibi(now,predictReturnDate) {
+			    var arr = now.split("-");
+			    var starttime = new Date(arr[0], arr[1], arr[2]);
+			    var nowtimes = starttime.getTime();
+	
+			    var arrs = predictReturnDate.split("-");
+			    var lktime = new Date(arrs[0], arrs[1], arrs[2]);
+			    var predictReturnDatetimes = lktime.getTime();
+	
+			    if (nowtimes >= predictReturnDatetimes) {
+			        return true;
+			    }
+			    else
+			        return false;
+			}
+		
+		//系统当前日期
+		var now2d=$form.find(":input[name='now2d']").val();
+		//标记出现情况的索引字符串
+		var indexStr="";
+		for(var i=0;i<$cars.length;i++){
+			if(duibi(now2d,$cars[i].predictReturnDate)){
+				var index=i+1;
+				if(indexStr.length==0){
+					indexStr+=index;
+				}else
+					indexStr+='、'+index;
+			}
+		}
+		
+		if(indexStr.length>0){
+			return '第'+indexStr+'条车辆信息的预计交车日期早于当前日期，需要重新编辑信息请点击“否”按钮，不需编辑请点击“是”按钮完成办理此任务。';
+		}else{
+			return true;
+		}
 	}
 };

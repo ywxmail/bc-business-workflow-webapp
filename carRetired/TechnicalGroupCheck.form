@@ -24,8 +24,7 @@
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
-			<textarea name="tgcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" >
-			</textarea>
+			<textarea name="tgcDesc"  data-scope="global" rows="3" style="width:90%;" class="ui-widget-content noresize" ></textarea>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
@@ -45,11 +44,9 @@
 				</#if>
 			</#if>
 		</div>
-		<#if tgcDesc??&&tgcDesc!="">
-			<div style="padding-left:0.5em;">
-				<div style="display:inline-block;vertical-align:top;">备注：</div>
-				${tgcDesc}
-			</div>
-		</#if>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			${tgcDesc!}
+		</div>
 	</#if>
 </form>

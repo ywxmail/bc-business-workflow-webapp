@@ -20,11 +20,9 @@
 		<div style="padding-left:0.5em;">
 			有无欠费：<#if gfcIsDebt??><#if gfcIsDebt>有<#else>无</#if></#if>
 		</div>
-		<#if gfcDesc??&&gfcDesc!="">
-			<div style="padding-left:0.5em;">
-				<div style="display:inline-block;vertical-align:top;text-align:right;">欠费情况：</div>
-				${gfcDesc}
-			</div>
-		</#if>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;text-align:right;">欠费情况：</div>
+			${gfcDesc!}
+		</div>
 	</#if>
 </form>

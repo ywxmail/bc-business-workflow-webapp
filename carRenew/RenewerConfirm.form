@@ -10,9 +10,9 @@
 		</div>
 	<#else>
 		<#if fallback2>
-			<div class="text" style="padding-left:10px">财务续保员退回确定指定续保车辆</div>
+			<div class="text" style="padding-left:10px">退回到"指定续保车辆"环节重新处理</div>
 		<#else>
-			<#if ti_deleteReason?? && ti_deleteReason == "completed">
+			<#if ti_deleteReason??>
 				<div class="text" style="padding-left:10px">财务续保员完成确认</div>
 			<#else>
 				<div class="text" style="padding-left:10px">财务续保员处理中</div>

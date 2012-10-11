@@ -41,18 +41,28 @@ bswf.carRenew.AssignCarForm = {
 					$form.find(":input[name='motorcadeName_gl']").val(car.motorcadeName);
 					$form.find(":input[name='driverName']").val(car.driverName);
 					$form.find(":input[name='driverName_gl']").val(car.driverName);
-					$form.find(":input[name='greenslipStartDate']").val(car.greenslipStartDate.substring(0,10));
-					$form.find(":input[name='greenslipStartDate_gl']").val(car.greenslipStartDate.substring(0,10));
-					$form.find(":input[name='greenslipEndDate']").val(car.greenslipEndDate.substring(0,10));
-					$form.find(":input[name='greenslipEndDate_gl']").val(car.greenslipEndDate.substring(0,10));
+					var greenslipStartDate,greenslipEndDate,ccEndDate;
+					if(car.greenslipStartDate != null){
+						greenslipStartDate = car.greenslipStartDate.substring(0,10);
+					}
+					$form.find(":input[name='greenslipStartDate']").val(greenslipStartDate);
+					$form.find(":input[name='greenslipStartDate_gl']").val(greenslipStartDate);
+					if(car.greenslipEndDate != null){
+						greenslipEndDate = car.greenslipEndDate.substring(0,10)
+					}
+					$form.find(":input[name='greenslipEndDate']").val(greenslipEndDate);
+					$form.find(":input[name='greenslipEndDate_gl']").val(greenslipEndDate);
 					$form.find(":input[name='registerDate']").val(car.registerDate.substring(0,10));
 					$form.find(":input[name='registerDate_gl']").val(car.registerDate.substring(0,10));
 					$form.find(":input[name='vin']").val(car.vin);
 					$form.find(":input[name='vin_gl']").val(car.vin);
 					$form.find(":input[name='unitCompany']").val(car.unitCompany);
 					$form.find(":input[name='unitCompany_gl']").val(car.unitCompany);
-					$form.find(":input[name='ccEndDate']").val(car.ccEndDate.substring(0,10));
-					$form.find(":input[name='ccEndDate_gl']").val(car.ccEndDate.substring(0,10));
+					if(car.ccEndDate != null){
+						ccEndDate = car.ccEndDate.substring(0,10);
+					}
+					$form.find(":input[name='ccEndDate']").val(ccEndDate);
+					$form.find(":input[name='ccEndDate_gl']").val(ccEndDate);
 					$form.find(":input[name='bsType']").val(car.bsType);
 					$form.find(":input[name='bsType_gl']").val(car.bsType);
 					

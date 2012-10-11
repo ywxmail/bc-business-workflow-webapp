@@ -9,7 +9,7 @@
 			<input type="hidden" name="fallback2" data-type="boolean" data-scope="local">
 		</div>
 	<#else>
-		<#if fallback>
+		<#if fallback2>
 			<div class="text" style="padding-left:10px">财务续保员退回指定车辆</div>
 		<#else>
 			<#if ti_deleteReason??>

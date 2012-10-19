@@ -10,9 +10,13 @@
 		</div>
 	<#else>
 		<#if fallback>
-			<div class="text" style="padding-left:10px">分公司经理退回指定车辆</div>
+			<div class="text" style="padding-left:10px">退回到"指定续保车辆"环节重新处理</div>
 		<#else>
-			<div class="text" style="padding-left:10px">分公司经理完成确认</div>
+			<#if ti_deleteReason??>
+				<div class="text" style="padding-left:10px">分公司经理完成确认</div>
+			<#else>
+				<div class="text" style="padding-left:10px">分公司经理处理中</div>
+			</#if>
 		</#if>
 	</#if>
 </form>

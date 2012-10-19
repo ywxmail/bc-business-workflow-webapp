@@ -9,8 +9,7 @@
 			<input type="text" name="hrDriver" data-scope="global"  class="ui-widget-content" style="width:12em;" 
 				data-validate="required" value="${driverName!}"/>
 			已经签署离职相关文件，停保月份： 
-			<input type="text" name="hrStopMonth" data-scope="global" class="ui-widget-content" style="width:4em;" 
-				data-validate="required"/>月.
+			<input type="text" name="hrStopMonth" data-scope="global" class="ui-widget-content" style="width:4em;" />月.
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>
@@ -18,7 +17,7 @@
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			该车辆驾驶员　${hrDriver!'      '}　已经签署离职相关文件，停保月份：${hrStopSecurityMonth!'      '}月。
+			该车辆驾驶员　${hrDriver!'      '}　已经签署离职相关文件，停保月份：${hrStopMonth!'      '}月。
 		</div>
 		<div style="padding-left:0.5em;">
 			<div style="display:inline-block;vertical-align:top;">备注：</div>

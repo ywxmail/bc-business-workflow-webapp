@@ -50,7 +50,7 @@
 					        <option></option>
 							<option value="转蓝">转蓝</option>
 							<option value="报废">报废</option>
-							<option value="其他">其他</option>
+							<option value="其它">其它</option>
 					</select>
 				</td>
 				<td style="min-width:0.01em">&nbsp;</td>

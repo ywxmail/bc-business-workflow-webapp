@@ -313,6 +313,11 @@
 				<td class="value" >${gtcBT!}</td>
 				<td class="value" >${gtcBTDesc!}</td>
 			</tr>
+			<tr>
+				<td class="value" >车用气瓶IC卡</td>
+				<td class="value" >${gtcQPICCard!}</td>
+				<td class="value" >${gtcQPICCardDesc!}</td>
+			</tr>
 		</table>
 		<#if engineRubNo??>
 		<div style="padding-left:0.5em;">发动机拓印号码：${engineRubNo}</div>

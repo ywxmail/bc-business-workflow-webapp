@@ -9,13 +9,15 @@
 			<input type="hidden" name="fallback2" data-type="boolean" data-scope="local">
 		</div>
 	<#else>
-		<#if fallback2>
-			<div class="text" style="padding-left:10px">退回到"指定续保车辆"环节重新处理</div>
-		<#else>
-			<#if ti_deleteReason??>
-				<div class="text" style="padding-left:10px">财务续保员完成确认</div>
+		<#if fallback2??>
+			<#if fallback2>
+				<div class="text" style="padding-left:10px">退回到"指定续保车辆"环节重新处理</div>
 			<#else>
-				<div class="text" style="padding-left:10px">财务续保员处理中</div>
+				<#if ti_deleteReason??>
+					<div class="text" style="padding-left:10px">财务续保员完成确认</div>
+				<#else>
+					<div class="text" style="padding-left:10px">财务续保员处理中</div>
+				</#if>
 			</#if>
 		</#if>
 	</#if>

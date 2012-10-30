@@ -82,6 +82,7 @@ bswf.carRenew.AssignCarForm = {
 					$form.find(":input[name='engineNo']").val(car.engineNo);
 					$form.find(":input[name='engineNo_gl']").val(car.engineNo);
 					
+					$form.find(":input[name='subject']").val(car.plate+"车辆续保处理"+"（"+car.unitCompany+"）");
 				}
 			})
 		});

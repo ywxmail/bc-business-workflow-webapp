@@ -32,6 +32,7 @@
 						<input type="hidden" name="motorcadeId"   value="${car.motorcadeId!motorcadeId_gl!}"    data-type="long"/>
 						<input type="hidden" name="motorcadeId_gl" value="${car.motorcadeId!motorcadeId_gl!}"   data-scope="global" data-type="long"/>
 						<input type="hidden" name="motorcadeName" value="${car.motorcadeName!motorcadeName_gl!}" />
+						<input type="hidden" name="subject"       value="${subject!}"			data-scope="global" />
 						<input type="hidden" name="list_buyPlants_gl" data-scope="global" />
 						<input type="hidden" name="list_buyPlants"/>
 						<#if car.temp??>

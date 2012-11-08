@@ -1,91 +1,98 @@
-/*设置背景颜色为灰色*/
-body{
+body {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: "仿宋_GB2312", "宋体", "微软雅黑", sans-serif;
-	/*font-size: 62.5%;使1em=12px,浏览器默认为1em=16px,ie:_font-size: 63%;*/
-	font-size: 16px;/*调整为默认14px | 0.87em*/
+	font-family: "微软雅黑", "仿宋", "仿宋_GB2312", "宋体", sans-serif;
+	font-size: 14px;
 	background-color: #cccccc;
 }
 
-h1{
-	color:red;
+/* 纸张 */
+.paper {
+	background-color: #ffffff;
+	box-shadow: #000 0px 0px 10px;
+	margin: 4px auto;
+	width: 210mm;
+	padding: 10mm;
+}
+
+.paper>.title {
 	text-align: center;
-	font-weight:larger;
+	font-size: 30px;
+	font-weight: bold;
+	color: red;
 	margin: 0;
 }
 
-table{
-	border-collapse:collapse;
-	border: 2px solid red;
+.paper>.rows {
+	
 }
 
-td{
-	border-collapse:collapse;
-	border: 2px solid red;
+.paper>.rows>.row {
+	table-layout: fixed;
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+	border-width: 1px 2px 1px 2px;
+	border-style: solid;
+	border-color: black red;
+	box-sizing: border-box;
+	width: 100%;
 }
-
-
-
-.paper{
-	background-color: #ffffff;
-	margin:0 auto;
-	width:600px;
-	padding: 10px 30px 20px 30px;
-	box-shadow	: #000 0px 0px 10px;
+.paper>.rows>.row:first-child {
+	border-top-color: red;
+	border-top-width: 2px;
 }
-
-
-
-/*协办意见*/
-.view{
-	padding:6px;
-	text-indent: 28px;
-}
-
-/* 任务办理人 */
-.assignee{
-	text-align:right;
-	padding:0 20px 4px 0;
-	border-bottom-width: 1px;
+.paper>.rows>.row:last-child {
 	border-bottom-color: red;
-	border-bottom-style: solid;
+	border-bottom-width: 2px;
+}
+.paper>.rows>.row .groupName{
+	width: 10em;
+	text-align: center;
+	vertical-align: middle;
+	border-right: 1px solid #000;
+	padding: 2px;
+	font-weight: bold;
 }
 
-/*部门*/
-.depart{
-	text-align:center;
-	font-size:larger;
-	font-weight:bold;
-	padding:0 6px 0 6px;
-}
-
-/*附件*/
-.attachment{
-	font-size:smaller;
-	padding:5px 0 0 5px;
-}
-
-td>:last-child.assignee{
+.signItems>.signItem:last-child {
 	border-bottom-width: 0;
 }
 
-pre{
-	padding:0;
-	margin:0;
+.signItem {
+	border-bottom: 1px solid black;
+	padding: 4px;
+}
+
+.signItem>.content,.signItem>.attach {
+	text-align: left;
+	padding: 0;
+	margin: 0;
 	word-break: break-all;
-	word-wrap:break-word;
-	font-family:inherit;
-	width:490px;
+	word-wrap: break-word;
+	font-family: inherit;
+	width: 100%;
 }
 
-.tr{
-	display:table-row;
+.signItem>.assignee {
+	text-align: right;
+	margin-bottom: 0;
 }
 
-.td{
-	display:table-cell;
-	border-collapse:collapse;
-	border: 2px solid red;
+.signItem>.assignee>.name,.signItem>.assignee>.date {
+	display: inline-block;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #000;
+	text-align: center;
+	margin-right: 1em;
+}
+
+.signItem>.assignee>.name {
+	min-width: 5em;
+}
+
+.signItem>.assignee>.date {
+	min-width: 9em;
 }

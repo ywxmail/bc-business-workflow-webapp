@@ -1,0 +1,91 @@
+/*设置背景颜色为灰色*/
+body{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: "仿宋_GB2312", "宋体", "微软雅黑", sans-serif;
+	/*font-size: 62.5%;使1em=12px,浏览器默认为1em=16px,ie:_font-size: 63%;*/
+	font-size: 16px;/*调整为默认14px | 0.87em*/
+	background-color: #cccccc;
+}
+
+h1{
+	color:red;
+	text-align: center;
+	font-weight:larger;
+	margin: 0;
+}
+
+table{
+	border-collapse:collapse;
+	border: 2px solid red;
+}
+
+td{
+	border-collapse:collapse;
+	border: 2px solid red;
+}
+
+
+
+.paper{
+	background-color: #ffffff;
+	margin:0 auto;
+	width:600px;
+	padding: 10px 30px 20px 30px;
+	box-shadow	: #000 0px 0px 10px;
+}
+
+
+
+/*协办意见*/
+.view{
+	padding:6px;
+	text-indent: 28px;
+}
+
+/* 任务办理人 */
+.assignee{
+	text-align:right;
+	padding:0 20px 4px 0;
+	border-bottom-width: 1px;
+	border-bottom-color: red;
+	border-bottom-style: solid;
+}
+
+/*部门*/
+.depart{
+	text-align:center;
+	font-size:larger;
+	font-weight:bold;
+	padding:0 6px 0 6px;
+}
+
+/*附件*/
+.attachment{
+	font-size:smaller;
+	padding:5px 0 0 5px;
+}
+
+td>:last-child.assignee{
+	border-bottom-width: 0;
+}
+
+pre{
+	padding:0;
+	margin:0;
+	word-break: break-all;
+	word-wrap:break-word;
+	font-family:inherit;
+	width:490px;
+}
+
+.tr{
+	display:table-row;
+}
+
+.td{
+	display:table-cell;
+	border-collapse:collapse;
+	border: 2px solid red;
+}

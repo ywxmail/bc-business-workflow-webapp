@@ -20,10 +20,7 @@ http://www.tutorialspoint.com/css/css_paged_media.htm
 	padding: 0;
 }
 
-.row {
-	page-break-inside: avoid;
-}
-
-.row .groupName,.signItem {
+.row,.row .groupName,.signItem {
+	/* 需要Chrome19+才支持哦 */
 	page-break-inside: avoid;
 }

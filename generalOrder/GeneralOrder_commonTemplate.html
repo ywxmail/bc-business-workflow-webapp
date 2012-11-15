@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>宝城公司公文处理</title>
 <link rel="stylesheet" type="text/css" href="${htmlPageNamespace}/bc-business-workflow/generalOrder/page.css?ts=${appTs}" />
-<link rel="stylesheet" type="text/css" media="print" href="/bs/bc-business-workflow/generalOrder/print/page.css?ts=${appTs}" />
+<link rel="stylesheet" type="text/css" media="print" href="${htmlPageNamespace}/bc-business-workflow/generalOrder/print/page.css?ts=${appTs}" />
 </head>
 <body>
 <div class="paper">
@@ -13,14 +13,15 @@
 <#-- 起文单位，起文日期 -->
 <table class="row" cellspacing="0" cellpadding="0">
 	<tr>
-		<td class="signItems" style="text-align:left;border-right: 1px solid black;"><div class="signItem" >起文单位：${startUser}</div></td>
-		<td class="signItems" style="text-align:left;width:15em;"><div class="signItem" >起文日期：${startTime2m}</div></td>
+		<td class="signItems" style="text-align:left;border-right: 1px solid black;"><div class="signItem" >起文单位：${startUser}（${vs.upperName!}）</div></td>
+		<td class="signItems" style="text-align:left;width:15em;border-right: 1px solid black;"><div class="signItem" >起文日期：${startTime2m}</div></td>
+		<td class="signItems" style="text-align:left;width:15em;"><div class="signItem" >流水号：${vs.wf_code!}</div></td>
 	</tr>
 </table>
 <#-- 标题 -->
 <table class="row" cellspacing="0" cellpadding="0">
 	<tr>
-		<td class="signItems" style="padding:4px 0 4px 4px;">标题：${vs.subject}</td>
+		<td class="signItems" style="padding:4px 0 4px 4px;">标题：${vs.subject!}</td>
 	</tr>
 </table>
 <#-- 事项内容 -->
@@ -29,8 +30,8 @@
 		<td class="signItems">
 			<div class="signItem" >
 				<div class="content">事项内容：</div>
-				<pre class="content">${vs.applyMatterDesc}</pre>
-				<#if (t01ApplyMatter.attachs_str)?has_content>
+				<pre class="content">${vs.applyMatterDesc!}</pre>
+				<#if (t01ApplyMatter.attachs_str)?has_content && t01ApplyMatter.attachs_str != "">
 				<div class="attach">附件：${t01ApplyMatter.attachs_str}</div>
 				</#if>
 				<div class="assignee">签名：<#if t01ApplyMatter??><span class="name">${t01ApplyMatter.assignee!}</span></#if>日期：<#if t01ApplyMatter??><span class="date">${t01ApplyMatter.endTime2m!}</span></#if></div>
@@ -122,7 +123,7 @@
 <#if t05GeneralManagerGroupCheck_s??>
 <table class="row" cellspacing="0" cellpadding="0">
 	<tr>
-		<td class="groupName"><div>总监理组<br>意见</div></td>
+		<td class="groupName"><div>总经理组<br>意见</div></td>
 		<td class="signItems">
 			<#list t05GeneralManagerGroupCheck_s as t>
 			<div class="signItem" >

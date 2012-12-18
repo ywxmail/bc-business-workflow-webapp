@@ -1,0 +1,106 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carActive.certificateApprovalForm"
+	data-js='js:bc_identity,bc-business/bs.js'>
+	<div class="bc-grid header" style="padding : 0px 0px;height: 100%;">
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;border: 1xp;">
+			<tr class="widthMarker">
+				<td style="width: 50px;text-align: center;">&nbsp;</td>
+				<td style="width: 300px;text-align: center;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first ui-state-default" rowspan="10" style="text-align: center;">证<br>件<br>审<br>验</td>
+				<td class="middle ui-state-default" style="text-align: center;">证件及资料</td>
+				<td class="middle ui-state-default" style="text-align: center;">驾驶员1</td>
+				<td class="middle ui-state-default" style="text-align: center;">驾驶员2</td>
+				<td class="last ui-state-default" style="text-align: center;">备注</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*身份证</td>
+				<td class="middle"><input type="text" name="identityCard4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="identityCard4Driver2" class="ui-widget-content" value="${identityCard4Driver2!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="identityCard4Desc" class="ui-widget-content" value="${identityCard4desc!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*户口簿</td>
+				<td class="middle"><input type="text" name="residenceBooklet4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="residenceBooklet4Driver2" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="residenceBooklet4Desc" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*居住证(非本市户籍)</td>
+				<td class="middle"><input type="text" name="liveCard4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="liveCard4Driver2" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="liveCard4Desc" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*广州籍驾驶证</td>
+				<td class="middle"><input type="text" name="certDriving4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="certDriving4Driver2" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="certDriving4Desc" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*从业资格证</td>
+				<td class="middle"><input type="text" name="certCYZG4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="certCYZG4Driver2" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="certCYZG4Desc" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">*LPG煤气上岗证</td>
+				<td class="middle"><input type="text" name="certLPG4Driver1" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle" ><input type="text" name="certLPG4Driver2" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" ><input type="text" name="certLPG4Desc" class="ui-widget-content" value="${identityCard4Driver1!}" 
+					style="width:100%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle ui-state-default">计生证</td>
+				<td class="middle">&nbsp;</td>
+				<td class="middle" >&nbsp;</td>
+				<td class="last" >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="middle" colspan="4" style="border-bottom: 0;">本人对以上证件资料真实性负责</td>
+			</tr>
+			<tr>
+				<td class="middle" colspan="4" style="text-align: right;border-top: 0;">申请人:_____________日期:_________</td>
+			</tr>
+		</table>
+	</div>
+</form>

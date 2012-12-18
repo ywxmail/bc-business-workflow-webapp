@@ -1,0 +1,24 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carRenew.UnitManagerConfirmForm"
+	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carRenew/UnitManagerConfirm.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div class="text" style="padding-left:10px">
+			<input type="checkbox" class="ignore" name="isfallback" />勾选进行退回处理，重新确认续保车辆，不勾选完成确认。
+			<input type="hidden" name="fallback" data-type="boolean" data-scope="global">
+			<input type="hidden" name="fallback" data-type="boolean" data-scope="local">
+		</div>
+	<#else>
+		<#if fallback??>
+			<#if fallback>
+				<div class="text" style="padding-left:10px">退回到"指定续保车辆"环节重新处理</div>
+			<#else>
+				<#if ti_deleteReason??>
+					<div class="text" style="padding-left:10px">分公司经理完成确认</div>
+				<#else>
+					<div class="text" style="padding-left:10px">分公司经理处理中</div>
+				</#if>
+			</#if>
+		</#if>
+	</#if>
+</form>

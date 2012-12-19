@@ -1,0 +1,10 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carTrafficHandle.trackingProcessingForm"
+	data-js='js:bc_identity,bc-business/bs.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+		<div class="text" style="padding-left:10px">
+			<input type="checkbox" class="ignore" name="isfallback" />勾选进行退回处理，重新确认续保车辆，不勾选完成确认。
+			<input type="hidden" name="fallback" data-type="boolean" data-scope="global">
+			<input type="hidden" name="fallback" data-type="boolean" data-scope="local">
+		</div>
+</form>

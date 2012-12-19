@@ -1,0 +1,63 @@
+<form class="bc-page" data-type='form'
+	style="overflow-y: auto; overflow-x: hidden;"
+	data-namespace="bswf.carTrafficHandle.specifiesTrafficInfoForm"
+	data-js='js:bc_identity,bc-business/bs.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width: 100%;">
+		<table cellspacing="2" cellpadding="0"
+			style="width: 100%; min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="text-align: right;">违法内容：</td>
+				<td class="value" colspan="5"><input type="text" value="${case4InfractTrafficr_subject!}"
+					name="case4InfractTrafficr_subject" class="ui-widget-content"
+					data-scope="global" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;">违法地点：</td>
+				<td class="value" colspan="3"><input type="text" value="${case4InfractTrafficr_address!}"
+					name="case4InfractTrafficr_address" class="ui-widget-content"
+					data-scope="global" /></td>
+				<td style="text-align: right;">本次扣分：</td>
+				<td class="value"><input type="text" value="${case4InfractTrafficr_jeom!}"
+					name="case4InfractTrafficr_jeom" class="ui-widget-content"
+					data-scope="global" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;">违法时间：</td>
+				<td class="value"><input type="text" value="${case4InfractTraffic_happenDate!}"
+					name="case4InfractTraffic_happenDate" class="ui-widget-content"
+					data-scope="global" /></td>
+				<td style="text-align: right;">违法代码：</td>
+				<td class="value"><input type="text" value="${case4InfractTrafficr_infractCode!}"
+					name="case4InfractTrafficr_infractCode" class="ui-widget-content"
+					data-scope="global" /></td>
+				<td style="text-align: right;">本次罚款：</td>
+				<td class="value"><input type="text" value="${case4InfractTrafficr_penalty!}"
+					name="case4InfractTrafficr_penalty" class="ui-widget-content"
+					data-scope="global" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;">车号：</td>
+				<td class="value"><input type="text" value="${case4InfractTraffic_carPlate!}"
+					name="case4InfractTraffic_carPlate" class="ui-widget-content"
+					data-scope="global" /></td>
+				<td style="text-align: right;">车队：</td>
+				<td class="value"><input type="text" value="${case4InfractTrafficr_motorcadeName!}"
+					name="case4InfractTrafficr_motorcadeName" class="ui-widget-content"
+					data-scope="global" /></td>
+				<td style="text-align: right;">信息来源：</td>
+				<td class="value"><input type="text" value="${case4InfractTrafficr_from!}"
+					name="case4InfractTrafficr_from" class="ui-widget-content"
+					data-scope="global" /></td>
+			</tr>
+		</table>
+	</div>
+</form>

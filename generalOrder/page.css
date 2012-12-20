@@ -56,6 +56,13 @@ body {
 	font-weight: bold;
 }
 
+.paper>.rows>.row .group{
+	min-width: 10em;
+	text-align: center;
+	padding: 2px;
+
+}
+
 .signItems>.signItem:last-child {
 	border-bottom-width: 0;
 }

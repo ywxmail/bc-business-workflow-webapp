@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>宝城公司公文处理</title>
-<link rel="stylesheet" type="text/css" href="${htmlPageNamespace}/bc-business-workflow/generalOrder/page.css?ts=${appTs}" />
-<link rel="stylesheet" type="text/css" media="print" href="${htmlPageNamespace}/bc-business-workflow/generalOrder/print/page.css?ts=${appTs}" />
+<link rel="stylesheet" type="text/css" href="${SystemContext.getAttr('htmlPageNamespace')}/bc-business-workflow/generalOrder/page.css?ts=${SystemContext.getAttr('appTs')}" />
+<link rel="stylesheet" type="text/css" media="print" href="${SystemContext.getAttr('htmlPageNamespace')}/bc-business-workflow/generalOrder/print/page.css?ts=${SystemContext.getAttr('appTs')}" />
 </head>
 <body>
 <div class="paper">
@@ -40,141 +40,145 @@
 	</tr>
 </table>
 
-<#-- 协办意见区 -->
-<#if t03DepartmentCooperation_s??>
-<#assign mcodeStr="">
-<#list t03DepartmentCooperation_s as dc>
-	<#if mcodeStr?index_of(dc.vs.mcode) == -1>
-		<#assign mcodeStr= mcodeStr+","+dc.vs.mcode>
-	</#if>
-</#list>
-<#list mcodeStr?split(",") as ms>
-<#if ms_index != 0>
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName">
-			<#list t03DepartmentCooperation_s as dc>
-				<#if dc.vs.mcode == ms>
-					${dc.vs.mname}<br>意见
-					<#break>
-				</#if>
-			</#list>
-		</td>
-		<td class="signItems">
-			<#list t03DepartmentCooperation_s?sort_by("endTime") as t>
-			<#if t.vs.mcode == ms>
-			<div class="signItem" >
-				<pre class="content">${t.vs.view}</pre>
-				<#if t.attachs_str != "">
-				<div class="attach">附件：${t.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-			</div>
+<#assign readO=false><#-- 定义营运总监查看的变量 -->
+<#assign readG=false><#-- 定义总经理组查看的变量 -->
+<#assign readC=false><#-- 定义董事长查看的变量 -->
+<#if SystemContext.hasAnyOneRole("BC_WORKFLOW,BC_ADMIN")><#-- 流程管理员,超级管理员 -->
+	<#assign readO=true>
+	<#assign readG=true>
+	<#assign readC=true>
+<#elseif SystemContext.hasAnyOneGroup("dongshizhang")><#-- 董事长 查看总经理和营运总监的意见无需受权限控制 -->
+	<#assign readO=true>
+	<#assign readG=true>
+	<#assign readC=true>
+<#elseif SystemContext.hasAnyOneGroup("zongjingli")><#-- 总经理 查看营运总监的意见无需受权限控制 -->
+	<#assign readO=true>
+	<#assign readG=true>
+<#elseif SystemContext.hasAnyOneGroup("yingyunzongjian")><#-- 营运总监 -->
+	<#assign readO=true>
+</#if>
+
+<#if tasks??>
+	<#list tasks?sort_by("endTime") as t>
+		<#if t.code=="t02ManagerConfirm_s">
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<pre class="content">${t.vs.view}</pre>
+							<#if t.attachs_str != "">
+							<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">部门经理意见</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t03DepartmentCooperation_s">
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<pre class="content">${t.vs.view}</pre>
+							<#if t.attachs_str != "">
+							<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">${t.vs.mname}意见</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t04OperationDirectorCheck_s">
+			<#if SystemContext.user.code==t.assigneeCode&&!readO><#-- 任务完成人 -->
+				<#assign readO=true>
+			<#elseif t.vs.list_readUpperInforUsers??&&!readO><#-- 指定的用户 -->
+				<#-- 循环判断当前用户是否在集合之内 -->
+				<#list t.vs.list_readUpperInforUsers as u>
+					<#if u.code==SystemContext.user.code>
+						<#assign readO=true>
+						<#break>
+					</#if>
+				</#list>
 			</#if>
-			</#list>
-		</td>
-	</tr>
-</table>
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<pre class="content"><#if readO>${t.vs.view}<#else>(无权查看)</#if></pre>
+							<#if t.attachs_str != "">
+							<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">营运总监意见</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t05GeneralManagerGroupCheck_s">
+			<#if SystemContext.user.code==t.assigneeCode&&!readG><#-- 任务完成人 -->
+				<#assign readG=true>
+			<#elseif t.vs.list_readUpperInforUsers??&&!readG><#-- 指定的用户 -->
+				<#-- 循环判断当前用户是否在集合之内 -->
+				<#list t.vs.list_readUpperInforUsers as u>
+					<#if u.code==SystemContext.user.code>
+						<#assign readG=true>
+						<#break>
+					</#if>
+				</#list>
+			</#if>
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<pre class="content"><#if readG>${t.vs.view}<#else>(无权查看)</#if></pre>
+							<#if t.attachs_str != "">
+							<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">总经理组意见</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t06ChairmanCheck_s">
+			<#if SystemContext.user.code==t.assigneeCode&&!readC><#-- 任务完成人 -->
+				<#assign readC=true>
+			<#elseif t.vs.list_readUpperInforUsers??&&!readC><#-- 指定的用户 -->
+				<#-- 循环判断当前用户是否在集合之内 -->
+				<#list t.vs.list_readUpperInforUsers as u>
+					<#if u.code==SystemContext.user.code>
+						<#assign readC=true>
+						<#break>
+					</#if>
+				</#list>
+			</#if>
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<pre class="content"><#if readC>${t.vs.view}<#else>(无权查看)</#if></pre>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">董事长意见</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t09SponserFile">
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">申请人归档</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</#if>
+	</#list>
 </#if>
-</#list>
-</#if>
-
-<#-- 部门经理确认 -->
-<#if t02ManagerConfirm_s??>
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName"><div>部门经理<br>意见</div></td>
-		<td class="signItems">
-			<#list t02ManagerConfirm_s as t>
-			<div class="signItem" >
-				<pre class="content">${t.vs.view}</pre>
-				<#if t.attachs_str != "">
-				<div class="attach">附件：${t.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-			</div>
-			</#list>
-		</td>
-	</tr>
-</table>
-</#if>
-
-<#-- 营运总监审批 -->
-<#if t04OperationDirectorCheck_s??>
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName"><div>营运总监<br>意见</div></td>
-		<td class="signItems">
-			<#list t04OperationDirectorCheck_s as t>
-			<div class="signItem" >
-				<pre class="content">${t.vs.view}</pre>
-				<#if t.attachs_str != "">
-				<div class="attach">附件：${t.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-			</div>
-			</#list>
-		</td>
-	</tr>
-</table>
-</#if>
-
-<#-- 总经理组审批 -->
-<#if t05GeneralManagerGroupCheck_s??>
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName"><div>总经理组<br>意见</div></td>
-		<td class="signItems">
-			<#list t05GeneralManagerGroupCheck_s as t>
-			<div class="signItem" >
-				<pre class="content">${t.vs.view}</pre>
-				<#if t.attachs_str != "">
-				<div class="attach">附件：${t.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-			</div>
-			</#list>
-		</td>
-	</tr>
-</table>
-</#if>
-
-<#-- 董事长审批 -->
-<#if t06ChairmanCheck_s??>
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName"><div>董事长<br>意见</div></td>
-		<td class="signItems">
-			<#list t06ChairmanCheck_s as t>
-			<div class="signItem" >
-				<pre class="content">${t.vs.view}</pre>
-				<#if t.attachs_str != "">
-				<div class="attach">附件：${t.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-			</div>
-			</#list>
-		</td>
-	</tr>
-</table>
-</#if>
-
-<#-- 发起人归档 -->
-<table class="row" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="groupName"><div>申请人<br>归档</div></td>
-		<td class="signItems">
-			<div class="signItem" >
-				<#if t09SponserFile??>
-				<#if t09SponserFile.attachs_str != "">
-				<div class="attach">附件：${t09SponserFile.attachs_str}</div>
-				</#if>
-				<div class="assignee">签名：<span class="name">${t09SponserFile.assignee}</span>日期：<span class="date">${t09SponserFile.endTime2m}</span></div>
-				</#if>
-			</div>
-		</td>
-	</tr>
-</table>
 </div>
 </div>
 </body>

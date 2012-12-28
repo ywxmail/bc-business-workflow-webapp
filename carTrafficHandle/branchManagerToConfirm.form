@@ -1,5 +1,5 @@
 <form class="bc-page" data-type='form'
-	style="overflow-y: auto; overflow-x: hidden;"
+	style="overflow: auto;"
 	data-namespace="bswf.carTrafficHandle.branchManagerToConfirmForm"
 	data-js='js:bc_identity,bc-business/bs.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">

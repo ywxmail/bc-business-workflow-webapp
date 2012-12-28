@@ -58,6 +58,7 @@
 				<td style="width: 200px;"></td>
 				<td >&nbsp;</td>
 			</tr>
+			<#if paymentVouchers?? >
 			<tr>
 				<#if (paymentVouchers?number =0) >
 				<td class="first" style="text-align: left;" colspan="2">已检查驾驶员的违法缴款凭证。</td>
@@ -65,7 +66,8 @@
 				<td class="first" style="text-align: left;" colspan="2">驾驶员无法提供违法缴款凭证。</td>
 				</#if>
 			</tr>
-			<#if (accumulatedPoints?number>3) >
+			</#if>
+			<#if accumulatedPoints?? && (accumulatedPoints?number>3) >
 			<tr>
 				<#if (letterOfCommitment?number =0) >
 				<td class="first" style="text-align: left;" colspan="2">驾驶员已写违法承诺书。</td>
@@ -74,7 +76,7 @@
 				</#if>
 			</tr>
 			</#if>
-			<#if (accumulatedPoints?number>12 || accumulatedPoints?number=12) >
+			<#if accumulatedPoints?? && (accumulatedPoints?number>12 || accumulatedPoints?number=12) >
 			<tr>
 				<#if (scoreProof?number =0) >
 				<td class="first" style="text-align: left;" colspan="2">驾驶员能提供有效分值证明。</td>

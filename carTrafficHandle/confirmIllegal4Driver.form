@@ -16,18 +16,23 @@
 			</tr>
 			<tr>
 				<td style="text-align: right;">当事司机：</td>
-				<td class="value">
-					<div style="position:relative;">
-						<input type="text"   name="driver" value="${driver!}"  data-scope="global" class="ui-widget-content" 
-							data-validate="required" readonly="readonly" />
-						<input type="hidden" name="driverId" class="ui-widget-content" value="${driverId!}" data-scope="global" />
-						<input type="hidden" name="case4InfractTraffic_happenDate" class="ui-widget-content" 
-							value='${case4InfractTraffic_happenDate!}' data-scope="global" />
-						<ul class="inputIcons">
-							<li id="addDriver" class="inputIcon ui-icon ui-icon-circle-plus" title='选择当事司机'/>
-						</ul>
-					</div>
-				</td>
+				<td class="value relative">
+					<input name="driver" Class="bc-select ui-widget-content" type="text"
+					    data-validate="required" data-scope="global" value="${driver!}"
+						data-cfg='{"strict":true,"delay":100,"minLength":1, "labelMapping":"{{name}}", "valueMapping":"{{id}}","itemMapping":"TPL.BS.CARMAN_SELECT_ITEM","callback":"bswf.carTrafficHandle.confirmIllegal4DriverForm.afterSelectCarMan"}'
+						data-maxHeight="150px" 
+						data-source='bc-business/carMan/find?status=-1,0,1'/>
+					<input type="hidden" name="driverId" class="ui-widget-content" value="${driverId!}" data-scope="global" data-type="Long" />
+					<input type="hidden" name="case4InfractTraffic_happenDate" class="ui-widget-content" 
+						value='${case4InfractTraffic_happenDate!}' data-scope="global" />
+					<input type="hidden" name="case4InfractTraffic_carId" class="ui-widget-content" 
+						value='${case4InfractTraffic_carId!}' data-scope="global" />
+					<input type="hidden" name="subject" class="ui-widget-content" 
+						value='${subject!}' data-scope="global" />  
+				    <span id="addDriver" class="selectButton verticalMiddle ui-icon ui-icon-circle-plus" 
+				    	title='选择当事司机'>
+				    </span>
+			    </td>
 				<td style="text-align: right;">累计扣分：</td>
 				<td class="value"><input type="text" value="${accumulatedPoints!}"
 					name="accumulatedPoints" class="ui-widget-content"
@@ -107,6 +112,7 @@
 				<td class="middle" style="text-align: right;">初次领证时间：</td>
 				<td class="last">${certDrivingFirstDate!}</td>
 			</tr>
+			<#if availableScore?? >
 			<#if (availableScore?number=0)>
 			<#if (toldStop== 'true' && availableScore?number=0)>
 			<tr>
@@ -140,6 +146,7 @@
 				<td class="middle" style="text-align: right;border-bottom: none;">入职时间：</td>
 				<td class="last" style="border-bottom: none;">${workDate!}</td>
 			</tr>
+			</#if>
 			</#if>
 		</table>
 		</#if>

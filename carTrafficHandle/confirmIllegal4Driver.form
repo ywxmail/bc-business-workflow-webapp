@@ -1,6 +1,6 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carTrafficHandle.confirmIllegal4DriverForm"
-	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carTrafficHandle/confirmIllegal4Driver.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:confirmIllegal4Driver2JS_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<div style="width: 100%;">
 		<#if readonly == 'false'>

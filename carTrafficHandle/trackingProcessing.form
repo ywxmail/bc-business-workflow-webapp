@@ -1,6 +1,6 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carTrafficHandle.trackingProcessingForm"
-	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carTrafficHandle/trackingProcessing.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:trackingProcessing2JS_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<div style="width: 100%;">
 		<#if readonly == 'false'>

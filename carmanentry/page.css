@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: "微软雅黑", "仿宋", "仿宋_GB2312", "宋体", sans-serif;
+	font-family:  "宋体" ,"微软雅黑","仿宋", "仿宋_GB2312",sans-serif;
 	font-size: 14px;
 	background-color: #cccccc;
 }
@@ -11,8 +11,8 @@ body {
 .paper {
 	background-color: #ffffff;
 	box-shadow: #000 0px 0px 10px;
-	margin: 4px auto;
-	width: 210mm;
+	margin: 4px auto;	
+	width: 175mm;
 	padding: 10mm;
 }
 
@@ -20,7 +20,7 @@ body {
 	text-align: center;
 	font-size: 30px;
 	font-weight: bold;
-	color: red;
+	color: black;
 	margin: 0;
 }
 
@@ -48,19 +48,37 @@ body {
 	border-bottom-width: 2px;
 }
 .paper>.rows>.row .groupName{
-	width: 10em;
+	width: 8em;
 	text-align: center;
 	vertical-align: middle;
 	border-right: 1px solid #000;
 	padding: 2px;
-	font-weight: bold;
 }
 
-.paper>.rows>.row .group{
-	min-width: 10em;
+.paper>.rows>.row .label{
 	text-align: center;
+	vertical-align: middle;
 	padding: 2px;
+}
 
+.paper>.rows>.row .first{
+	border-bottom: 1px solid #000;
+}
+
+.paper>.rows>.row .middle{
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding:0 0 0 2px;
+}
+
+.paper>.rows>.row .last{
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.paper>.rows>.row .value{
+	font-family: "仿宋", "仿宋_GB2312","微软雅黑", "宋体",sans-serif;
+	font-weight: bold;
 }
 
 .signItems>.signItem:last-child {
@@ -69,7 +87,7 @@ body {
 
 .signItem {
 	border-bottom: 1px solid black;
-	padding: 4px;
+	padding: 2px;
 }
 
 .signItem>.content,.signItem>.attach {
@@ -89,12 +107,13 @@ body {
 
 .signItem>.assignee>.name,.signItem>.assignee>.date {
 	display: inline-block;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #000;
 	text-align: center;
 	margin-right: 1em;
-	
-	/* 这里使用白色颜色来模拟无边框是因为Chrome从v22开始才支持右键打印页面时边框才受样式控制*/
-	border: 1px solid #fff;
-	border-bottom-color: #000;
+	font-family: "仿宋_GB2312", "宋体","微软雅黑","仿宋", sans-serif;
+	font-weight: bold;
 }
 
 .signItem>.assignee>.name {
@@ -104,3 +123,34 @@ body {
 .signItem>.assignee>.date {
 	min-width: 9em;
 }
+
+.signItem .top-first,.top-middle,.top-last,.bottom-first,.bottom-middle,.bottom-last{
+	text-align: center;
+	border-color:#000;
+	border-style:solid;
+}
+
+.signItem .top-first {
+	border-width:1px 1px 1px 1px;
+}
+
+.signItem .top-middle {
+	border-width:1px 1px 1px 0;
+}
+
+.signItem .top-last {
+	border-width:1px 1px 1px 0;
+}
+
+.signItem .bottom-first {
+	border-width:0 1px 1px 1px;
+}
+
+.signItem .bottom-middle {
+	border-width:0 1px 1px 0;
+}
+
+.signItem .bottom-last {
+	border-width:0 1px 1px 0;
+}
+

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>驾驶员交通违法处理审批表</title>
+<link rel="stylesheet" type="text/css" href='${SystemContext.getAttr("htmlPageNamespace")}/bc-business-workflow/carTrafficHandle/page.css?ts=${SystemContext.getAttr("appTs")}' />
+</head>
+<body>
+<div class="paper">
+	<h1 class="title">驾驶员交通违法处理审批表</h1>
+<div class="rows">
+<#if tasks??>
+	<#list tasks?sort_by("endTime") as t>
+		<#if t.code=="t010SpecifiesTrafficInfo"><#-- 安全管理组指定交通违法信息 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 80px;"></td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">违法内容：</td>
+					<td class="last" colspan="5">${vs.case4InfractTrafficr_subject}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">违法地点：</td>
+					<td class="middle" colspan="3">${vs.case4InfractTrafficr_address}</td>
+					<td class="middle" style="text-align: right;">本次扣分：</td>
+					<td class="last">${vs.case4InfractTrafficr_jeom!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">违法时间：</td>
+					<td class="middle">${vs.case4InfractTraffic_happenDate}</td>
+					<td class="middle" style="text-align: right;">违法代码：</td>
+					<td class="middle">${vs.case4InfractTrafficr_infractCode!}</td>
+					<td class="middle" style="text-align: right;">本次罚款：</td>
+					<td class="last">${vs.case4InfractTrafficr_penalty!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;border-bottom: none;">车号：</td>
+					<td class="middle" style="border-bottom: none;">${vs.case4InfractTraffic_carPlate}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">车队：</td>
+					<td class="middle" style="border-bottom: none;">${vs.case4InfractTrafficr_motorcadeName}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">信息来源：</td>
+					<td class="last" style="border-bottom: none;">${vs.case4InfractTrafficr_from}</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t020ConfirmIllegal4Driver"><#-- 车队长确认违法驾驶员 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 80px;"></td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">当事司机：</td>
+					<td class="middle">${vs.driver!}</td>
+					<td class="middle" style="text-align: right;">累计扣分：</td>
+					<td class="middle">${vs.accumulatedPoints!}</td>
+					<td class="middle" style="text-align: right;">服务资格证号：</td>
+					<td class="last">${vs.cert4fwzg!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">告知时间：</td>
+					<td class="middle">${vs.toldTime!}</td>
+					<td class="middle" style="text-align: right;">剩余可用分值：</td>
+					<td class="middle">${vs.availableScore!}</td>
+					<td class="middle" style="text-align: right;">初次领证时间：</td>
+					<td class="last">${vs.certDrivingFirstDate!}</td>
+				</tr>
+				<#if vs.availableScore?? >
+				<#if (vs.availableScore?number=0)>
+				<#if (vs.toldStop== 'true' && vs.availableScore?number=0)>
+				<tr>
+					<td class="first" style="text-align: right;">告知方式：</td>
+					<td class="middle">${vs.toldWay!}</td>
+					<td class="middle" style="text-align: right;">年度发生宗数：</td>
+					<td class="middle">${vs.happenNumber!}</td>
+					<td class="middle" style="text-align: right;">入职时间：</td>
+					<td class="last">${vs.workDate!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: left;border-bottom: none;padding-left:12px;" colspan="6">已通知司机停运！</td>
+					<!--  <td colspan="5" style="text-align: left;">${toldStop!}</td>-->
+				</tr>
+				<#else>
+				<tr>
+					<td class="first" style="text-align: right;border-bottom: none;">告知方式：</td>
+					<td class="middle" style="border-bottom: none;">${vs.toldWay!}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">年度发生宗数：</td>
+					<td class="middle" style="border-bottom: none;">${vs.happenNumber!}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">入职时间：</td>
+					<td class="last" style="border-bottom: none;">${vs.workDate!}</td>
+				</tr>
+				</#if>
+				<#else>
+				<tr>
+					<td class="first" style="text-align: right;border-bottom: none;">告知方式：</td>
+					<td class="middle" style="border-bottom: none;">${vs.toldWay!}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">年度发生宗数：</td>
+					<td class="middle" style="border-bottom: none;">${vs.happenNumber!}</td>
+					<td class="middle" style="text-align: right;border-bottom: none;">入职时间：</td>
+					<td class="last" style="border-bottom: none;">${vs.workDate!}</td>
+				</tr>
+				</#if>
+				</#if>
+			</table>
+		<#elseif t.code=="t030TrackingProcessing"><#-- 车队长跟踪处理 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 200px;"></td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left:0.5em;">
+							<div style="display:inline-block;vertical-align:top;">车队长意见:</div>
+							<#if vs.paymentVouchers?? >
+								<#if (vs.paymentVouchers?number =0) >
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">已检查驾驶员的违法缴款凭证。</pre></div>
+								<#else>
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">驾驶员无法提供违法缴款凭证。</pre></div>
+								</#if>
+							</#if>
+							<#if vs.accumulatedPoints?? && (vs.accumulatedPoints?number>3) >
+								<#if (vs.letterOfCommitment?number =0) >
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">驾驶员已写违法承诺书。</pre></div>
+								<#else>
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">驾驶员拒绝写违法承诺书。</pre></div>
+								</#if>
+							</#if>
+							<#if vs.accumulatedPoints?? && (vs.accumulatedPoints?number>12 || vs.accumulatedPoints?number=12) >
+								<#if (vs.scoreProof?number =0) >
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">驾驶员能提供有效分值证明。</pre></div>
+								<#else>
+									<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">驾驶员不能否提供有效分值证明。</pre></div>
+								</#if>
+							</#if>
+							<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">${t.vs.motorcadeDesc!}</pre></div>
+						</div>
+						<div class="assignee" style="text-align: right;">签名：<span class="name">${t.assignee}</span>&nbsp;&nbsp;日期：<span class="date">${t.endTime2m}</span></div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t040DecommissioningProcessing"><#-- 人力资源部停运处理 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 200px;"></td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left:0.5em;">
+							<div style="display:inline-block;vertical-align:top;">人力资源部意见:</div>
+							<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;padding-left:30px;">${t.vs.personnelDesc!}</pre></div>
+						</div>
+						<div class="assignee" style="text-align: right;">签名：<span class="name">${t.assignee}</span>&nbsp;&nbsp;日期：<span class="date">${t.endTime2m}</span></div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t050BranchManagerToConfirm"><#-- 分公司经理确认 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 200px;"></td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left:0.5em;">
+							<div style="display:inline-block;vertical-align:top;">分公司经理意见:</div>
+							<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">${t.vs.branchManagerDesc!}</pre></div>
+						</div>
+						<div class="assignee" style="text-align: right;">签名：<span class="name">${t.assignee}</span>&nbsp;&nbsp;日期：<span class="date">${t.endTime2m}</span></div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t060ExaminationAndapproval"><#-- 营运总监审批 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;border-bottom: none;">
+				<tr class="widthMarker">
+					<td style="width: 200px;"></td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left:0.5em;">
+							<div style="display:inline-block;vertical-align:top;">营运总监意见：</div>
+							<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">${t.vs.majordomoDesc!}</pre></div>
+						</div>
+						<div class="assignee" style="text-align: right;">签名：<span class="name">${t.assignee}</span>&nbsp;&nbsp;日期：<span class="date">${t.endTime2m}</span></div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t070ConfirmTrafficInfo"><#-- 安全管理组确认 -->
+			<table cellspacing="0" cellpadding="0" class="row"
+				style="margin: 0;padding: 0;width: 100%;">
+				<tr class="widthMarker">
+					<td style="width: 200px;"></td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div style="padding-left:0.5em;">
+							<div style="display:inline-block;vertical-align:top;">安全管理组意见：</div>
+							<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;padding-left:30px;">${t.vs.safetyManagementGroupDesc!}</pre></div>
+						</div>
+						<div class="assignee" style="text-align: right;">签名：<span class="name">${t.assignee}</span>&nbsp;&nbsp;日期：<span class="date">${t.endTime2m}</span></div>
+					</td>
+				</tr>
+			</table>
+		</#if>
+	</#list>
+</#if>	
+</div>
+</div>
+</body>
+</html>

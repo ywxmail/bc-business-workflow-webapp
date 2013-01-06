@@ -1,7 +1,7 @@
 <form class="bc-page" data-type='form'
 	style="overflow: auto;"
 	data-namespace="bswf.carTrafficHandle.confirmTrafficInfoForm"
-	data-js='js:bc_identity,bc-business/bs.js,bc-business-workflow/carTrafficHandle/confirmTrafficInfo.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:confirmTrafficInfo2Js_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;width:635px;">

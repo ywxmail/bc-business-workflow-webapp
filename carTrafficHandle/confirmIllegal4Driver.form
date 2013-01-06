@@ -1,6 +1,6 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carTrafficHandle.confirmIllegal4DriverForm"
-	data-js='js:bc_identity,bc-business/bs.js,wf:confirmIllegal4Driver2JS_${pd_id}.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:confirmIllegal4Driver2Js_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<div style="width: 100%;">
 		<#if readonly == 'false'>
@@ -23,12 +23,15 @@
 						data-maxHeight="150px" 
 						data-source='bc-business/carMan/find?status=-1,0,1'/>
 					<input type="hidden" name="driverId" class="ui-widget-content" value="${driverId!}" data-scope="global" data-type="Long" />
+					<input type="hidden" name="case4InfractTrafficr_driverId" class="ui-widget-content" value="<#if case4InfractTrafficr_driverId??>${case4InfractTrafficr_driverId?c}<#else>${case4InfractTrafficr_driverId!}</#if>" data-scope="global" data-type="Long" />
 					<input type="hidden" name="case4InfractTraffic_happenDate" class="ui-widget-content" 
 						value='${case4InfractTraffic_happenDate!}' data-scope="global" />
 					<input type="hidden" name="case4InfractTraffic_carId" class="ui-widget-content" 
 						value='${case4InfractTraffic_carId!}' data-scope="global" />
 					<input type="hidden" name="subject" class="ui-widget-content" 
 						value='${subject!}' data-scope="global" />  
+					<input type="hidden" name="case4InfractTrafficr_jeom" class="ui-widget-content" 
+						value='${case4InfractTrafficr_jeom!}' data-scope="global" />  
 				    <span id="addDriver" class="selectButton verticalMiddle ui-icon ui-icon-circle-plus" 
 				    	title='选择当事司机'>
 				    </span>

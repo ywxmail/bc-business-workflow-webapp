@@ -30,16 +30,57 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 								dataType:"json",
 								data:{carManId:carMan.id,happenDate:happenDate},
 								success:function(json){
-									$form.find(":input[name='happenNumber']").val(json.count);
-									$form.find("input[name='accumulatedPoints']").val(json.accumulatedPoints);
-									$form.find(":input[name='availableScore']").val(json.remainder);
+									
+									//剩余可用分值
+									var remainder=json.remainder;
+									//累计扣分
+									var accumulatedPoints=json.accumulatedPoints;
+									//判断是否同一个司机
+									var gradDriverId = $form.find(":input[name='case4InfractTrafficr_driverId']").val();
+									//本次扣分
+									var points = $form.find(":input[name='case4InfractTrafficr_jeom']").val();
+									//违法的司机与抓取的司机相同
+									if(carMan.id==gradDriverId){
+										$form.find(":input[name='happenNumber']").val(json.count);
+										$form.find("input[name='accumulatedPoints']").val(json.accumulatedPoints);
+										$form.find(":input[name='availableScore']").val(json.remainder);
+									}else{
+										//确认违法的司机与原司机不相同
+										$form.find(":input[name='happenNumber']").val(json.count+1);
+										//已经扣完分
+										if(remainder-points<0 || remainder-points==0){
+											remainder=0;
+											accumulatedPoints=12;
+											//accumulatedPoints+=parseInt(points);
+											$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
+											$form.find(":input[name='availableScore']").val(remainder);
+										}else{
+											remainder=remainder-points;
+											accumulatedPoints+=parseInt(points);
+											$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
+											$form.find(":input[name='availableScore']").val(remainder);
+										}
+										
+									}
 									//如果扣完12分就要通知停运
-									if(json.remainder==0){
+									if(remainder==0 && $form.find("input[type='checkbox'][name='toldStop']").size()==0){
 									$form.find("#driverInfo").append('<tr><td >&nbsp;</td><td class="value" colspan="5" style="text-align: left;">'
 																	+'<input type="checkbox" name="toldStop" Style="width:1em;" value="true" />'
 																	+'<label>&nbsp;已通知司机停运</label>'
 																	+'<input type="hidden" name="toldStop" class="ui-widget-content" value="" data-scope="global"></td></tr>');
 									}
+								
+									
+//									$form.find(":input[name='happenNumber']").val(json.count);
+//									$form.find("input[name='accumulatedPoints']").val(json.accumulatedPoints);
+//									$form.find(":input[name='availableScore']").val(json.remainder);
+//									//如果扣完12分就要通知停运
+//									if(json.remainder==0){
+//									$form.find("#driverInfo").append('<tr><td >&nbsp;</td><td class="value" colspan="5" style="text-align: left;">'
+//																	+'<input type="checkbox" name="toldStop" Style="width:1em;" value="true" />'
+//																	+'<label>&nbsp;已通知司机停运</label>'
+//																	+'<input type="hidden" name="toldStop" class="ui-widget-content" value="" data-scope="global"></td></tr>');
+//									}
 								}
 							});
 
@@ -90,7 +131,7 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 //		$form.find(":input[name='e.motorcade.id']").val(ui.item.motorcadeId);// 公司
 		
 
-		$form.find(":input[name='driverId']").val(ui.item.id);
+		
 		$form.find(":input[name='driver']").val(ui.item.name);
 		$form.find(":input[name='cert4fwzg']").val(ui.item.cert4FWZG);
 		$form.find(":input[name='certDrivingFirstDate']").val(ui.item.certDriverFirstDate);
@@ -106,11 +147,39 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 			dataType:"json",
 			data:{carManId:ui.item.id,happenDate:happenDate},
 			success:function(json){
-				$form.find(":input[name='happenNumber']").val(json.count);
-				$form.find("input[name='accumulatedPoints']").val(json.accumulatedPoints);
-				$form.find(":input[name='availableScore']").val(json.remainder);
+				//剩余可用分值
+				var remainder=json.remainder;
+				//累计扣分
+				var accumulatedPoints=json.accumulatedPoints;
+				//判断是否同一个司机
+				var gradDriverId = $form.find(":input[name='case4InfractTrafficr_driverId']").val();
+				//本次扣分
+				var points = $form.find(":input[name='case4InfractTrafficr_jeom']").val();
+				//违法的司机与抓取的司机相同
+				if(ui.item.id==gradDriverId){
+					$form.find(":input[name='happenNumber']").val(json.count);
+					$form.find("input[name='accumulatedPoints']").val(json.accumulatedPoints);
+					$form.find(":input[name='availableScore']").val(json.remainder);
+				}else{
+					//确认违法的司机与原司机不相同
+					$form.find(":input[name='happenNumber']").val(json.count+1);
+					//已经扣完分
+					if(remainder-points<0 || remainder-points==0){
+						remainder=0;
+						accumulatedPoints=12;
+						//accumulatedPoints+=parseInt(points);
+						$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
+						$form.find(":input[name='availableScore']").val(remainder);
+					}else{
+						remainder=remainder-points;
+						accumulatedPoints+=parseInt(points);
+						$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
+						$form.find(":input[name='availableScore']").val(remainder);
+					}
+					
+				}
 				//如果扣完12分就要通知停运
-				if(json.remainder==0){
+				if(remainder==0 && $form.find("input[type='checkbox'][name='toldStop']").size()==0){
 				$form.find("#driverInfo").append('<tr><td >&nbsp;</td><td class="value" colspan="5" style="text-align: left;">'
 												+'<input type="checkbox" name="toldStop" Style="width:1em;" value="true" />'
 												+'<label>&nbsp;已通知司机停运</label>'

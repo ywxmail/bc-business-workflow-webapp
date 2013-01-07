@@ -1,0 +1,72 @@
+
+.paper>.title {
+	font-size: 20px;
+}
+
+.paper>.rows>.row .groupName{
+	width: 8em;
+	border-right: 1px solid #000;
+	padding: 1px;
+}
+
+.paper>.rows>.row .label{
+	text-align: center;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+.paper>.rows>.row .first{
+	border-bottom: 1px solid #000;
+}
+
+.paper>.rows>.row .middle{
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding:0 0 0 2px;
+}
+
+.paper>.rows>.row .last{
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.signItem {
+	padding: 1px;
+}
+
+
+.signItem>.assignee>.name,.signItem>.assignee>.date {
+	border-width: 0 0 1px 0;
+	margin-right: 1em;
+}
+
+.signItem .top-first,.top-middle,.top-last,.bottom-first,.bottom-middle,.bottom-last{
+	text-align: center;
+	border-color:#000;
+	border-style:solid;
+}
+
+.signItem .top-first {
+	border-width:1px 1px 1px 1px;
+}
+
+.signItem .top-middle {
+	border-width:1px 1px 1px 0;
+}
+
+.signItem .top-last {
+	border-width:1px 1px 1px 0;
+}
+
+.signItem .bottom-first {
+	border-width:0 1px 1px 1px;
+}
+
+.signItem .bottom-middle {
+	border-width:0 1px 1px 0;
+}
+
+.signItem .bottom-last {
+	border-width:0 1px 1px 0;
+}
+

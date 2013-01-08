@@ -9,8 +9,8 @@ bswf.carTrafficHandle.confirmTrafficInfoForm = {
 			return false;
 			
 		//是否结案
-		if($form.find("input[type='checkbox'][name='isClosed']").size()!=0){
-			$rhandings=$form.find("input[type='checkbox'][name='isClosed']");
+		if($form.find("input[type='radio'][name='isClosed']").size()!=0){
+			$rhandings=$form.find("input[type='radio'][name='isClosed']");
 			var checked=false;
 			var value;
 			$rhandings.each(function(){
@@ -21,11 +21,12 @@ bswf.carTrafficHandle.confirmTrafficInfoForm = {
 			});
 			
 			if(!checked){
-				$form.find(":input[name='isClosed']").val(false);
+				bc.msg.alert("请确认是否将该交通违法信息结案！");
+				return false;
 			}else{
 				$form.find(":input[name='isClosed']").val(value);
 			}
-	
+		
 		}
 
 		return true;

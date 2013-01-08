@@ -10,7 +10,6 @@
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">
-			<div style="display:inline-block;vertical-align:top;">分公司经理意见:</div>
 			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${branchManagerDesc!}</pre></div>
 		</div>
 	</#if>

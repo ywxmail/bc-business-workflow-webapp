@@ -10,16 +10,18 @@
 		</div>
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">是否将该交通违法信息结案：</div>
-			<input type="checkbox" name="isClosed" Style="width:1em;" value="true" />
-			<input type="hidden" name="isClosed" class="ui-widget-content" value="" data-scope="global">
+			<input type="radio" name="isClosed" value="true" data-scope="global" Style="width:auto;"/>
+			<label style="margin-left: -6px;">是</label>&nbsp;
+			<input type="radio" name="isClosed" value="false" data-scope="global" Style="width:auto;"/>
+			<label style="margin-left: -6px;">否</label>
+			<input type="hidden" name="isClosed" class="ui-widget-content" value="" data-scope="global" data-type="boolean">
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;" class="ui-widget-content">
-			<div style="display:inline-block;vertical-align:top;">安全管理组意见:</div>
 			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${safetyManagementGroupDesc!}</pre></div>
 		</div>
 		<#if isClosed??>
-			<#if isClosed== 'true' >
+			<#if isClosed==true >
 				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
 					<div style="display:inline-block;vertical-align:top;">该交通违法信息已结案。</div>
 				</div>

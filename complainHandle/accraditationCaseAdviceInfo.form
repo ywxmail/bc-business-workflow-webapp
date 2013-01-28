@@ -10,13 +10,13 @@
 		</div>
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
-			<input type="radio" name="isReturn" value="true" data-scope="global" Style="width:auto;"/>
-			<label style="margin-left: -6px;">返回车队长核查</label>&nbsp;
-			<input type="radio" name="isReturn" value="false" data-scope="global" Style="width:auto;"/>
-			<label style="margin-left: -6px;">送车队长确认确认</label>
-			<input type="radio" name="isDcFlow" value="true" data-scope="global" Style="width:auto;"/>
+			<input type="radio" id="isReturn" name="nextStep" value="false" Style="width:auto;" class="ignore"/>
+			<label style="margin-left: -6px;">送车队长回复客管处</label>
+			<input type="radio" id="isDcFlow" name="nextStep" value="true" Style="width:auto;" class="ignore"/>
 			<label style="margin-left: -6px;">送相关部门协办</label>
-			<input type="hidden" name="isReturn" class="ui-widget-content" value="false" data-scope="global" data-type="boolean">
+			<input type="radio" id="isReturn" name="nextStep" value="true" Style="width:auto;" class="ignore"/>
+			<label style="margin-left: -6px;">返回车队长重办</label>&nbsp;
+			<input type="hidden" name="isReturn" class="ui-widget-content" value="false" data-type="boolean" data-scope="global">
 			<input type="hidden" name="isDcFlow" class="ui-widget-content" value="false" data-type="boolean" data-scope="global">
 		</div>
 		<div id="co4department" style="display:none;" >
@@ -65,6 +65,17 @@
 					</tr>
 				</#list>
 			</table>
+		</#if>
+		<#if isReturn??>
+			<#if isReturn==true >
+				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+					<div style="display:inline-block;vertical-align:top;">返回车队长重办</div>
+				</div>
+			<#else>
+				<div style="padding-left:0.5em;width:635px;">
+					<!--  <div style="display:inline-block;vertical-align:top;">该交通违法信息未结案。</div>-->
+				</div>
+			</#if>
 		</#if>
 	</#if>
 </form>

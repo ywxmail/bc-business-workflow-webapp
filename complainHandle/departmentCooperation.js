@@ -1,5 +1,5 @@
-bc.namespace("bswf.generalOrder");
-bswf.generalOrder.DepartmentCooperationForm = {
+bc.namespace("bswf.complainHandle");
+bswf.complainHandle.DepartmentCooperationForm = {
 	init : function(option,readonly){
 		var $form = $(this);
 		
@@ -14,7 +14,7 @@ bswf.generalOrder.DepartmentCooperationForm = {
 		if(!bc.validator.validate(this))
 			return false;
 		
-		bswf.generalOrder.DepartmentCooperationForm.buildFormData.call(this);
+		bswf.complainHandle.DepartmentCooperationForm.buildFormData.call(this);
 		
 		return true;
 	}

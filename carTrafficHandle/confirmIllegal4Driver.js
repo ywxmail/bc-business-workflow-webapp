@@ -131,7 +131,7 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 //		$form.find(":input[name='e.motorcade.id']").val(ui.item.motorcadeId);// 公司
 		
 
-		
+		$form.find(":input[name='driverId']").val(ui.item.id);
 		$form.find(":input[name='driver']").val(ui.item.name);
 		$form.find(":input[name='cert4fwzg']").val(ui.item.cert4FWZG);
 		$form.find(":input[name='certDrivingFirstDate']").val(ui.item.certDriverFirstDate);

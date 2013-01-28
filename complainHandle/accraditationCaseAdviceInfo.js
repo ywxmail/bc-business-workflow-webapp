@@ -4,21 +4,23 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 		var $form = $(this);
 		
 		//是否送相关部门协办的处理方式事件
-		$form.find("input[type='radio'][name='isDcFlow']").change(function(){
-
-			$rhandings=$form.find("input[type='radio'][name='isDcFlow']");
+		$form.find("input[type='radio'][name='nextStep']").change(function(){
+			
+			$rhandings=$form.find("input[type='radio'][name='nextStep']");
 			var checked=false;
 			var value;
+			var name;
 			$rhandings.each(function(){
 				if($(this)[0].checked){
 					value=$(this).val();
+					name=$(this).attr("id");
 					checked=true;
 				}
 			});
-			
-			if(!checked){
+			if(checked && name!="isDcFlow"){
 				//关闭添加协办部门控件
 				handing_hide($form.find("#co4department"));
+				$form.find(":input[name='isDcFlow']").val(false);
 			}else{
 				//展开添加协办部门控件
 				handing_show($form.find("#co4department"));
@@ -260,7 +262,7 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 	buildFormData : function(){
 		$form = $(this);
 
-		var rhanding=$form.find("input[type='checkbox'][name='isDcFlow']").val();
+		var rhanding=$form.find("input[type='hidden'][name='isDcFlow']").val();
 		
 		if(rhanding){
 			var $departmentsTRs = $form.find("#co4departmentTable tr:gt(0)");
@@ -323,15 +325,15 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 			return false;
 		
 		//下一步相关操作
-		if($form.find("input[type='radio']").size()!=0){
-			$rhandings=$form.find("input[type='radio']");
+		if($form.find("input[type='radio'][name='nextStep']").size()!=0){
+			$rhandings=$form.find("input[type='radio'][name='nextStep']");
 			var checked=false;
 			var value;
 			var name;
 			$rhandings.each(function(){
 				if($(this)[0].checked){
 					value=$(this).val();
-					name=$(this).attr("name");
+					name=$(this).attr("id");
 					checked=true;
 				}
 			});
@@ -345,8 +347,7 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 		
 		}
 	
-		
-		if($form.find(":input[type='hidden'][name='isDcFlow']").val()){
+		if($form.find(":input[type='hidden'][name='isDcFlow']").val()=="true"){
 			//先检测部门
 			var $departmentsTRs = $form.find("#co4departmentTable tr");
 			if($departmentsTRs.size()<2){

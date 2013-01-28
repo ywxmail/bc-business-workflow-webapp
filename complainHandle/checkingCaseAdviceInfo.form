@@ -10,20 +10,20 @@
 		</div>
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
-			<input type="radio" name="isReturn" value="true" data-scope="global" Style="width:auto;"/>
-			<label style="margin-left: -6px;">返回车队长核查</label>&nbsp;
-			<input type="radio" name="isReturn" value="false" data-scope="global" Style="width:auto;"/>
+			<input type="radio" name="isReturn" value="false" class="ignore" Style="width:auto;"/>
 			<label style="margin-left: -6px;">送分公司经理确认</label>
-			<input type="hidden" name="isReturn" class="ui-widget-content" value="" data-scope="global" data-type="boolean">
+			<input type="radio" name="isReturn" value="true" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">返回车队长重办</label>&nbsp;
+			<input type="hidden" name="isReturn" class="ui-widget-content" value="" data-type="boolean" data-scope="global">
 		</div>
 	<#else>
-		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;" class="ui-widget-content">
+		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;border-bottom: 0;" class="ui-widget-content">
 			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${supervisoryMemberDesc!}</pre></div>
 		</div>
 		<#if isReturn??>
 			<#if isReturn==true >
 				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-					<div style="display:inline-block;vertical-align:top;">返回车队长核查</div>
+					<div style="display:inline-block;vertical-align:top;">返回车队长重办</div>
 				</div>
 			<#else>
 				<div style="padding-left:0.5em;width:635px;">

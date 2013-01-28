@@ -81,9 +81,9 @@
 				<td class="first" style="text-align: right;">事发时间：</td>
 				<td class="middle">${case4Advice_happenDate!}</td>
 				<td class="middle" style="text-align: right;">转协查时间：</td>
-				<td class="middle">${case4InfractTrafficr_infractCode!}</td>
+				<td class="middle">${case4InfractTrafficr_turnInvestigationTime!}</td>
 				<td class="middle" style="text-align: right;">处理期限：</td>
-				<td class="last">${case4Advice_receiveCode!}</td>
+				<td class="last">${case4Advice_treatmentPeriod!}</td>
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;">投诉人姓名：</td>
@@ -91,7 +91,14 @@
 				<td class="middle" style="text-align: right;">投诉人电话：</td>
 				<td class="middle">${case4Advice_advisorPhone!}</td>
 				<td class="middle" style="text-align: right;">投诉人性别：</td>
-				<td class="last">${case4Advice_advisorSex!}</td>
+				<!--  
+				<#if case4Advice_advisorSex?number=1>
+				<td class="last">男</td>
+				<#elseif case4Advice_advisorSex?number=2>
+				<td class="last">女</td>
+				</#if>
+				-->
+				<td class="last">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;">乘车路线：</td>
@@ -109,7 +116,7 @@
 				<td class="middle" style="text-align: right;">车辆颜色：</td>
 				<td class="middle">${case4Advice_carColor!}</td>
 				<td class="middle" style="text-align: right;">站场：</td>
-				<td class="last">${case4Advice_machinePrice!}</td>
+				<td class="last">${case4Advice_yard!}</td>
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;">车票号码：</td>
@@ -123,16 +130,26 @@
 				<td class="first" Style="text-align: right;">司机特征：</td>
 				<td class="middle" colspan="3">${case4Advice_driverFeature!}</td>
 				<td class="middle" style="text-align: right;">司机性别：</td>
-				<td class="last">${case4Advice_driverSex!}</td>
+				<!--  
+				<#if case4Advice_driverSex?number=1>
+				<td class="last">男</td>
+				<#elseif case4Advice_driverSex?number=2>
+				<td class="last">女</td>
+				</#if>
+				-->
+				<td class="last">&nbsp;</td>
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;border-bottom: none;">投诉内容：</td>
 				<td class="last" style="border-bottom: none;" colspan="5">
-					<pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">
-						${case4Advice_detail!}</pre>
+					<pre class="text" style="padding:0;margin:0;width:560px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${case4Advice_detail!}</pre>
 				</td>
 			</tr>
 		</table>
+		<!--  
+		<div class="first">投诉内容：</div>
+		<pre class="text" style="padding:0;margin:0;word-break: break-all; word-wrap:break-word;font-family:inherit;">${case4Advice_detail!}</pre>
+		-->
 		</#if>
 	</div>
 </form>

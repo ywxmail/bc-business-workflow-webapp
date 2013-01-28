@@ -19,12 +19,11 @@ bswf.complainHandle.checkingCaseAdviceInfoForm = {
 					checked=true;
 				}
 			});
-			
 			if(!checked){
 				bc.msg.alert("请确认下一步相关操作！");
 				return false;
 			}else{
-				$form.find(":input[name='isReturn']").val(value);
+				$form.find(":input[type='hidden'][name='isReturn']").val(value);
 			}
 		
 		}

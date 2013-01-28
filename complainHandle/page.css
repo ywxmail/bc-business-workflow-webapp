@@ -1,0 +1,8 @@
+.paper>.rows>.row .line{
+	margin-bottom: 4px;
+	border-bottom: 1px dotted black;
+}
+
+.paper>.rows>.row .textIndent{
+	text-indent: 2em;
+}

@@ -1,0 +1,33 @@
+<form class="bc-page" data-type='form'
+	style="overflow: auto;"
+	data-namespace="bswf.complainHandle.accraditationCaseAdviceInfoAgainForm"
+	data-js='js:bc_identity,bc-business/bs.js,wf:accraditationCaseAdviceInfoAgain2Js_${pd_id}.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">营运总监意见：</div>
+			<textarea name="supervisoryMemberDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
+			<input type="radio" name="isReturn" value="false" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">送服务监督组落实客管处回复</label>
+			<input type="radio" name="isReturn" value="true" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">返回服务监督组重新确认客管处回复</label>
+			<input type="hidden" name="isReturn_lc" class="ui-widget-content" value="false" data-type="boolean">
+			<input type="hidden" name="isReturn" class="ui-widget-content" value="" data-type="boolean" data-scope="global">
+			<input type="hidden" name="finish4Majordomo" class="ui-widget-content" value='${finish4Majordomo!}' data-scope="global" />  
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;border-bottom: 0;" class="ui-widget-content">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${supervisoryMemberDesc!}</pre></div>
+		</div>
+		<#if isReturn_lc??>
+			<#if isReturn_lc==true >
+				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+					<div style="display:inline-block;vertical-align:top;">返回服务监督组重新确认客管处回复 </div>
+				</div>
+			</#if>
+		</#if>
+	</#if>
+</form>

@@ -27,16 +27,12 @@
 						value='${case4Advice_happenDate!}' data-scope="global" />
 					<input type="hidden" name="case4InfractTraffic_carId" class="ui-widget-content" 
 						value='${case4Advice_carId!}' data-scope="global" />
-					<input type="hidden" name="subject" class="ui-widget-content" 
-						value='${subject!}' data-scope="global" />  
-					<input type="hidden" name="driver_lc" class="ui-widget-content" 
-						value='${driver_lc!}'/>  
-					<input type="hidden" name="driverId_lc" class="ui-widget-content" 
-						value='${driverId_lc!}'/>  
-					<input type="hidden" name="cert4fwzg" class="ui-widget-content" 
-						value='${cert4fwzg!}' data-scope="global" />  
-					<input type="hidden" name="workDate" class="ui-widget-content" 
-						value='${workDate!}' data-scope="global" />  
+					<input type="hidden" name="subject" class="ui-widget-content" value='${subject!}' data-scope="global" />  
+					<input type="hidden" name="driver_lc" class="ui-widget-content" value='${driver_lc!}'/>  
+					<input type="hidden" name="driverId_lc" class="ui-widget-content" value='${driverId_lc!}'/>  
+					<input type="hidden" name="cert4fwzg" class="ui-widget-content" value='${cert4fwzg!}' data-scope="global" />  
+					<input type="hidden" name="workDate" class="ui-widget-content" value='${workDate!}' data-scope="global" />  
+					<input type="hidden" name="isTransact4SupervisoryMember" class="ui-widget-content" value="true" data-scope="global" data-type="boolean">
 				    <span id="addDriver" class="selectButton verticalMiddle ui-icon ui-icon-circle-plus" 
 				    	title='选择当事司机'>
 				    </span>
@@ -53,7 +49,7 @@
 			<tr>
 			 	<td class="first" colspan="6">
 					<div style="padding-left:0.5em;width:98%;">
-						<div style="display:inline-block;vertical-align:top;">安全服务统计情况：</div><br>
+						<div style="display:inline-block;vertical-align:top;">安全服务统计情况(系统自动统计，只供参考！)：</div><br>
 						<textarea  name="securityServiceInfo" class="ui-widget-content noresize" style="width:98%;border:none;height: 38px;" data-validate="required"/>
 					</div>
 				</td>
@@ -114,7 +110,7 @@
 			<tr>
 			 	<td class="first" colspan="6">
 					<div style="padding-left:0.5em;width:98%;">
-						<div style="display:inline-block;vertical-align:top;">安全服务统计情况：</div><br>
+						<div style="display:inline-block;vertical-align:top;">安全服务统计情况(系统自动统计，只供参考！)：</div><br>
 						<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${securityServiceInfo!}</pre></div>
 					</div>
 				</td>

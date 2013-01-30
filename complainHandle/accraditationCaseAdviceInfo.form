@@ -11,12 +11,13 @@
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
 			<input type="radio" id="isReturn" name="nextStep" value="false" Style="width:auto;" class="ignore"/>
-			<label style="margin-left: -6px;">送车队长回复客管处</label>
+			<label style="margin-left: -6px;">送服务监督组回复客管处</label>
 			<input type="radio" id="isDcFlow" name="nextStep" value="true" Style="width:auto;" class="ignore"/>
 			<label style="margin-left: -6px;">送相关部门协办</label>
 			<input type="radio" id="isReturn" name="nextStep" value="true" Style="width:auto;" class="ignore"/>
-			<label style="margin-left: -6px;">返回车队长重办</label>&nbsp;
+			<label style="margin-left: -6px;">返回服务监督组重办</label>&nbsp;
 			<input type="hidden" name="isReturn" class="ui-widget-content" value="false" data-type="boolean" data-scope="global">
+			<input type="hidden" name="isReturn_lc" class="ui-widget-content" value="false" data-type="boolean">
 			<input type="hidden" name="isDcFlow" class="ui-widget-content" value="false" data-type="boolean" data-scope="global">
 		</div>
 		<div id="co4department" style="display:none;" >
@@ -66,14 +67,10 @@
 				</#list>
 			</table>
 		</#if>
-		<#if isReturn??>
-			<#if isReturn==true >
+		<#if isReturn_lc??>
+			<#if isReturn_lc==true >
 				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-					<div style="display:inline-block;vertical-align:top;">返回车队长重办</div>
-				</div>
-			<#else>
-				<div style="padding-left:0.5em;width:635px;">
-					<!--  <div style="display:inline-block;vertical-align:top;">该交通违法信息未结案。</div>-->
+					<div style="display:inline-block;vertical-align:top;">返回服务监督组重办 </div>
 				</div>
 			</#if>
 		</#if>

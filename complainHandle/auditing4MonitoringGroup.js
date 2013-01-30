@@ -1,8 +1,8 @@
 bc.namespace("bswf.complainHandle");
-bswf.complainHandle.checkingCaseAdviceInfoForm = {
+bswf.complainHandle.auditing4MonitoringGroupForm = {
 		init : function(option,readonly){
 			var $form = $(this);
-			//是否返回车队长重办
+			//是否归档
 			$form.find("input[type='radio'][name='isReturn']").change(function(){
 				
 				$rhandings=$form.find("input[type='radio'][name='isReturn']");
@@ -15,34 +15,31 @@ bswf.complainHandle.checkingCaseAdviceInfoForm = {
 					}
 				});
 				if(checked && value=="true"){
+					//隐藏评分按钮
+					$form.find("#grade").hide();
 					$form.find(":input[type='hidden'][name='isReturn']").val(value);
 					$form.find(":input[type='hidden'][name='isReturn_lc']").val(value);
-					$form.find(":input[type='hidden'][name='isDelete']").val(true);
 					//添加ignore样式
-					$form.find(":input[type='hidden'][name='isTransact4BranchManager']").addClass("ignore");
+					$form.find(":input[type='hidden'][name='grade']").addClass("ignore");
 				}else{
+					//展开评分按钮
+					$form.find("#grade").show();
 					$form.find(":input[type='hidden'][name='isReturn']").val(false);
 					$form.find(":input[type='hidden'][name='isReturn_lc']").val(false);
-					$form.find(":input[type='hidden'][name='isDelete']").val(false);
 					//添加ignore样式
-					$form.find(":input[type='hidden'][name='isTransact4BranchManager']").removeClass("ignore");
+					$form.find(":input[type='hidden'][name='grade']").removeClass("ignore");
 				}
 				
 			});
 
 				
 		},	
-	
 	/** 表单验证方法 */
 	validateForm: function(){
 		$form = $(this);
-		//判断是否能办理
-		var isTransact=$form.find("input[name='isTransact4SupervisoryMember']").val();
-		if(isTransact=="false"){
-			bc.msg.alert("车队长核查处理驾驶员的客管投诉信息后才能办理！请联系车队长！");	
-			return false;
-		}
-			
+		//是否返回	
+		var isReturnValue=$form.find("input[type='hidden'][name='isReturn']").val();
+
 		if(!bc.validator.validate(this))
 			return false;
 			
@@ -66,7 +63,29 @@ bswf.complainHandle.checkingCaseAdviceInfoForm = {
 		
 		}
 		
-		$form.find("input[name='isTransact4SupervisoryMember']").val(false)
+		//投诉处理评分
+		if($form.find("input[type='radio'][name='grade']").size()!=0 && isReturnValue=="false"){
+			$rhandings=$form.find("input[type='radio'][name='grade']");
+			var checked=false;
+			var value;
+			$rhandings.each(function(){
+				if($(this)[0].checked){
+					value=$(this).val();
+					checked=true;
+				}
+			});
+			
+			if(!checked){
+				bc.msg.alert("请对投诉处理质量进行评分！");
+				return false;
+			}else{
+				$form.find(":input[name='grade']").val(value);
+			}
+		
+		}
+
+		
+
 		return true;
 	}
 	

@@ -26,7 +26,12 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 				handing_show($form.find("#co4department"));
 				$form.find(":input[name='isDcFlow']").val(value);
 			}
-	
+			if(checked && name!="isReturn" && value=="true"){
+				$form.find(":input[name='isReturn_lc']").val(true);
+			}else{
+				$form.find(":input[name='isReturn_lc']").val(false);
+			}
+	        
 			
 			
 		});
@@ -343,6 +348,7 @@ bswf.complainHandle.accraditationCaseAdviceInfoForm = {
 				return false;
 			}else{
 				$form.find(":input[name='"+name+"']").val(value);
+				$form.find(":input[name='isReturn_lc']").val(value);
 			}
 		
 		}

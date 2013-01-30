@@ -37,10 +37,17 @@ bswf.complainHandle.handleCaseAdviceInfoForm = {
 								dataType:"json",
 								data:{carManId:carMan.id,happenDate:happenDate},
 								success:function(json){
+									//组装客管投诉信息
+									var keguantousuInfo;
+									if(json.keguantousuInfo){
+										keguantousuInfo="客管投诉"+json.count4keguantousu+"宗"+"(其中"+json.keguantousuInfo+"),连本次客管投诉总计"+parseInt(json.count4keguantousu+1)+"宗";
+									}else{
+										keguantousuInfo="客管投诉:"+parseInt(json.count4keguantousu+1)+"宗";
+									}
 									//组装安全服务信息
-									var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+"客管投诉"+parseInt(json.count4keguantousu+1)+"宗、总台投诉"
+									var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、总台投诉"
 											+json.count4gongsitousu+"宗、交通违法"+json.count4jiaotongweizhang+"宗、营运违法"+json.count4yingyunweizhang
-											+"宗、事故理赔"+json.count4shigulipei+"宗(系统自动统计，只供参考！)";
+											+"宗、事故理赔"+json.count4shigulipei+"宗";
 									$form.find(":input[name='securityServiceInfo']").val(info);
 									//alert("count4keguantousu："+json.count4keguantousu+" count4gongsitousu:"+json.count4gongsitousu+" count4jiaotongweizhang:"+json.count4jiaotongweizhang+" count4yingyunweizhang:"+json.count4yingyunweizhang+" count4shigulipei:"+json.count4shigulipei)
 								}
@@ -112,13 +119,19 @@ bswf.complainHandle.handleCaseAdviceInfoForm = {
 			dataType:"json",
 			data:{carManId:ui.item.id,happenDate:happenDate},
 			success:function(json){
-				var count4keguantousu =json.count4keguantousu+1;
+				//组装客管投诉信息
+				var keguantousuInfo;
+				if(json.keguantousuInfo){
+					keguantousuInfo="客管投诉"+json.count4keguantousu+"宗"+"(其中"+json.keguantousuInfo+"),连本次客管投诉总计"+parseInt(json.count4keguantousu+1)+"宗";
+				}else{
+					keguantousuInfo="客管投诉:"+parseInt(json.count4keguantousu+1)+"宗";
+				}
 				//组装安全服务信息
-				var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+"客管投诉"+count4keguantousu+"宗、总台投诉"
+				var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、总台投诉"
 						+json.count4gongsitousu+"宗、交通违法"+json.count4jiaotongweizhang+"宗、营运违法"+json.count4yingyunweizhang
 						+"宗、事故理赔"+json.count4shigulipei+"宗";
 				$form.find(":input[name='securityServiceInfo']").val(info);
-				//alert("count4keguantousu："+json.count4keguantousu+" count4gongsitousu:"+json.count4gongsitousu+" count4jiaotongweizhang:"+json.count4jiaotongweizhang+" count4yingyunweizhang:"+json.count4yingyunweizhang+" count4shigulipei:"+json.count4shigulipei);
+				//alert("count4keguantousu："+json.count4keguantousu+" count4gongsitousu:"+json.count4gongsitousu+" count4jiaotongweizhang:"+json.count4jiaotongweizhang+" count4yingyunweizhang:"+json.count4yingyunweizhang+" count4shigulipei:"+json.count4shigulipei)
 			}
 		});
 

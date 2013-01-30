@@ -1,20 +1,21 @@
 bc.namespace("bswf.complainHandle");
-bswf.complainHandle.affirm4BranchManagerForm = {
+bswf.complainHandle.accraditationCaseAdviceInfoAgainForm = {
 	
 	/** 表单验证方法 */
 	validateForm: function(){
 		$form = $(this);
-		//判断是否能办理
-		var isTransact=$form.find("input[name='isTransact4BranchManager']").val();
-		if(isTransact=="false"){
-			bc.msg.alert("服务督办员审核驾驶员的客管投诉信息后才能办理！请联系服务督办员！");	
-			return false;
-		}
-	
+		//获取完成时间
+		$form.find("input[type='hidden'][name='finish4Majordomo']").val("");
+		var myDate = new Date();
+		var year=myDate.getFullYear();
+		var month=myDate.getMonth()+1;
+		var date=myDate.getDate();
+		$form.find("input[type='hidden'][name='finish4Majordomo']").val(year+"年"+month+"月"+date+"日");
+		
 		if(!bc.validator.validate(this))
 			return false;
 			
-		//是否返回车队长核查
+		//是否返回监督组重办
 		if($form.find("input[type='radio'][name='isReturn']").size()!=0){
 			$rhandings=$form.find("input[type='radio'][name='isReturn']");
 			var checked=false;
@@ -25,18 +26,15 @@ bswf.complainHandle.affirm4BranchManagerForm = {
 					checked=true;
 				}
 			});
-			
 			if(!checked){
 				bc.msg.alert("请确认下一步相关操作！");
 				return false;
 			}else{
-				$form.find(":input[name='isReturn']").val(value);
-				$form.find(":input[name='isReturn_lc']").val(value);
+				$form.find(":input[type='hidden'][name='isReturn']").val(value);
+				$form.find(":input[type='hidden'][name='isReturn_lc']").val(value);
 			}
 		
 		}
-		
-		$form.find("input[name='isTransact4BranchManager']").val(false)
 
 		return true;
 	}

@@ -73,7 +73,9 @@
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;">受理号：</td>
-				<td class="middle" colspan="3">${case4Advice_receiveCode!}</td>
+				<td class="middle">${case4Advice_receiveCode!}</td>
+				<td class="middle" style="text-align: right;">投诉项目：</td>
+				<td class="middle">${case4Advice_complaintsProject!}</td>
 				<td class="middle" style="text-align: right;">投诉来源：</td>
 				<td class="last">${case4Advice_from!}</td>
 			</tr>

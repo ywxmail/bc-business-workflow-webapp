@@ -39,11 +39,11 @@
 			    </td>
 				<td class="middle" style="text-align: right;">服务资格证号：</td>
 				<td class="value middle"><input type="text" value="${cert4fwzg_lc!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
-					name="cert4fwzg_lc" class="ui-widget-content" data-scope="global" />
+					name="cert4fwzg_lc" class="ui-widget-content" data-scope="global" data-validate="required"/>
 				</td>
 				<td class="middle" style="text-align: right;">入职时间：</td>
 				<td class="value last"><input type="text" value="${workDate_lc!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
-					name="workDate_lc" class="ui-widget-content"/>
+					name="workDate_lc" class="ui-widget-content" data-validate="required"/>
 				</td>
 			</tr>
 			<tr>

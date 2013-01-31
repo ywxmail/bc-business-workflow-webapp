@@ -39,11 +39,11 @@
 				<td style="text-align: right;">累计扣分：</td>
 				<td class="value"><input type="text" value="${accumulatedPoints!}"
 					name="accumulatedPoints" class="ui-widget-content"
-					data-scope="global" /></td>
+					data-scope="global" data-validate="required"/></td>
 				<td style="text-align: right;">服务资格证号：</td>
 				<td class="value"><input type="text" value="${cert4fwzg!}"
 					name="cert4fwzg" class="ui-widget-content"
-					data-scope="global" /></td>
+					data-scope="global" data-validate="required"/></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">告知时间：</td>
@@ -59,19 +59,16 @@
 				<td style="text-align: right;">剩余可用分值：</td>
 				<td class="value"><input type="text" value="${availableScore!}"
 					name="availableScore" class="ui-widget-content"
-					data-scope="global" /></td>
+					data-scope="global" data-validate="required"/></td>
 				<td style="text-align: right;">初次领证时间：</td>
 				<td class="value"><input type="text" value="${certDrivingFirstDate!}"
 					name="certDrivingFirstDate" class="ui-widget-content"
-					data-scope="global" /></td>
+					data-scope="global" data-validate="required"/></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">告知方式：</td>
 				<td class="value">
-					<!--<input type="text" value="${toldWay!}" name="toldWay" class="ui-widget-content" 
-						data-scope="global" />  -->
-					<select name="toldWay" class="ui-widget-content" 
-					        data-scope="global" >
+					<select name="toldWay" class="ui-widget-content" data-scope="global" data-validate="required">
 					        <option></option>
 							<option value="电话">电话</option>
 							<option value="信函">信函</option>
@@ -79,13 +76,11 @@
 					</select>
 				</td>
 				<td style="text-align: right;">年度发生宗数：</td>
-				<td class="value"><input type="text" value="${happenNumber!}"
-					name="happenNumber" class="ui-widget-content"
-					data-scope="global" /></td>
+				<td class="value"><input type="text" value="${happenNumber!}"name="happenNumber" class="ui-widget-content"
+					data-scope="global" data-validate="required"/></td>
 				<td style="text-align: right;">入职时间：</td>
-				<td class="value"><input type="text" value="${workDate!}"
-					name="workDate" class="ui-widget-content"
-					data-scope="global" /></td>
+				<td class="value"><input type="text" value="${workDate!}" name="workDate" class="ui-widget-content"
+					data-scope="global" data-validate="required"/></td>
 			</tr>
 		</table>
 		<#else>
@@ -116,8 +111,8 @@
 				<td class="last">${certDrivingFirstDate!}</td>
 			</tr>
 			<#if availableScore?? >
-			<#if (availableScore?number=0)>
-			<#if (toldStop== 'true' && availableScore?number=0)>
+			<#if (availableScore?number==0)>
+			<#if (toldStop== 'true' && availableScore?number==0)>
 			<tr>
 				<td class="first" style="text-align: right;">告知方式：</td>
 				<td class="middle">${toldWay!}</td>

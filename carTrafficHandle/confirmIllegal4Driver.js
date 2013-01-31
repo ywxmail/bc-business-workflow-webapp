@@ -21,6 +21,10 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 							$form.find(":input[name='workDate']").val(carMan.workDate);
 							//组装主题
 							var subject = $form.find(":input[name='subject']").val();
+							//判断组装的标题是否已经存在司机姓名，如果存在就去掉
+							if(subject.lastIndexOf(")")!=-1){
+								subject=subject.substring(0,subject.indexOf("("));
+							}
 							$form.find(":input[name='subject']").val(subject+'('+carMan.name+')');
 							//通过司机ID查找该司机的违法信息
 							var happenDate = $form.find(":input[name='case4InfractTraffic_happenDate']").val();
@@ -138,6 +142,10 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 		$form.find(":input[name='workDate']").val(ui.item.workDate);
 		//组装主题
 		var subject = $form.find(":input[name='subject']").val();
+		//判断组装的标题是否已经存在司机姓名，如果存在就去掉
+		if(subject.lastIndexOf(")")!=-1){
+			subject=subject.substring(0,subject.indexOf("("));
+		}
 		$form.find(":input[name='subject']").val(subject+'('+ui.item.name+')');
 		//通过司机ID查找该司机的违法信息
 		var happenDate = $form.find(":input[name='case4InfractTraffic_happenDate']").val();

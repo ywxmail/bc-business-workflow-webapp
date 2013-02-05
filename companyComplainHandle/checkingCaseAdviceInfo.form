@@ -1,0 +1,40 @@
+<form class="bc-page" data-type='form'
+	style="overflow: auto;"
+	data-namespace="bswf.companyComplainHandle.checkingCaseAdviceInfoForm"
+	data-js='js:bc_identity,bc-business/bs.js,wf:checkingCaseAdviceInfo2Js_${pd_id}.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'&& isTransact4SupervisoryMember==true>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">服务督办员意见：</div>
+			<textarea name="supervisoryMemberDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
+			<input type="radio" name="isReturn" value="false" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">送分公司经理确认</label>
+			<input type="radio" name="isReturn" value="true" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">返回车队长重办</label>&nbsp;
+			<input type="hidden" name="isReturn" class="ui-widget-content" value="" data-type="boolean" data-scope="global">
+			<input type="hidden" name="isReturn_lc" class="ui-widget-content" value="" data-type="boolean">
+			<input type="hidden" name="isTransact4BranchManager" value="true" data-scope="global" data-type="boolean">
+			<input type="hidden" name="isTransact4SupervisoryMember" value="true" data-scope="global" data-type="boolean">
+			<input type="hidden" name="isDelete" value="" data-scope="global" data-type="boolean">
+		</div>
+	<#elseif readonly == 'false'&& isTransact4SupervisoryMember==false>
+		<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+			<div style="display:inline-block;vertical-align:top;">车队长核查处理驾驶员的客管投诉信息后才能办理</div>
+			<input type="hidden" name="isTransact4SupervisoryMember" value="false" data-scope="global" data-type="boolean">
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;border-bottom: 0;" class="ui-widget-content">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${supervisoryMemberDesc!}</pre></div>
+		</div>
+		<#if isReturn_lc??>
+			<#if isReturn_lc==true >
+				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+					<div style="display:inline-block;vertical-align:top;">返回车队长重办</div>
+				</div>
+			</#if>
+		</#if>
+	</#if>
+</form>

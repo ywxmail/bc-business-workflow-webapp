@@ -1,0 +1,113 @@
+<form class="bc-page" data-type='form'
+	style="overflow: auto;"
+	data-namespace="bswf.complainHandle.specifiesCaseAdviceInfoForm"
+	data-js='js:bc_identity,bc-business/bs.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width: 100%;">
+		<#if readonly == 'false'>
+		<table cellspacing="2" cellpadding="0"
+			style="width: 100%; min-width: 600px;">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+		</table>
+		<#else>
+		<table cellspacing="0" cellpadding="0" class="bc-grid"
+			style="margin: 0;padding: 0;width: 100%">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">受理号：</td>
+				<td class="middle">${case4Advice_receiveCode!}</td>
+				<td class="middle" style="text-align: right;">投诉项目：</td>
+				<td class="middle">${case4Advice_complaintsProject!}</td>
+				<td class="middle" style="text-align: right;">投诉来源：</td>
+				<td class="last">${case4Advice_from!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">事发时间：</td>
+				<td class="middle">${case4Advice_happenDate!}</td>
+				<td class="middle" style="text-align: right;">接案时间：</td>
+				<td class="middle">${case4Advice_receiveDate!}</td>
+				<td class="middle" style="text-align: right;">处理期限：</td>
+				<td class="last">${case4Advice_treatmentPeriod!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">投诉人姓名：</td>
+				<td class="middle">${case4Advice_advisorName!}</td>
+				<td class="middle" style="text-align: right;">投诉人电话：</td>
+				<td class="middle">${case4Advice_advisorPhone!}</td>
+				<td class="middle" style="text-align: right;">投诉人性别：</td>
+				<!--  
+				<#if case4Advice_advisorSex?number=1>
+				<td class="last">男</td>
+				<#elseif case4Advice_advisorSex?number=2>
+				<td class="last">女</td>
+				</#if>
+				-->
+				<td class="last">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">乘车路线：</td>
+				<td class="last" colspan="5">从${case4Advice_pathFrom!}到${case4Advice_pathTo!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">乘车人数：</td>
+				<td class="middle" colspan="3">${case4Advice_number4Passenger!}</td>
+				<td class="middle" style="text-align: right;">资格证号码：</td>
+				<td class="last">${case4Advice_driverCert!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">车牌号码：</td>
+				<td class="middle">${case4Advice_carPlate!}</td>
+				<td class="middle" style="text-align: right;">车辆颜色：</td>
+				<td class="middle">${case4Advice_carColor!}</td>
+				<td class="middle" style="text-align: right;">站场：</td>
+				<td class="last">${case4Advice_yard!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">车票号码：</td>
+				<td class="middle">${case4Advice_ticket!}</td>
+				<td class="middle" style="text-align: right;">计价器显示：</td>
+				<td class="middle">${case4Advice_machinePrice!}</td>
+				<td class="middle" style="text-align: right;">实际收费：</td>
+				<td class="last">${case4Advice_charge!}</td>
+			</tr>
+			<tr>
+				<td class="first" Style="text-align: right;">司机特征：</td>
+				<td class="middle" colspan="3">${case4Advice_driverFeature!}</td>
+				<td class="middle" style="text-align: right;">司机性别：</td>
+				<!--  
+				<#if case4Advice_driverSex?number=1>
+				<td class="last">男</td>
+				<#elseif case4Advice_driverSex?number=2>
+				<td class="last">女</td>
+				</#if>
+				-->
+				<td class="last">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;border-bottom: none;">投诉内容：</td>
+				<td class="last" style="border-bottom: none;" colspan="5">
+					<pre class="text" style="padding:0;margin:0;width:560px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${case4Advice_detail!}</pre>
+				</td>
+			</tr>
+		</table>
+		<!--  
+		<div class="first">投诉内容：</div>
+		<pre class="text" style="padding:0;margin:0;word-break: break-all; word-wrap:break-word;font-family:inherit;">${case4Advice_detail!}</pre>
+		-->
+		</#if>
+	</div>
+</form>

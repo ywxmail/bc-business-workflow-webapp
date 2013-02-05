@@ -21,7 +21,7 @@ bswf.complainHandle.affirmReplyKeGuanChuForm = {
 			});
 			
 			if(!checked){
-				bc.msg.alert("请确认是否将该交通违法信息结案！");
+				bc.msg.alert("请确认是否将该客管投诉信息结案！");
 				return false;
 			}else{
 				$form.find(":input[name='isClosed']").val(value);

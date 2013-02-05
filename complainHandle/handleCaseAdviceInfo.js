@@ -45,7 +45,7 @@ bswf.complainHandle.handleCaseAdviceInfoForm = {
 										keguantousuInfo="客管投诉:"+parseInt(json.count4keguantousu+1)+"宗";
 									}
 									//组装安全服务信息
-									var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、总台投诉"
+									var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、自接投诉"
 											+json.count4gongsitousu+"宗、交通违法"+json.count4jiaotongweizhang+"宗、营运违法"+json.count4yingyunweizhang
 											+"宗、事故理赔"+json.count4shigulipei+"宗";
 									$form.find(":input[name='securityServiceInfo']").val(info);
@@ -127,7 +127,7 @@ bswf.complainHandle.handleCaseAdviceInfoForm = {
 					keguantousuInfo="客管投诉:"+parseInt(json.count4keguantousu+1)+"宗";
 				}
 				//组装安全服务信息
-				var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、总台投诉"
+				var info="该员从"+json.startDate+"起至本次事发日期止一年内发生："+keguantousuInfo+"、自接投诉"
 						+json.count4gongsitousu+"宗、交通违法"+json.count4jiaotongweizhang+"宗、营运违法"+json.count4yingyunweizhang
 						+"宗、事故理赔"+json.count4shigulipei+"宗";
 				$form.find(":input[name='securityServiceInfo']").val(info);

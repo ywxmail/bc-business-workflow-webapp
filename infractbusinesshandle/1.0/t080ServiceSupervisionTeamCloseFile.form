@@ -1,0 +1,31 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.infractBusinessInfo.serviceSupervisionTeamCloseFileForm"
+	data-js='<#if readonly == "false">wf:t080ServiceSupervisionTeamCloseFile2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">将该违章信息结案：</div>
+			<input type="radio"  name="risClosed" value="true"  class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">是</label>
+			<input type="radio"  name="risClosed" value="false" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">否</label>
+			<input type="hidden" name="isClosed" data-scope="global" data-type="boolean"/>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if isClosed??>
+			<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+				<#if isClosed>
+					>将该违章信息进行结案处理
+				<#else>
+					>该违章信息不进行结案处理
+				</#if>
+			</div>
+		</#if>
+	</#if>
+</form>

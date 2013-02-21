@@ -1,0 +1,45 @@
+<form class="bc-page" data-type='form' style="overflow:auto;"
+	data-namespace="bswf.infractBusinessInfo.serviceSupervisionTeamCheckForm"
+	data-js='<#if readonly == "false">wf:t050ServiceSupervisionTeamCheck2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;">
+			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
+			<input type="radio" name="risReturn" value="false" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">送营运总监审批</label>
+			<input type="radio" name="risReturn" value="true" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">返回车队长重办</label>
+			<input type="hidden" name="isReturn"    data-type="boolean" data-scope="global" />
+			<input type="hidden" name="isReturn_lc" data-type="boolean" />
+		</div>
+		<div id="grade" style="padding-left:0.5em;display:none;">
+			<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：</div>
+			<input type="radio" name="rGrade" value="0" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">优秀</label>
+			<input type="radio" name="rGrade" value="1" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">良好</label>
+			<input type="radio" name="rGrade" value="2" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">合格</label>
+			<input type="radio" name="rGrade" value="3" class="ignore" style="width:auto;"/>
+			<label style="margin-left: -6px;">不合格</label>
+			<input type="hidden" name="grade" class="ignore"  data-type="int" />
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;" >
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if isReturn_lc??&&isReturn_lc>
+			<div style="padding-left:0.5em;">
+				>返回车队长重办
+			</div>
+		</#if>
+		<#if grade??>
+			<div style="padding-left:0.5em;">
+				投诉处理质量评分：<#if grade==0>优秀<#elseif grade==1>良好<#elseif grade==2>合格<#else>不合格</#if>
+			</div>
+		</#if>
+	</#if>
+</form>

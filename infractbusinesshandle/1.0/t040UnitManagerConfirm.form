@@ -1,0 +1,33 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.infractBusinessInfo.unitManagerConfirmForm"
+	data-js='<#if readonly == "false">wf:t040UnitManagerConfirm2JS_${pd_id}.js</#if>' 
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;" data-validate="required" placeholder="(这里填写填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
+			<input type="radio" name="risReturn" value="false" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">送服务监督组审核</label>
+			<input type="radio" name="risReturn" value="true" class="ignore" Style="width:auto;"/>
+			<label style="margin-left: -6px;">返回车队长重办</label>
+			<input type="hidden" name="isReturn"    data-type="boolean" data-scope="global">
+			<input type="hidden" name="isReturn_lc" data-type="boolean">
+			<input type="hidden" name="task_code" 	value="${ti_key!}" class="ignore">
+			<input type="hidden" name="completeTaskCodition"  value="${completeTaskCodition!}" data-scope="global" />
+			<input type="hidden" name="completeTaskCodition_temp"  value="${completeTaskCodition!}" class="ignore" /> 
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;border-bottom: 0;" class="ui-widget-content">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if isReturn_lc??>
+			<#if isReturn_lc>
+				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
+					<div style="display:inline-block;vertical-align:top;">>返回车队长重办</div>
+				</div>
+			</#if>
+		</#if>
+	</#if>
+</form>

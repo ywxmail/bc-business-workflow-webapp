@@ -1,0 +1,189 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.requirement.developmentGroupHandleForm"
+	data-js='wf:t060DevelopmentGroupHandle2JS_${pd_id}.js,wf:departmentCooperation2JS_${pd_id}.js<#if readonly == "false">,js:bc_identity</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<#-- 设置控制流程走向变量 -- 开始 --->
+		<input type="hidden" name="isReturn" 	data-type="boolean" data-scope="global"/>
+		<input type="hidden" name="isCooperate" data-type="boolean" data-scope="global"/>
+		<#-- 设置控制流程走向变量 -- 结束 --->
+		
+		<#-- 设置临时变量 -->
+		<input type="hidden" name="_isReturn" class="ignore" value="<#if isReturn>true<#else>false</#if>"/>
+		<input type="hidden" name="_isCooperate" class="ignore" value="<#if isCooperate>true<#else>false</#if>"/>
+		
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;">
+			所属模块标识：<input type="text" name="moduleCode" class="ui-widget-content" style="width:500px;" data-scope="global" value="${moduleCode!}" />
+			<input type="hidden" name="moduleCode_lc" />
+		</div>
+		<div style="padding-left:0.5em;">
+			<input type="hidden" name="send" data-type="int"/>
+			下一步相关操作：<#-- send变量说明 1:撤销申请,2:送相关部门协办,3:送行政办公室审批,4:送开发组处理,5:送部门经理审批,6:退回,7:送申请人确认 -->	
+			<label>
+				<input type="radio" name="rsend" value="6" class="ignore" style="width:auto;" />
+				退回行政办公室
+			</label>
+			<label>
+				<input type="radio" name="rsend" value="2" class="ignore" style="width:auto;" />
+				送相关部门协办
+			</label>
+			<label>
+				<input type="radio" name="rsend" value="7" class="ignore" style="width:auto;" />
+				送申请人确认
+			</label>
+		</div>
+		<div class="co4department" style="display:none;" >
+			<input type="hidden" name="list_mc_co4department" data-type="list" class="ignore bswf-ignore"/>
+			<input type="hidden" name="list_co4departmentAndAssignee" data-scope="global" data-type="list" 	class="ignore bswf-ignore"/>
+			<div style="position:relative;border-width: 0;padding-left: 0.5em;width:635px;">
+				<span class="text">*指定协办部门和协办人:</span>
+				<ul class="inputIcons">
+					<li id="upLine"     class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+					<li id="downLine"   class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+					<li id="addLine"    class="inputIcon ui-icon ui-icon-circle-plus"    title='添加协办部门'></li>
+					<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close"   title='删除协办部门'></li>
+				</ul>
+			</div>
+			<table class="ui-widget-content bc-grid co4departmentTable" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+				<tr class="header row">
+					<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+					<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+					<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+					<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+			</table>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<input type="hidden" name="isWorkflow" data-type="boolean" data-scope="global"/>
+			<input type="hidden" name="isWorkflow_lc" data-type="boolean" />
+			关联流程：
+			<label>
+				<input type="radio" name="risWorkflow" value="true" class="ignore" style="width:auto;" />
+				是
+			</label>
+			<label>
+				<input type="radio" name="risWorkflow" value="false" class="ignore" style="width:auto;" />
+				否
+			</label>
+		</div>
+		<div class="connetionWorkflow" style="display:none;" >
+			<table cellspacing="2" cellpadding="0" style="width:640px;">
+				<tr class="widthMarker">
+					<td style="width: 80px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="label">*流程名称：</td>
+					<td class="value">
+						<input type="text" name="procinstName" class="ignore ui-widget-content bswf-required" data-scope="global" value="${procinstName!}"  />
+						<input type="hidden" name="procinstName_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">*流程ID：</td>
+					<td class="value">
+						<input type="text" name="procinstId" class="ignore ui-widget-content bswf-required" data-scope="global" value="${procinstId!}"  />
+						<input type="hidden" name="procinstId_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">*流程编码：</td>
+					<td class="value">
+						<input type="text" name="procinstKey" class="ignore ui-widget-content bswf-required" data-scope="global" value="${procinstKey!}"  />
+						<input type="hidden" name="procinstKey_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">流程主题：</td>
+					<td class="value">
+						<input type="text" name="procinstSubject" class="ignore ui-widget-content" data-scope="global" value="${procinstSubject!}" />
+						<input type="hidden" name="procinstSubject_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">任务名称：</td>
+					<td class="value">
+						<input type="text" name="procinstTaskName" class="ignore ui-widget-content" data-scope="global" value="${procinstTaskName!}"  />
+						<input type="hidden" name="procinstTaskName_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">任务ID：</td>
+					<td class="value">
+						<input type="text" name="procinstTaskId" class="ignore ui-widget-content" data-scope="global" value="${procinstTaskId!}" />
+						<input type="hidden" name="procinstTaskId_lc" class="ignore" />
+					</td>
+				</tr>
+				<tr>
+					<td class="label">任务编码：</td>
+					<td class="value">
+						<input type="text" name="procinstTaskKey" class="ignore ui-widget-content" data-scope="global" value="${procinstTaskKey!}"  />
+						<input type="hidden" name="procinstTaskKey_lc" class="ignore" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if moduleCode_lc??&&moduleCode_lc!="">
+			<div style="padding-left:0.5em;width:635px;">
+				所属模块标识：${moduleCode_lc!}
+			</div>
+		</#if>
+		<#if isWorkflow_lc??&&isWorkflow_lc>
+			<input type="hidden" name="isWorkflowed" class="ignore" value="true" />
+			<input type="hidden" value="${procinstId_lc!}" class="ignore procinstId_lc" />
+			<div style="padding-left:0.5em;">
+				关联流程：<a id="process" href="#">${procinstName_lc!}</a>
+			</div>
+			<#if procinstSubject_lc!="">
+				<div style="padding-left:0.5em;">
+					流程主题：${procinstSubject_lc}
+				</div>
+			</#if>
+			<#if procinstTaskName_lc!="">
+				<div style="padding-left:0.5em;">
+					流程任务：${procinstTaskName_lc}
+				</div>
+			</#if>
+		</#if>
+		<#if send??>
+			<#if send==2>
+				<div style="padding-left:0.5em;">
+					>送相关部门协办
+				</div>
+				<#if list_mc_co4department??>
+					<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+						<tr class="header row">
+							<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+							<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+							<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+							<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+						</tr>
+						<#list list_mc_co4department as d>
+							<tr class="ui-widget-content row">
+								<td class="first" ></td>
+								<td class="middle" style="margin:0;vertical-align:top;padding:0 2 0 2px;">
+									<div  class="text">${d.co4departmentName!}</div>
+								</td>
+								<td class="middle">
+									<div  class="text">${d.transactorNames!}</div>
+								</td>
+								<td class="last" style="border-width:1px 1px 0 1px;"></td>
+							</tr>
+						</#list>
+					</table>
+				</#if>
+			<#elseif send=6>
+				<div style="padding-left:0.5em;">
+					>退回行政办公室 
+				</div>
+			</#if>
+		</#if>
+	</#if>
+</form>

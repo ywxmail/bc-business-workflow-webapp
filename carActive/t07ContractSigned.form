@@ -1,0 +1,15 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.carActive.t07ContractSignedForm"
+	data-js='js:bc_identity,bc-business/bs.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<div style="display:inline-block;vertical-align:top;">人力资源部意见：</div>
+			<textarea name="contractSignedDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${contractSignedDesc!}</pre></div>
+		</div>
+	</#if>
+</form>

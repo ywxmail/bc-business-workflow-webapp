@@ -1,0 +1,239 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.carActive.t01SendOutInstructionsForm"
+	data-js='js:bc_identity,bc-business/bs.js,wf:t01SendOutInstructions2Js_${pd_id}.js'>
+	<div class="bc-grid header" style="padding : 0px 0px;height: 100%;">
+		<#if readonly == 'false'>
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;">
+			<tr class="widthMarker">
+				<td style="width: 70px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;text-align: center;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<!--  
+			<tr>
+				<td class="first" rowspan="2">基本<br>资料</td>
+				<td class="middle">车牌号</td>
+				<td class="middle" colspan="2">
+					<div style="position:relative;">
+						<input type="text" name="plate" value="${plate!plate_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" class="ui-widget-content" readonly="readonly" data-validate="required"/>
+						<input type="hidden" name="plate_gl" class="ui-widget-content" value="${plate!plate_gl!}" data-scope="global" />
+						<input type="hidden" name="carId_gl" class="ui-widget-content" value="${carId_gl!}" data-scope="global" />
+						<input type="hidden" name="filialeId_gl" class="ui-widget-content" value="${filialeId_gl!}" data-scope="global" data-type="long"/>
+						<ul class="inputIcons">
+							<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
+						</ul>
+					</div>
+				</td>
+				<td class="middle">出车性质</td>
+				<td class="last" >
+					<select name="carActiveType" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;">
+					        <option></option>
+							<option value="新车">新车</option>
+							<option value="重发包">重发包</option>
+							<option value="变更">变更</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle">驾驶员</td>
+				<td class="middle" colspan="2">
+					<input type="text" name="driver1_gl" class="ui-widget-content" value="${driver1_gl!}" data-scope="global" style="width: 50px;border: 0;"/>
+					<input type="text" name="driver2_gl" class="ui-widget-content" value="${driver2_gl!}" data-scope="global" style="width: 50px;border: 0;"/>
+				</td>
+				<td class="middle">营运性质</td>
+				<td class="last" >
+					<select name="bsType" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;">
+					        <option></option>
+							<option value="承包">承包</option>
+							<option value="合作">合作</option>
+							<option value="其它">其它</option>
+					</select>
+				</td>
+			</tr>-->
+			<tr>
+				<!--<td class="first">基本资料</td>-->
+				<td class="first" style="text-align: right;">车牌号:</td>
+				<td class="middle">
+					<div style="position:relative;">
+						<input type="text" name="plate_gl" value="${plate_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" class="ui-widget-content" readonly="readonly" data-validate="required"/>
+						<input type="hidden" name="plate_gl" class="ui-widget-content" value="${plate!plate_gl!}" data-scope="global" />
+						<input type="hidden" name="carId_gl" class="ui-widget-content" value="${carId_gl!}" data-scope="global" data-type="Long"/>
+						<input type="hidden" name="filialeId_gl" class="ui-widget-content" value="${filialeId_gl!}" data-scope="global" data-type="long"/>
+						<input type="hidden" name="subject" class="ui-widget-content" value='${subject!}' data-scope="global" />  
+						<ul class="inputIcons">
+							<li id="addCar" class="inputIcon ui-icon ui-icon-circle-plus" title='选择车辆'/>
+						</ul>
+					</div>
+				</td>
+				<td class="middle" style="text-align: right;">分公司:</td>
+				<td class="middle" ><input type="text" value="${filiale_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
+					name="filiale_gl" class="ui-widget-content" data-scope="global" readonly="readonly" data-validate="required"/></td>
+				<td class="middle" style="text-align: right;">车队:</td>
+				<td class="last" ><input type="text" value="${motorcadeName_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
+					name="motorcadeName_gl" class="ui-widget-content" data-scope="global" readonly="readonly" data-validate="required"/>
+					<input type="hidden" name="motorcadeId" class="ui-widget-content" value="${motorcadeId!}" data-scope="global" data-type="Long"/>					
+				</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">管理号:</td>
+				<td class="middle"><input type="text" value="${manageNo_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
+					name="manageNo_gl" class="ui-widget-content" data-scope="global" readonly="readonly" data-validate="required"/></td>
+				<td class="middle" style="text-align: right;">营运性质:</td>
+				<td class="middle" >
+					<select name="bsType" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="承包">承包</option>
+							<option value="合作">合作</option>
+							<option value="其它">其它</option>
+					</select>
+				</td>
+				<td class="middle" style="text-align: right;">出车性质:</td>
+				<td class="last" >
+					<select name="carActiveType" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="新车">新车</option>
+							<option value="重发包">重发包</option>
+							<option value="变更">变更</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" style="height: 26px;text-align: center;" rowspan="3">驾驶员<br>资料</td>
+				<td class="middle" style="height: 26px;text-align: center;">迁出人员</td>
+				<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+				<td class="middle" style="height: 26px;text-align: center;">迁入人员</td>
+				<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+				<td class="last" style="height: 26px;text-align: center;">驾驶员性质</td>
+			</tr>
+			<tr>
+				<td class="middle" >
+					<div style="position:relative;">
+						<input type="text" name="oldDriver1_gl" readonly="readonly" class="ui-widget-content" value="${oldDriver1_gl!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" data-scope="global" />
+						<ul class="inputIcons">
+							<li id="addOldDriver1" class="inputIcon ui-icon ui-icon-circle-plus" title='选择司机'/>
+						</ul>
+						<input type="hidden" name="oldDriverId1_gl" class="ui-widget-content" value="${oldDriverId1_gl!}" data-scope="global" data-type="Long"/>
+					</div>
+				</td>
+				<td class="middle" >
+					<input type="text" name="certFwzg4oldDriver1_gl" class="ui-widget-content" value="${certFwzg4oldDriver1_gl!}" style="border: 0;width: 80px;" data-scope="global" />
+				</td>
+				<td class="middle" >
+					<div style="position:relative;">
+						<input type="text" name="driver1_gl" readonly="readonly" class="ui-widget-content" value="${driver1_gl!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" data-scope="global" data-validate="required"/>
+						<ul class="inputIcons">
+							<li id="addTempDriver1" class="inputIcon ui-icon ui-icon-circle-plus" title='选择司机'/>
+						</ul>
+					</div>
+						<input type="hidden" name="driverId1_gl" class="ui-widget-content" value="${driverId1_gl!}" data-scope="global" data-type="Long"/>
+				</td>
+				<td class="middle" >
+					<input type="text" name="certFwzg4Driver1_gl" class="ui-widget-content" value="${certFwzg4Driver1_gl!}" data-scope="global" style="border: 0;width: 80px;" data-validate="required"/>
+				</td>
+				<td class="last" >
+				 	<select name="charger4driver1" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="责任人">责任人</option>
+							<option value="非责任人">非责任人</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle" >
+					<div style="position:relative;">
+						<input type="text" name="oldDriver2_gl" readonly="readonly" class="ui-widget-content" value="${oldDriver2_gl!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" data-scope="global" />
+						<ul class="inputIcons">
+							<li id="addOldDriver2" class="inputIcon ui-icon ui-icon-circle-plus" title='选择司机'/>
+						</ul>
+						<input type="hidden" name="oldDriverId2_gl" class="ui-widget-content" value="${oldDriverId2_gl!}" data-scope="global" data-type="Long"/>
+					</div>
+				</td>
+				<td class="middle" >
+					<input type="text" name="certFwzg4oldDriver2_gl" class="ui-widget-content" value="${certFwzg4oldDriver2_gl!}" style="border: 0;width: 80px;" data-scope="global" />
+				</td>
+				<td class="middle" >
+					<div style="position:relative;">
+						<input type="text" name="driver2_gl" readonly="readonly" class="ui-widget-content" value="${driver2_gl!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" data-scope="global" data-validate="required"/>
+						<ul class="inputIcons">
+							<li id="addTempDriver2" class="inputIcon ui-icon ui-icon-circle-plus" title='选择司机'/>
+						</ul>
+					</div>
+						<input type="hidden" name="driverId2_gl" class="ui-widget-content" value="${driverId2_gl!}" data-scope="global" data-type="Long"/>
+				</td>
+				<td class="middle" >
+					<input type="text" name="certFwzg4Driver2_gl" class="ui-widget-content" value="${certFwzg4Driver2_gl!}" data-scope="global" style="border: 0;width: 80px;" data-validate="required"/>
+				</td>
+				<td class="last" >
+				 	<select name="charger4driver2" class="ui-widget-content"  data-validate="required"
+					        data-scope="global" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="责任人">责任人</option>
+							<option value="非责任人">非责任人</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<#else>
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;">
+			<tr class="widthMarker">
+				<td style="width: 70px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 120px;text-align: center;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">车牌号:</td>
+				<td class="middle">${plate_gl!}</td>
+				<td class="middle" style="text-align: right;">分公司:</td>
+				<td class="middle" >${filiale_gl!}</td>
+				<td class="middle" style="text-align: right;">车队:</td>
+				<td class="middle" >${motorcadeName_gl!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">管理号:</td>
+				<td class="middle">${manageNo_gl!}</td>
+				<td class="middle" style="text-align: right;">营运性质:</td>
+				<td class="middle" >${bsType!}</td>
+				<td class="middle" style="text-align: right;">出车性质:</td>
+				<td class="last" >${carActiveType!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="height: 26px;text-align: center;" rowspan="3">驾驶员<br>资料</td>
+				<td class="middle" style="height: 26px;text-align: center;">迁出人员</td>
+				<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+				<td class="middle" style="height: 26px;text-align: center;">迁入人员</td>
+				<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+				<td class="last" style="height: 26px;text-align: center;">驾驶员性质</td>
+			</tr>
+			<tr>
+				<td class="middle" >${oldDriver1_gl!}</td>
+				<td class="middle" >${certFwzg4oldDriver1_gl!}</td>
+				<td class="middle" >${driver1_gl!}</td>
+				<td class="middle" >${certFwzg4Driver1_gl!}</td>
+				<td class="last" >${charger4driver1!}</td>
+			</tr>
+			<tr>
+				<td class="middle" >${oldDriver2_gl!}</td>
+				<td class="middle" >${certFwzg4oldDriver2_gl!}</td>
+				<td class="middle" >${driver2_gl!}</td>
+				<td class="middle" >${certFwzg4Driver2_gl!}</td>
+				<td class="last" >${charger4driver2!}</td>
+			</tr>
+		</table>
+		</#if>
+	</div>
+</form>

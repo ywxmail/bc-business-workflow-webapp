@@ -1,0 +1,179 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.infractBusinessInfo.motorcadeLeaderCheckForm"
+	data-js='<#if readonly == "false">js:bc_identity,bc-business/bs.js,wf:t020MotorcadeLeaderCheck2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width: 650px;">
+		<#if readonly == 'false'>
+		<table cellspacing="0" cellpadding="0" class="bc-grid" style="width:100%;">
+			<tr class="widthMarker" style="line-height: 1px;">
+				<td style="width: 80px;"></td>
+				<td style="width: 140px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">当事司机：</td>
+				<td class="value relative" style="border-left: 1px solid #AAA;border-bottom: 1px solid #AAA;padding:0 0 0 2px;">
+					<#if isReturn??>
+						<input name="driver" class="bc-select ui-widget-content" type="text" style="width:98%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
+							data-validate="required" data-scope="global" 
+							data-cfg='{"strict":true,"delay":100,"minLength":1, "labelMapping":"{{name}}", "valueMapping":"{{id}}","itemMapping":"TPL.BS.CARMAN_SELECT_ITEM","callback":"bswf.infractBusinessInfo.motorcadeLeaderCheckForm.afterSelectCarMan"}'
+							data-maxHeight="150px" 
+							data-source='bc-business/carMan/find?status=-1,0,1'/>
+						<input type="hidden" name="driver_lc"/>
+						<input type="hidden" name="driverId"  	data-type="Long" data-scope="global"/>
+						<input type="hidden" name="driverId_lc" data-type="Long"/>	
+					<#else>
+						<input name="driver" class="bc-select ui-widget-content" type="text" style="width:98%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"
+							data-validate="required" data-scope="global" value="${driver!}"
+							data-cfg='{"strict":true,"delay":100,"minLength":1, "labelMapping":"{{name}}", "valueMapping":"{{id}}","itemMapping":"TPL.BS.CARMAN_SELECT_ITEM","callback":"bswf.infractBusinessInfo.motorcadeLeaderCheckForm.afterSelectCarMan"}'
+							data-maxHeight="150px" 
+							data-source='bc-business/carMan/find?status=-1,0,1'/>
+						<input type="hidden" name="driver_lc"   value="${driver!}"/> 
+						<input type="hidden" name="driverId"    value="${driverId!}"  data-type="Long"	data-scope="global" />
+						<input type="hidden" name="driverId_lc"  value="${driverId!}" data-type="Long"/> 
+					</#if>
+					 
+					<input type="hidden" name="happenDate"  class="ignore" value='${happenDate!}'  />
+					<input type="hidden" name="carId"       class="ignore" value='${carId!}' 	/>
+					<input type="hidden" name="subject"                    value='${subject!}' data-scope="global" />  
+					<input type="hidden" name="completeTaskCodition"    value='t030ServiceExpediterCheck_s' data-scope="global" />  					
+				    <span id="addDriver" class="selectButton verticalMiddle ui-icon ui-icon-circle-plus" 
+				    	title='选择当事司机'>
+				    </span>
+			    </td>
+				<td class="middle" style="text-align: right;">服务资格证号：</td>
+				<td class="value middle">
+					<#if isReturn??>
+						<input type="text" name="cert4fwzg_lc"  class="ui-widget-content" data-validate="required" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"/>
+						<input type="hidden" name="cert4fwzg"   data-scope="global" />
+					<#else>
+						<input type="text" name="cert4fwzg_lc"  class="ui-widget-content" data-validate="required"  value="${cert4fwzg!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"/>
+						<input type="hidden" name="cert4fwzg" value="${cert4fwzg!}"  data-scope="global" />
+					</#if>
+				</td>
+				<td class="middle" style="text-align: right;">入职时间：</td>
+				<td class="value last">
+					<#if isReturn??>
+						<input type="text" name="workDate_lc" class="ui-widget-content" data-validate="required" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"  />
+						<input type="hidden" name="workDate"    data-scope="global" />
+					<#else>
+						<input type="text" name="workDate_lc" class="ui-widget-content" data-validate="required" value="${workDate_lc!}" 
+							style="width:90%;height:100%;border:none;margin:0;padding:0 0 2px 2px;background:none;"  />
+						<input type="hidden" name="workDate"  value="${workDate_lc!}"    data-scope="global" />
+					</#if>
+				</td>
+			</tr>
+			<tr>
+			 	<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">安全服务统计情况(系统自动统计，只供参考！)：</div><br>
+						<textarea  name="securityServiceInfo" class="ui-widget-content noresize" style="width:98%;border:none;height: 38px;" data-validate="required"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">违章事实核定情况：</div><br>
+						<textarea name="vouchFactDesc" class="autoHeight ui-widget-content" style="width:98%;border:none;" data-validate="required" placeholder="(填写事实核定情况)"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">规定处理意见：</div><br>
+						<textarea name="provisionsHandleDesc" class="autoHeight ui-widget-content" style="width:98%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2">驾驶员保证书检查情况：</td>
+				<td class="last" colspan="4" style="border-left: 0"><input type="radio" name="isGuarantee" 
+						value="0" data-scope="global" Style="width:auto;" class="ignore"/><label>已检查并上传扫描件</label>
+				  	&nbsp;<input type="radio" name="isGuarantee"  
+				  		value="1" data-scope="global" Style="width:auto;" class="ignore"/><label>无法提供</label>
+					<input type="hidden" name="isGuarantee" class="ui-widget-content" value="${isGuarantee!}" data-type="int"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="6" style="border-bottom: none;">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">车队长意见：</div><br>
+						<textarea name="view" class="autoHeight ui-widget-content" style="width:98%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<#else>
+		<table cellspacing="0" cellpadding="0" class="bc-grid"
+			style="margin: 0;padding: 0;width: 100%">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 120px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">当事司机：</td>
+				<td class="middle">${driver_lc!}</td>
+				<td class="middle" style="text-align: right;">服务资格证号：</td>
+				<td class="middle">${cert4fwzg_lc!}</td>
+				<td class="middle" style="text-align: right;">入职时间：</td>
+				<td class="last">${workDate_lc!}</td>
+			</tr>
+			<tr>
+			 	<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">安全服务统计情况(系统自动统计，只供参考！)：</div><br>
+						<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${securityServiceInfo!}</pre></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+			 	<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">违章事实核定情况：</div><br>
+						<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${vouchFactDesc!}</pre></div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+			 	<td class="first" colspan="6">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">规定处理意见：</div><br>
+						<div class="text" style="width:630px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${provisionsHandleDesc!}</pre></div>
+					</div>
+				</td>
+			</tr>
+			<#if isGuarantee??>
+			<tr>
+				<td class="first" colspan="6">
+					<#if (isGuarantee?number =0)>
+						已检查驾驶员保证书并上传保证书扫描件
+					<#else>
+						驾驶员未写保证书
+					</#if>
+				</td>
+			</tr>
+			</#if>
+			<tr>
+			 	<td class="first" colspan="6" style="border-bottom: none;">
+					<div style="padding-left:0.5em;width:98%;">
+						<div style="display:inline-block;vertical-align:top;">车队长意见：</div><br>
+						<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		</#if>
+	</div>
+</form>

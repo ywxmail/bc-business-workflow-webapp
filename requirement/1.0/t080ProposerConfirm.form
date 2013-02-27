@@ -1,0 +1,60 @@
+<form class="bc-page" data-type='form' style="overflow:auto;"
+	data-namespace="bswf.requirement.proposerConfirmForm"
+	data-js='<#if readonly == "false">wf:t080ProposerConfirm2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<input type="hidden" name="isReturn"    data-type="boolean" data-scope="global"/>
+		<input type="hidden" name="isReturn_lc" data-type="boolean"/>
+		<#-- 设置临时变量 -->
+		<input type="hidden" name="_isReturn" class="ignore" value="<#if isReturn>true<#else>false</#if>"/>
+		
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			下一步相关操作：
+			<label>
+				<input type="radio"  name="risReturn" value="false" class="ignore" style="width:auto;"/>
+				确认处理
+			</label>
+			<label>
+				<input type="radio" name="risReturn" value="true" class="ignore" style="width:auto;"/>
+				退回开发组
+			</label>
+		</div>
+		<div class="grade" style="padding-left:0.5em;display:none;">
+			处理过程满意度评分：
+			<input type="hidden" name="grade" class="ignore"  data-type="int" />
+			<label>
+				<input type="radio" name="rGrade" value="0" class="ignore" style="width:auto;"/>
+				优秀
+			</label>
+			<label>
+				<input type="radio" name="rGrade" value="1" class="ignore" style="width:auto;"/>
+				良好
+			</label>
+			<label>
+				<input type="radio" name="rGrade" value="2" class="ignore" style="width:auto;"/>
+				合格
+			</label>
+			<label>
+				<input type="radio" name="rGrade" value="3" class="ignore" style="width:auto;"/>
+				不合格
+			</label>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			<div class="text"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if isReturn_lc??&&isReturn_lc>
+			<div style="padding-left:0.5em;">
+				>退回开发组
+			</div>
+		</#if>
+		<#if grade??>
+			<div style="padding-left:0.5em;">
+				处理过程满意度评分：<#if grade==0>优秀<#elseif grade==1>良好<#elseif grade==2>合格<#else>不合格</#if>
+			</div>
+		</#if> 
+	</#if>
+</form>

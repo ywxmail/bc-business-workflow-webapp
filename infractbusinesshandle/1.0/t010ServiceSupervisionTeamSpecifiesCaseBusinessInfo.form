@@ -1,0 +1,50 @@
+<form class="bc-page" data-type='form'
+	style="overflow: auto;"
+	data-namespace="bswf.infractBusinessInfo.serviceSupervisionTeamSpecifiesCaseBusinessInfoForm"
+	data-js='js:bc_identity,bc-business/bs.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width: 100%;">
+		<#if readonly == 'false'>
+		<#else>
+		<table cellspacing="0" cellpadding="0" class="bc-grid"
+			style="margin: 0;padding: 0;width: 100%">
+			<tr class="widthMarker">
+				<td style="width: 80px;"></td>
+				<td style="width: 200px;">&nbsp;</td>
+				<td style="width: 80px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">违章类别：</td>
+				<td class="last" colspan="3"><b><#if category??><#if category==0>营运违章<#elseif category==1>站场违章<#elseif category==2>服务违章</#if></#if></b></td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">违法行为：</td>
+				<td class="last" colspan="3">${illegalSubject!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">违章地点：</td>
+				<td class="last" colspan="3">${address!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">违章日期：</td>
+				<td class="middle">${happenDate!}</td>
+				<td class="middle" style="text-align: right;">案号：</td>
+				<td class="last">${caseNo!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">自编号：</td>
+				<td class="middle">${code!}</td>
+				<td class="middle" style="text-align: right;">来源：</td>
+				<td class="last">${businessFrom!}</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: right;">车号：</td>
+				<td class="middle">${carPlate!}</td>
+				<td class="middle" style="text-align: right;">车队：</td>
+				<td class="last">${motorcadeName!}</td>
+			</tr>
+		</table>
+		</#if>
+	</div>
+</form>

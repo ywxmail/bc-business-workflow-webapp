@@ -1,0 +1,264 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.requirement.applyMatterForm"
+	data-js='wf:t010ApplyMatter2JS_${pd_id}.js,wf:departmentCooperation2JS_${pd_id}.js,js:bc_identity'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<#-- 设置控制流程走向变量 -- 开始 --->
+		<input type="hidden" name="isCancel" 	data-type="boolean" data-scope="global"/>
+		<input type="hidden" name="isReturn" 	data-type="boolean" data-scope="global"/>
+		<input type="hidden" name="isCooperate" data-type="boolean" data-scope="global"/>
+		<#if !isBanGongShi??>
+			<#if  upperCode == "bangongshi"><#-- 设置是否为办公室的人员 -->
+				<input type="hidden" name="isBanGongShi" value="true"  data-type="boolean" data-scope="global"/>
+			<#else>
+				<input type="hidden" name="isBanGongShi" value="false" data-type="boolean" data-scope="global"/>
+			</#if>
+		</#if>
+		<#-- 设置控制流程走向变量 -- 结束 --->
+		
+		<#-- 设置退回后向申请人发邮件通知控制变量 false:发送邮件 --->
+		<#if !initIgnoreSendEmail??>
+			<input type="hidden" name="initIgnoreSendEmail" data-type="boolean" data-scope="global" value="false"/>
+		</#if>
+		
+		<#-- 设置临时变量 -->
+		<input type="hidden" name="isManager" class="ignore" value="<#if isManager>true<#else>false</#if>" />
+		<input type="hidden" name="returned"  class="ignore" value="<#if isReturn??>true<#else>false</#if>" />
+		
+		<#-- 关联流程信息 -->
+		<#if isWorkflow??&&isWorkflow&&!isReturn??>
+			<input type="hidden" name="isWorkflow_lc" value="true" data-type="boolean" />
+			<input type="hidden" name="procinstId_lc" value="${procinstId!}" class="procinstId_lc" />
+			<input type="hidden" name="procinstName_lc" value="${procinstName!}" />
+			<input type="hidden" name="procinstKey_lc" value="${procinstKey!}" />
+			<input type="hidden" name="procinstSubject_lc" value="${procinstSubject!}" />
+			<input type="hidden" name="procinstTaskName_lc" value="${procinstTaskName!}" />
+			<input type="hidden" name="procinstTaskKey_lc" value="${procinstTaskKey!}" />
+			<input type="hidden" name="procinstTaskId_lc" value="${procinstTaskId!}" />
+		</#if>
+		
+		<table cellspacing="2" cellpadding="0" style="width:100%;min-width:640px;">
+			<tr class="widthMarker">
+				<td style="width: 80px;">&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<#if isWorkflow??&&isWorkflow&&!isReturn??>
+				<tr>
+					<td class="label">关联流程：</td>
+					<td class="value">
+						<a id="process" href="#">${procinstName!}</a>
+					</td>
+				</tr>
+				<#if procinstSubject??&&procinstSubject!="">
+					<tr>
+						<td class="label">流程主题：</td>
+						<td class="value">${procinstSubject!}</td>
+					</tr>
+				</#if>
+				<tr>
+					<td class="label">流程任务：</td>
+					<td class="value">${procinstTaskName!}</td>
+				</tr>
+			</#if>
+			<tr>
+				<td class="label">申请部门：</td>
+				<td class="value">${upperName!}</td>
+			</tr>
+			<tr>
+				<td class="label">*事项标题：</td>
+				<td class="value">
+					<input type="text" name="subject" class="ui-widget-content" data-scope="global" data-validate="required" />
+					<input type="hidden" name="subject_lc" />
+				</td>
+			</tr>
+			<tr>
+				<td class="topLabel">*申请事由：</td>
+				<td class="value" >
+					<textarea name="applyMatterDesc" class="autoHeight ui-widget-content" data-validate="required" data-scope="global"/>
+					<input type="hidden" name="applyMatterDesc_lc" />
+				</td>
+			</tr>
+		</table>
+		
+		<#-- 下一步相关操作的展现 --><#-- send变量说明 1:撤销申请,2:送相关部门协办,3:送行政办公室审批,4:送开发组处理,5:送部门经理审批,6:退回 -->	
+		<div style="padding-left:0.5em;">
+			<#-- 流程刚发起未出现回退时 -->
+			<#if !isReturn??>
+				<#-- 部门经理 但不是 办公室主任 -->
+				<#if isManager && upperCode != "bangongshi">
+					<input type="hidden" name="send" data-type="int"/>
+					下一步相关操作：
+					<label>
+						<input type="radio" name="rsend" value="1" class="ignore" style="width:auto;" />
+						撤销申请
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="2" class="ignore" style="width:auto;" />
+						送相关部门协办
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="3" class="ignore" style="width:auto;" />
+						送行政办公室审批
+					</label>
+				<#-- 办公室主任 -->
+				<#elseif isManager && upperCode == "bangongshi">
+					<input type="hidden" name="send" data-type="int"/>
+					下一步相关操作：
+					<label>
+						<input type="radio" name="rsend" value="1" class="ignore" style="width:auto;" />
+						撤销申请
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="2" class="ignore" style="width:auto;" />
+						送相关部门协办
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="4" class="ignore" style="width:auto;" />
+						送开发组处理
+					</label>
+				</#if>
+			<#-- 出现回退 -->
+			<#else>
+				<#-- 普通用户 -->
+				<#if !isManager>
+					<input type="hidden" name="send" data-type="int"/>
+					下一步相关操作：
+					<label>
+						<input type="radio" name="rsend" value="1" class="ignore" style="width:auto;" />
+						撤销申请
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="5" class="ignore" style="width:auto;" />
+						送部门经理审批
+					</label>
+				<#-- 非"办公室主任" 的部门经理 -->
+				<#elseif isManager && !isBanGongShi>
+					<input type="hidden" name="send" data-type="int"/>
+					下一步相关操作：
+					<label>
+						<input type="radio" name="rsend" value="1" 	class="ignore" style="width:auto;" />
+						撤销申请
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="2"  class="ignore" style="width:auto;" />
+						送相关部门协办
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="3" 	class="ignore" style="width:auto;" />
+						送行政办公室审批
+					</label>
+				<#-- 办公室主任 -->
+				<#elseif isManager && isBanGongShi>
+					<input type="hidden" name="send" data-type="int"/>
+					下一步相关操作：
+					<label>
+						<input type="radio" name="rsend" value="1" class="ignore" style="width:auto;" />
+						撤销申请
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="2" class="ignore" style="width:auto;" />
+						送相关部门协办
+					</label>
+					<label>
+						<input type="radio" name="rsend" value="4" class="ignore" style="width:auto;" />
+						送开发组处理
+					</label>
+				</#if>
+			</#if>
+		</div>
+		
+		<#if isManager>
+			<#if !manager??>
+				<input type="hidden" name="manager" value="${initiator}" data-scope="global"/>
+			</#if>
+			<div class="co4department" style="display:none;" >
+				<input type="hidden" name="list_mc_co4department" data-type="list" class="ignore bswf-ignore"/>
+				<input type="hidden" name="list_co4departmentAndAssignee" data-scope="global" data-type="list" 	class="ignore bswf-ignore"/>
+				<div style="position:relative;border-width: 0;padding-left: 0.5em;width:635px;">
+					<span class="text">*指定协办部门和协办人:</span>
+					<ul class="inputIcons">
+						<li id="upLine"     class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+						<li id="downLine"   class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+						<li id="addLine"    class="inputIcon ui-icon ui-icon-circle-plus"    title='添加协办部门'></li>
+						<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close"   title='删除协办部门'></li>
+					</ul>
+				</div>
+				<table class="ui-widget-content bc-grid co4departmentTable" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+					<tr class="header row">
+						<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+						<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+						<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+						<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+					</tr>
+				</table>
+			</div>
+		</#if>
+	<#else>
+		<#if isWorkflow_lc??&&isWorkflow_lc>
+			<input type="hidden" name="isWorkflow_lc" class="ignore" value="true" />
+			<input type="hidden" value="${procinstId_lc!}" class="ignore procinstId_lc" />
+			<div style="padding-left:0.5em;margin:4px 0 2px 0;">
+				关联流程：<a id="process" href="#">${procinstName_lc!}</a>
+			</div>
+			<#if procinstSubject_lc??&&procinstSubject_lc!="">
+				<div style="padding-left:0.5em;margin:4px 0 2px 0;">
+					流程主题：${procinstSubject_lc!}
+				</div>
+			</#if>
+			<div style="padding-left:0.5em;margin:4px 0 2px 0;">
+				流程任务：${procinstTaskName_lc!}
+			</div>
+		</#if>
+		<div style="padding-left:0.5em;margin:4px 0 2px 0;">
+			申请部门：${upperName!}
+		</div>
+		<div style="padding-left:0.5em;margin:2px 0 2px 0;">
+			事项标题：${subject_lc!}
+		</div>
+		<div style="padding-left:0.5em;margin:2px 0 2px 0;">
+				<pre class="text" style="padding:0;margin:0;width:100%;word-break: break-all; word-wrap:break-word;font-family:inherit;">申请事由：${applyMatterDesc_lc!}</pre>
+		</div>
+
+		<#if send??>
+			<#if send==1>
+				<div style="padding-left:0.5em;">
+					>撤销申请
+				</div>
+			<#elseif send==4>
+				<div style="padding-left:0.5em;">
+					>送开发组处理
+				</div>
+			<#elseif send==3>
+				<div style="padding-left:0.5em;">
+					>送行政办公室审批
+				</div>
+			<#elseif send==2>
+				<div style="padding-left:0.5em;">
+					>送相关部门协办
+				</div>
+				<#if list_mc_co4department??>
+					<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+						<tr class="header row">
+							<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+							<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+							<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+							<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+						</tr>
+						<#list list_mc_co4department as d>
+							<tr class="ui-widget-content row">
+								<td class="first" ></td>
+								<td class="middle" style="margin:0;vertical-align:top;padding:0 2 0 2px;">
+									<div  class="text">${d.co4departmentName!}</div>
+								</td>
+								<td class="middle">
+									<div  class="text">${d.transactorNames!}</div>
+								</td>
+								<td class="last" style="border-width:1px 1px 0 1px;"></td>
+							</tr>
+						</#list>
+					</table>
+				</#if>
+			</#if>
+		</#if>
+	</#if>
+</form>

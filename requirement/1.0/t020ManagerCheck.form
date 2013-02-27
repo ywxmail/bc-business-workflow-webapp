@@ -1,0 +1,107 @@
+<form class="bc-page" data-type='form' style="overflow: auto;"
+	data-namespace="bswf.requirement.managerCheckForm"
+	data-js='<#if readonly == "false">js:bc_identity,wf:t020ManagerCheck2JS_${pd_id}.js,wf:departmentCooperation2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<#-- 设置控制流程走向变量 -- 开始 --->
+		<input type="hidden" name="isReturn" 	data-type="boolean" data-scope="global"/>
+		<input type="hidden" name="isCooperate" data-type="boolean" data-scope="global"/>
+		<#-- 设置控制流程走向变量 -- 结束 --->
+		
+		<#-- 设置临时变量 -->
+		<input type="hidden" name="_isCooperate" class="ignore" value="<#if isCooperate>true<#else>false</#if>"/>
+		<input type="hidden" name="_isReturn" class="ignore" value="<#if isReturn>true<#else>false</#if>"/>
+		
+		<#-- 设置退回详细信息变量 -->
+		<input type="hidden" name="returnView" class="ignore" data-scope="global"/>
+		
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;">
+			<input type="hidden" name="send" data-type="int"/>
+			下一步相关操作：<#-- send变量说明 1:撤销申请,2:送相关部门协办,3:送行政办公室审批,4:送开发组处理,5:送部门经理审批,6:退回 -->	
+			<label>
+				<input type="radio" name="rsend" value="6" class="ignore" style="width:auto;" />
+				退回申请人
+			</label>
+			<label>
+				<input type="radio" name="rsend" value="2" class="ignore" style="width:auto;" />
+				送相关部门协办
+			</label>
+			<#if !isBanGongShi>
+				<label>
+					<input type="radio" name="rsend" value="3" class="ignore" style="width:auto;" />
+					送行政办公室审批
+				</label>
+			<#else>
+				<label>
+					<input type="radio" name="rsend" value="4" class="ignore" style="width:auto;" />
+					送开发组处理
+				</label>
+			</#if>
+		</div>
+		<div class="co4department" style="display:none;" >
+			<input type="hidden" name="list_mc_co4department" data-type="list" class="ignore bswf-ignore"/>
+			<input type="hidden" name="list_co4departmentAndAssignee" data-scope="global" data-type="list" 	class="ignore bswf-ignore"/>
+			<div style="position:relative;border-width: 0;padding-left: 0.5em;width:635px;">
+				<span class="text">*指定协办部门和协办人:</span>
+				<ul class="inputIcons">
+					<li id="upLine"     class="inputIcon ui-icon ui-icon-circle-arrow-n" title='上移选中项'></li>
+					<li id="downLine"   class="inputIcon ui-icon ui-icon-circle-arrow-s" title='下移选中项'></li>
+					<li id="addLine"    class="inputIcon ui-icon ui-icon-circle-plus"    title='添加协办部门'></li>
+					<li id="deleteLine" class="inputIcon ui-icon ui-icon-circle-close"   title='删除协办部门'></li>
+				</ul>
+			</div>
+			<table class="ui-widget-content bc-grid co4departmentTable" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+				<tr class="header row">
+					<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+					<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+					<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+					<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+			</table>
+		</div>
+	<#else>
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${view!}</pre></div>
+		</div>
+		<#if send??>
+			<#if send==2>
+				<div style="padding-left:0.5em;">
+					>送相关部门协办
+				</div>
+				<#if list_mc_co4department??>
+					<table class="ui-widget-content bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+						<tr class="header row">
+							<td class="first" style="width: 1em;border-top:1px solid #CCC;">&nbsp;</td>
+							<td class="middle" style="width: 10em;border-top:1px solid #CCC;">协办部门</td>
+							<td class="middle" style="width: 35em;border-top:1px solid #CCC;">协办人</td>
+							<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+						</tr>
+						<#list list_mc_co4department as d>
+							<tr class="ui-widget-content row">
+								<td class="first" ></td>
+								<td class="middle" style="margin:0;vertical-align:top;padding:0 2 0 2px;">
+									<div  class="text">${d.co4departmentName!}</div>
+								</td>
+								<td class="middle">
+									<div  class="text">${d.transactorNames!}</div>
+								</td>
+								<td class="last" style="border-width:1px 1px 0 1px;"></td>
+							</tr>
+						</#list>
+					</table>
+				</#if>
+			<#elseif send=6>
+				<div style="padding-left:0.5em;">
+					>退回申请人 
+				</div>
+			<#elseif send=4>
+				<div style="padding-left:0.5em;">
+					>送开发组处理 
+				</div>
+			</#if>
+		</#if>
+	</#if>
+</form>

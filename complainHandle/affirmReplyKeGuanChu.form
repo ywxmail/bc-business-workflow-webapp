@@ -9,7 +9,7 @@
 			<textarea name="fuwujianduzuDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
 		</div>
 		<div style="padding-left:0.5em;width:635px;" id="isClosed">
-			<div style="display:inline-block;vertical-align:top;">是否将该交通违法信息结案：</div>
+			<div style="display:inline-block;vertical-align:top;">是否将该客管投诉信息结案：</div>
 			<input type="radio" name="isClosed" value="true" class="ignore" Style="width:auto;"/>
 			<label style="margin-left: -6px;">是</label>&nbsp;
 			<input type="radio" name="isClosed" value="false" class="ignore" Style="width:auto;"/>

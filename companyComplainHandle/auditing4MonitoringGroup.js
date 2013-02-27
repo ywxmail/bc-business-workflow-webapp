@@ -15,19 +15,11 @@ bswf.companyComplainHandle.auditing4MonitoringGroupForm = {
 					}
 				});
 				if(checked && value=="true"){
-					//隐藏评分按钮
-					$form.find("#grade").hide();
 					$form.find(":input[type='hidden'][name='isReturn']").val(value);
 					$form.find(":input[type='hidden'][name='isReturn_lc']").val(value);
-					//添加ignore样式
-					$form.find(":input[type='hidden'][name='grade']").addClass("ignore");
 				}else{
-					//展开评分按钮
-					$form.find("#grade").show();
 					$form.find(":input[type='hidden'][name='isReturn']").val(false);
 					$form.find(":input[type='hidden'][name='isReturn_lc']").val(false);
-					//添加ignore样式
-					$form.find(":input[type='hidden'][name='grade']").removeClass("ignore");
 				}
 				
 			});
@@ -62,28 +54,6 @@ bswf.companyComplainHandle.auditing4MonitoringGroupForm = {
 			}
 		
 		}
-		
-		//投诉处理评分
-		if($form.find("input[type='radio'][name='grade']").size()!=0 && isReturnValue=="false"){
-			$rhandings=$form.find("input[type='radio'][name='grade']");
-			var checked=false;
-			var value;
-			$rhandings.each(function(){
-				if($(this)[0].checked){
-					value=$(this).val();
-					checked=true;
-				}
-			});
-			
-			if(!checked){
-				bc.msg.alert("请对投诉处理质量进行评分！");
-				return false;
-			}else{
-				$form.find(":input[name='grade']").val(value);
-			}
-		
-		}
-
 		
 
 		return true;

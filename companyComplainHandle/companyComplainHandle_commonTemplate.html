@@ -110,9 +110,6 @@
 							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
 								<pre class="content value">>返回车队长重办</pre>
 							</#if>
-							<#if t.vs.grade??>
-								<pre class="content">投诉处理质量评分：<span class="value"><#if t.vs.grade=0>优秀<#elseif t.vs.grade=1>良好<#elseif t.vs.grade=2>合格<#elseif t.vs.grade=3>不合格</#if></span></pre>
-							</#if>
 							<#if t.vs.supervisoryMemberDesc??&&t.vs.supervisoryMemberDesc != "">
 								<pre class="content value">${t.vs.supervisoryMemberDesc!}</pre>
 							</#if>
@@ -124,7 +121,7 @@
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t060AccraditationCaseAdviceInfo"><#-- 营运总监审批 -->
+		<#elseif t.code=="t060AccraditationCaseAdviceInfo"><#-- 服务副总审批 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
@@ -132,8 +129,8 @@
 							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
 								<pre class="content value">>返回服务监督组重办</pre>
 							</#if>
-							<#if t.vs.isDcFlow_lc??&&t.vs.isDcFlow_lc>
-								<pre class="content value">>送相关部门协办</pre>
+							<#if t.vs.grade??>
+								<pre class="content">投诉处理质量评分：<span class="value"><#if t.vs.grade=0>优秀<#elseif t.vs.grade=1>良好<#elseif t.vs.grade=2>合格<#elseif t.vs.grade=3>不合格</#if></span></pre>
 							</#if>
 							<#if t.vs.majordomoDesc??&&t.vs.majordomoDesc != "">
 								<pre class="content value">${t.vs.majordomoDesc!}</pre>
@@ -141,23 +138,25 @@
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">营运总监审批</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">服务副总审批</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t070DepartmentCooperation"><#-- 相关部门协办 -->
+		<#elseif t.code=="t080CloseCase4MonitoringGroup"><#-- 服务监督组结案 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<#if t.vs.view??&&t.vs.view != "">
-								<pre class="content value">${t.vs.view!}</pre>
+							<#if t.vs.fuwujianduzuDesc??&&t.vs.fuwujianduzuDesc != "">
+								<pre class="content">服务监督组意见：</pre>
+								<pre class="content value textIndent">${t.vs.fuwujianduzuDesc!}</pre>
+								<pre class="content value textIndent"><#if vs.isClosed??><#if vs.isClosed==true>该自接投诉信息已结案<#else>该自接投诉信息未结案</#if></#if></pre>
 							</#if>
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">相关部门协办（${t.vs.mname!}）</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">服务监督组结案</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>

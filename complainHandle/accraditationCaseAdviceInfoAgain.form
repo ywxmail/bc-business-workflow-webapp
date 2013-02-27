@@ -5,7 +5,7 @@
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;width:635px;">
-			<div style="display:inline-block;vertical-align:top;">营运总监意见：</div>
+			<div style="display:inline-block;vertical-align:top;">服务副总意见：</div>
 			<textarea name="supervisoryMemberDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
 		</div>
 		<div style="padding-left:0.5em;width:635px;">

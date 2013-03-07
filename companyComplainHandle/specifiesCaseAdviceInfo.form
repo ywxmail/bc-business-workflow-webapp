@@ -36,10 +36,12 @@
 				<td class="last">${case4Advice_from!}</td>
 			</tr>
 			<tr>
-				<td class="first" style="text-align: right;">事发时间：</td>
-				<td class="middle">${case4Advice_happenDate!}</td>
-				<td class="middle" style="text-align: right;">接案时间：</td>
+				<!--  <td class="first" style="text-align: right;">事发时间：</td>
+				<td class="middle">${case4Advice_happenDate!}</td>-->
+				<td class="first" style="text-align: right;">接案时间：</td>
 				<td class="middle">${case4Advice_receiveDate!}</td>
+				<td class="middle" style="text-align: right;">乘车时间：</td>
+				<td class="middle">${case4Advice_ridingTime!}</td>
 				<td class="middle" style="text-align: right;">处理期限：</td>
 				<td class="last">${case4Advice_treatmentPeriod!}</td>
 			</tr>
@@ -49,13 +51,11 @@
 				<td class="middle" style="text-align: right;">投诉人电话：</td>
 				<td class="middle">${case4Advice_advisorPhone!}</td>
 				<td class="middle" style="text-align: right;">投诉人性别：</td>
-				<!--  
 				<#if case4Advice_advisorSex?number=1>
 				<td class="last">男</td>
 				<#elseif case4Advice_advisorSex?number=2>
 				<td class="last">女</td>
 				</#if>
-				-->
 				<td class="last">&nbsp;</td>
 			</tr>
 			<tr>
@@ -71,10 +71,12 @@
 			<tr>
 				<td class="first" style="text-align: right;">车牌号码：</td>
 				<td class="middle">${case4Advice_carPlate!}</td>
+				<td class="middle" style="text-align: right;">车队：</td>
+				<td class="middle">${motorcade!}</td>
 				<td class="middle" style="text-align: right;">车辆颜色：</td>
-				<td class="middle">${case4Advice_carColor!}</td>
-				<td class="middle" style="text-align: right;">站场：</td>
-				<td class="last">${case4Advice_yard!}</td>
+				<td class="last">${case4Advice_carColor!}</td>
+				<!--  <td class="middle" style="text-align: right;">站场：</td>
+				<td class="last">${case4Advice_yard!}</td>-->
 			</tr>
 			<tr>
 				<td class="first" style="text-align: right;">车票号码：</td>
@@ -88,13 +90,11 @@
 				<td class="first" Style="text-align: right;">司机特征：</td>
 				<td class="middle" colspan="3">${case4Advice_driverFeature!}</td>
 				<td class="middle" style="text-align: right;">司机性别：</td>
-				<!--  
 				<#if case4Advice_driverSex?number=1>
 				<td class="last">男</td>
 				<#elseif case4Advice_driverSex?number=2>
 				<td class="last">女</td>
 				</#if>
-				-->
 				<td class="last">&nbsp;</td>
 			</tr>
 			<tr>

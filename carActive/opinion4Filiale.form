@@ -1,9 +1,0 @@
-<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
-	data-namespace="bswf.carActive.opinion4FilialeForm"
-	data-js='js:bc_identity,bc-business/bs.js'>
-	<div class="value" style="display: inline-block;height: 21px;padding: 2px;">同意上述驾驶员迁入第	<input type="text" name="filiale_gl" value="${filiale_gl!}" 
-		 class="ui-widget-content" style="width: 52px;border-left: 0;border-right: 0;border-top: 0;height: 16px;border-color: black;margin: 0;padding: 0.5px;"/>
-		 第<input type="text" name="motorcade_gl" value="${motorcade_gl!}" 
-		 class="ui-widget-content" style="width: 13px;border-left: 0;border-right: 0;border-top: 0;height: 16px;border-color: black;margin: 0;padding: 0.5px;"/>车队。
-	</div>
-</form>

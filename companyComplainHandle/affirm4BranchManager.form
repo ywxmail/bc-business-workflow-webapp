@@ -20,7 +20,7 @@
 		</div>
 	<#elseif readonly == 'false'&& isTransact4SupervisoryMember==false>
 		<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-			<div style="display:inline-block;vertical-align:top;">服务督办员审核驾驶员的客管投诉信息后才能办理</div>
+			<div style="display:inline-block;vertical-align:top;">服务督办员审核驾驶员的自接投诉信息后才能办理</div>
 			<input type="hidden" name="isTransact4BranchManager" value="false" data-scope="global" data-type="boolean">
 		</div>
 	<#else>

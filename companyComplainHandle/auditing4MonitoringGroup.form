@@ -11,23 +11,11 @@
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">下一步相关操作：</div>
 			<input type="radio" name="isReturn" value="false" class="ignore" Style="width:auto;"/>
-			<label style="margin-left: -6px;">送营运总监审批</label>
+			<label style="margin-left: -6px;">送服务副总审批</label>
 			<input type="radio" name="isReturn" value="true" class="ignore" Style="width:auto;"/>
 			<label style="margin-left: -6px;">返回车队长重办</label>&nbsp;
 			<input type="hidden" name="isReturn" class="ui-widget-content" value="" data-type="boolean" data-scope="global">
 			<input type="hidden" name="isReturn_lc" class="ui-widget-content" value="" data-type="boolean">
-		</div>
-		<div style="padding-left:0.5em;width:635px;" id="grade">
-			<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：</div>
-			<input type="radio" name="grade" value="0" class="ignore" Style="width:auto;"/>
-			<label style="margin-left: -6px;">优秀</label>&nbsp;
-			<input type="radio" name="grade" value="1" class="ignore" Style="width:auto;"/>
-			<label style="margin-left: -6px;">良好</label>
-			<input type="radio" name="grade" value="2" class="ignore" Style="width:auto;"/>
-			<label style="margin-left: -6px;">合格</label>&nbsp;
-			<input type="radio" name="grade" value="3" class="ignore" Style="width:auto;"/>
-			<label style="margin-left: -6px;">不合格</label>
-			<input type="hidden" name="grade" class="ui-widget-content" value="" data-type="int">
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;border-left: 0;border-right: 0;border-top: 0;border-bottom: 0;" class="ui-widget-content">
@@ -39,25 +27,6 @@
 					<div style="display:inline-block;vertical-align:top;">返回车队长重办</div>
 				</div>
 			</#if>
-		<#if grade??>
-			<#if grade==0>
-				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-					<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：优秀</div>
-				</div>
-			<#elseif grade==1>
-				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-					<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：良好</div>
-				</div>
-			<#elseif grade==2>
-				<div style="padding-left:0.5em;width:635px;border-top: 1px;">
-					<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：合格</div>
-				</div>
-			<#else>
-				<div style="padding-left:0.5em;width:635px;">
-					<div style="display:inline-block;vertical-align:top;">投诉处理质量评分：不合格</div>
-				</div>
-			</#if>
-		</#if>
 		</#if>
 	</#if>
 </form>

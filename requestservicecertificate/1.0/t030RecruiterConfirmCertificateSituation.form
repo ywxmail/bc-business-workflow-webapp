@@ -1,0 +1,106 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.recruiterConfirmCertificateSituationForm"
+	data-js='<#if readonly == "false">wf:t030RecruiterConfirmCertificateSituation2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width:640px;">
+		<#if readonly == 'false'>
+			<div style="padding-left:0.5em;">
+				*下一步相关操作：
+				<input type="hidden" name="isGiveUp" data-scope="global" data-type="boolean" />
+				<input type="hidden" name="isGiveUp_lc"  data-type="boolean" />
+				<label>
+					<input type="radio"  name="risGiveUp" value="false"  class="ignore" style="width:auto;" />
+					送盖章
+				</label>
+				<label>
+					<input type="radio"  name="risGiveUp" value="true" 	class="ignore" 	style="width:auto;" />
+					送审批（司机放弃办证）
+				</label>
+			</div>
+			<input type="hidden" name="pid" class="ignore" value="${pi_id}"/>
+			<input type="hidden" name="tid" class="ignore" value="${ti_id}"/>
+			<input type="hidden" name="company" class="ignore" value="${company}"/>
+			<div class="situation" style="display:none;">
+				<input type="hidden" name="list_situation" data-scope="global" class="ignore" />
+				<input type="hidden" name="list_situation_lc"  class="ignore" />
+				<table class="bc-grid situation4table" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+					<tr class="header">
+						<td class="first"  style="width: 4em;border-top:1px solid #CCC;">姓名</td>
+						<td class="middle" style="width: 10em;border-top:1px solid #CCC;">*原服务资格证情况</td>
+						<td class="middle" style="width: 30em;border-top:1px solid #CCC;">附件操作</td>
+						<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+					</tr>
+					<#list list_driver?sort_by("no") as driver>
+						<tr class="ui-widget-content row" data-id="${driver.id}" data-applyAttrType="${driver.applyAttrType!}">
+							<td class="first">${driver.name}</td>
+							<td class="middle" style="padding:0 0 0 2px;">
+								<select class="ignore bswf-required" style="border:none;" data-scope="global">
+									<option value=""></option>
+									<option value="1">已从原公司迁出</option>
+									<option value="2">未从原公司迁出</option>
+									<option value="3">新考</option>
+								</select>
+							</td>
+							<td class="middle" style="text-align:center;padding:0 0 0 2px;">
+								<span class="bswf-addAttach-fwzg-apply text link">点击添加服务资格证申领表</span>&nbsp;&nbsp;<span class="bswf-addAttach-fwzg-myzsq text link"></span>
+							</td>
+							<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+						</tr>
+					</#list>	
+				</table>
+				<div style="padding-left:0.5em;margin-bottom:4px;">
+					*办证方式：<select name="certificateMode" class="ignore ui-widget-content bswf-required" data-scope="global" style="width:8em;" data-type="int">
+										<option value=""></option>
+										<option value="1">摇珠认证</option>
+										<option value="2">公共替班</option>
+									 </select>
+					<input type="hidden" name="certificateMode_lc" class="ignore" data-type="int"/>
+				</div>
+			</div>
+			<div class="giveUp4cause" style="padding-left:0.5em;display:none;" >
+				<div style="display:inline-block;vertical-align:top;">*放弃原因：</div>
+				<textarea name="giveUp4cause"  data-scope="global" rows="3" style="width:80%;" class="ignore ui-widget-content noresize bswf-required" ></textarea>
+				<input type="hidden" name="giveUp4cause_lc" class="ignore" />
+			</div>
+		<#else>
+			<#if isGiveUp_lc??>
+				<#if isGiveUp_lc>
+					<div style="padding-left:0.5em;">
+						><b>送审批（司机放弃办证）</b>
+					</div>
+					<div style="padding-left:0.5em;">
+						<div style="display:inline-block;vertical-align:top;">放弃原因：</div>
+						<div class="text" style="word-break: break-all;display:inline-block;width:80%;">${giveUp4cause_lc!}</div>
+					</div>
+				<#else>
+					<div style="padding-left:0.5em;">
+						>送盖章
+					</div>
+					<table class="bc-grid" cellspacing="0" cellpadding="0" style="margin-top:4px;margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+						<tr class="header row">
+							<td class="first"  style="width: 4em;border-top:1px solid #CCC;">姓名</td>
+							<td class="middle" style="width: 10em;border-top:1px solid #CCC;">服务资格证情况</td>
+							<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+						</tr>
+						<#list list_driver?sort_by("no") as driver>
+							<#list list_situation_lc as st>
+								<#if driver.id==st.driverId>
+									<tr class="ui-widget-content row">		
+										<td class="first">${driver.name}</td>
+										<td class="middle" style="padding:0 0 0 2px;">
+											<#if st.status=="1">已从原公司迁出<#elseif st.status=="2">未从原公司迁出<#else>新考</#if>
+										</td>
+										<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+									</tr>
+								</#if>
+							</#list>
+						</#list>	
+					</table>
+					<div style="padding-left:0.5em;">
+						办证方式：<#if certificateMode_lc==1>摇珠认证<#else>公共替班</#if>
+					</div>
+				</#if>
+			</#if>
+		</#if>
+	</div>
+</form>

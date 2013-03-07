@@ -1,0 +1,14 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.financeAccountDirectorConfirmForm"
+	data-js='<#if readonly == "false">wf:t090FinanceAccountDirectorConfirm2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+	<#else>	
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;word-break: break-all">${view!}</div>
+		</div>
+	</#if>
+</form>

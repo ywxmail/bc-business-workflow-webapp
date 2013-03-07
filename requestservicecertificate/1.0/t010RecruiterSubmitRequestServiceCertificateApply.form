@@ -1,0 +1,87 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.recruiterSubmitRequestServiceCertificateApplyForm"
+	data-js='wf:t010RecruiterSubmitRequestServiceCertificateApply2JS_${pd_id}.js'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>" >
+	<div style="width:640px;">
+		<div style="padding-left: 0.5em;">
+			司机信息：
+		</div>
+		<table class="bc-grid" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+			<tr class="header row">
+				<td class="first"  style="width: 1em;border-top:1px solid #CCC;">序号</td>
+				<td class="middle" style="width: 4em;border-top:1px solid #CCC;">姓名</td>
+				<td class="middle" style="width: 11.5em;border-top:1px solid #CCC;">身份证</td>
+				<td class="middle" style="width: 8em;border-top:1px solid #CCC;">从业资格证</td>
+				<td class="middle" style="width: 14em;border-top:1px solid #CCC;">参与的入职审批流程</td>
+				<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+			</tr>
+			<#if list_driver??>
+			<#list list_driver?sort_by("no") as driver>
+				<tr class="ui-widget-content row">
+					<td class="first">${driver.no}</td>
+					<td class="middle" style="textAlign:left;padding:0 0 0 2px;">
+						<a href="#" class="bswf-requestServiceCertificate-driverName" data-id="${driver.id}" >${driver.name}</a>
+					</td>
+					<td class="middle" style="textAlign:left;padding:0 0 0 2px;">${driver.certIdentity}</td>
+					<td class="middle" style="textAlign:left;padding:0 0 0 2px;">${driver.certCYZG}</td>
+					<td class="middle" style="textAlign:left;padding:0 0 0 2px;">
+						<a href="#" class="bswf-requestServiceCertificate-processName" data-id="${driver.pid}" >${driver.pname}</a>
+					</td>
+					<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+			</#list>
+			</#if>
+		</table>
+		
+		<#if readonly == 'false'>
+			<div style="padding-left: 0.5em;">
+				*所属公司：<select name="company" class="ui-widget-content" data-scope="global" style="width:8em;" data-validate="required" data-type="int" >
+									<option value=""></option>
+									<option value="1">宝城</option>
+									<option value="2">广发</option>
+								</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				*办证资料：<select name="certificateInfo" class="ui-widget-content" data-scope="global" style="width:8em;" data-validate="required" data-type="int" >
+							<option value=""></option>
+							<option value="1">已收齐</option>
+							<option value="2">未收齐</option>
+						</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				*办证费用：<input type="text" name="certificateFee" class="ui-widget-content" data-scope="global" style="width:8em;"
+						data-validate='{"required":true,"type":"number"}' />元
+			</div>
+			<div style="padding-left: 0.5em;">
+				*收取定金：
+				<label>
+					<input type="radio"  name="risPayDeposit" value="true"  class="ignore" style="width:auto;"/>
+					是
+				</label>
+				<label>
+					<input type="radio"  name="risPayDeposit" value="false" class="ignore" style="width:auto;"/>
+					否
+				</label>
+				<input type="hidden" name="isPayDeposit" data-scope="global" data-type="boolean"/>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="preNewCarDeposit" style="display:none;" >
+				*通知收取定金：<input type="text" name="preNewCarDeposit" class="ui-widget-content" data-scope="global" style="width:8em;" />元
+				</div>		
+			</div>
+		<#else>
+			<div style="padding-left: 0.5em;">
+				所属公司：<#if company??><#if company==1>宝城<#else>广发</#if></#if>,
+				&nbsp;&nbsp;
+				办证资料：<#if certificateInfo??><#if certificateInfo==1>已收齐<#else>未收齐</#if></#if>,
+				&nbsp;&nbsp;
+				办证费用：${certificateFee!}元
+			</div>
+			<div style="padding-left: 0.5em;">
+				<#if isPayDeposit??><#if isPayDeposit>>收取定金<#else>>不需收取定订金</#if></#if>
+			</div>
+			<#if preNewCarDeposit??&&preNewCarDeposit!="">
+				<div style="padding-left: 0.5em;">
+					通知收取定金：${preNewCarDeposit!}元
+				</div>
+			</#if>
+		</#if>
+	</div>
+</form>

@@ -1,0 +1,74 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.merchandiserCertificateForm"
+	data-js='<#if readonly == "false">wf:t060MerchandiserCertificate2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width:640px;">
+		<div style="padding-left:0.5em;">
+			服务资格证办理情况：
+		</div>
+		<#if readonly == 'false'>
+			<input type="hidden" name="list_result" data-scope="global" />
+			<table class="bc-grid cert4table" cellspacing="0" cellpadding="0" style="margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+				<tr class="header">
+					<td class="first"  style="width: 4em;border-top:1px solid #CCC;">姓名</td>
+					<td class="middle" style="width: 8em;border-top:1px solid #CCC;">*办证结果</td>
+					<td class="middle" style="width: 12em;border-top:1px solid #CCC;">服务资格证号</td>
+					<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+				</tr>
+				<#list list_driver?sort_by("no") as driver>
+					<tr class="ui-widget-content row" data-id="${driver.id}">
+						<td class="first">${driver.name}</td>
+						<td class="middle" style="padding:0 0 0 2px;">
+							<select class="ignore result" style="border:none;" data-scope="global" data-validate="required">
+								<option value=""></option>
+								<option value="1">成功</option>
+								<option value="2">失败</option>
+							</select>
+						</td>
+						<td class="middle" style="padding:0 0 0 2px;">
+							<input type="text" class="ignore bswf-required" style="border:none;background:none;width:100%;"/>
+						</td>
+						<td class="last" style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+					</tr>
+				</#list>	
+			</table>
+			<div class="loss4cause" style="padding-left:0.5em;display:none;" >
+				<div style="display:inline-block;vertical-align:top;">*失败原因：</div>
+				<textarea name="loss4cause"  data-scope="global" rows="3" style="width:80%;" class="ignore ui-widget-content noresize" ></textarea>
+			</div>
+		<#else>
+			<#if list_result??>
+				<table class="bc-grid" cellspacing="0" cellpadding="0" style="margin-top:4px;margin-bottom:4px;width:100%;border-width:0 0 0 0;">
+					<tr class="header row">
+						<td class="first"  style="width: 4em;border-top:1px solid #CCC;">姓名</td>
+						<td class="middle" style="width: 8em;border-top:1px solid #CCC;">办证结果</td>
+						<td class="middle" style="width: 12em;border-top:1px solid #CCC;">服务资格证号</td>
+						<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+					</tr>
+					<#list list_driver?sort_by("no") as driver>
+						<#list list_result as r>
+							<#if driver.id==r.driverId>
+								<tr class="ui-widget-content row">		
+									<td class="first">${driver.name}</td>
+									<td class="middle" style="padding:0 0 0 2px;">
+										<#if r.result=="1">成功<#else>失败</#if>
+									</td>
+									<td class="middle" style="padding:0 0 0 2px;">
+										${r.certFWZG!}
+									</td>
+									<td class="last"   style="min-width: 0.01em;border-width:1px 1px 0 1px;"></td>
+								</tr>
+							</#if>
+						</#list>
+					</#list>	
+				</table>
+			</#if>	
+			<#if loss4cause??&&loss4cause!="">
+				<div style="padding-left:0.5em;">
+					<div style="display:inline-block;vertical-align:top;">失败原因：</div>
+					<div class="text" style="word-break: break-all;display:inline-block;width:80%;">${loss4cause!}</div>
+				</div>
+			</#if>
+		</#if>
+	</div>
+</form>

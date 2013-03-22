@@ -2,95 +2,182 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>驾驶员客管投诉处理审批表</title>
+<title>驾驶员出车审批表</title>
 <link rel="stylesheet" type="text/css" href='${SystemContext.getAttr("htmlPageNamespace")}/bc-workflow/page.css?ts=${SystemContext.getAttr("appTs")}' />
 <link rel="stylesheet" type="text/css" media="print" href='${SystemContext.getAttr("htmlPageNamespace")}/bc-workflow/print/page.css?ts=${SystemContext.getAttr("appTs")}' />
 <link rel="stylesheet" type="text/css" href='${SystemContext.getAttr("htmlPageNamespace")}/bc-business-workflow/complainHandle/page.css?ts=${SystemContext.getAttr("appTs")}' />
 </head>
 <body>
 <div class="paper">
-	<h1 class="title">驾驶员客管投诉处理审批表</h1>
-	<div style="text-align: right;" >受理号：${vs.case4Advice_receiveCode!}</div>
+	<h1 class="title">驾驶员出车审批表</h1>
 <div class="rows">
-	<table cellspacing="0" cellpadding="0" class="row" style="margin: 0;padding: 0;width: 100%;">
-		<tr class="widthMarker">
-			<td style="width: 5em;">&nbsp;</td>
-			<td style="width: 7em;">&nbsp;</td>
-			<td style="width: 5em;">&nbsp;</td>
-			<td style="width: 7em;">&nbsp;</td>
-			<td style="width: 5em;">&nbsp;</td>
-			<td style="width: 7em;">&nbsp;</td>
-			<td style="width: 7em;">&nbsp;</td>
-			<td >&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="first" style="text-align: right;border-bottom-width:0;">单位：</td>
-			<td class="middle value" style="border-bottom-width:0;" >${vs.filiale!}</td>
-			<td class="middle" style="text-align: right;border-bottom-width:0;">车队：</td>
-			<td class="middle value" style="border-bottom-width:0;">${vs.motorcade!}</td>
-			<td class="middle" style="text-align: right;border-bottom-width:0;">车号：</td>
-			<td class="middle value" style="border-bottom-width:0;">${vs.case4Advice_carPlate!}</td>
-			<td class="middle" style="text-align: right;border-bottom-width:0;">投诉项目：</td>
-			<td class="last value" style="border-bottom-width:0;">${vs.case4Advice_complaintsProject!}</td>
-		</tr>
-	</table>
 <#if tasks??>
 	<#list tasks?sort_by("endTime") as t>
-		<#if t.code=="t020HandleCaseAdviceInfo"><#-- 车队长确认违法驾驶员 -->
+		<#if t.code=="t02CertificateApproval"><#-- 合同管理员审验证件 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr class="widthMarker">
+					<td style="width: 70px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;text-align: center;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" rowspan="11" style="text-align: center;border-bottom-width:0;">证<br>件<br>审<br>验</td>
+					<td class="middle" style="text-align: center;" colspan="2">证件及资料</td>
+					<td class="middle" style="text-align: center;">驾驶员1</td>
+					<td class="middle" style="text-align: center;">驾驶员2</td>
+					<td class="last" style="text-align: center;">备注</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*身份证</td>
+					<td class="middle">${t.vs.identityCard4Driver1!}</td>
+					<td class="middle">${t.vs.identityCard4Driver2!}</td>
+					<td class="last">${t.vs.identityCard4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*户口簿</td>
+					<td class="middle">${t.vs.residenceBooklet4Driver1!}</td>
+					<td class="middle">${t.vs.residenceBooklet4Driver2!}</td>
+					<td class="last">${t.vs.residenceBooklet4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*居住证(非本市户籍)</td>
+					<td class="middle">${t.vs.residencePermit4Driver1!}</td>
+					<td class="middle">${t.vs.residencePermit4Driver2!}</td>
+					<td class="last">${t.vs.residencePermit4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*广州籍驾驶证</td>
+					<td class="middle">${t.vs.drivingLicence4Driver1!}</td>
+					<td class="middle">${t.vs.drivingLicence4Driver2!}</td>
+					<td class="last">${t.vs.drivingLicence4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*从业资格证</td>
+					<td class="middle">${t.vs.cert4CYZG4Driver1!}</td>
+					<td class="middle">${t.vs.cert4CYZG4Driver2!}</td>
+					<td class="last">${t.vs.cert4CYZG4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">*LPG煤气上岗证</td>
+					<td class="middle">${t.vs.LPG2GasWorklicense4Driver1!}</td>
+					<td class="middle">${t.vs.LPG2GasWorklicense4Driver2!}</td>
+					<td class="last">${t.vs.LPG2GasWorklicense4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="2">计生证</td>
+					<td class="middle">${t.vs.familyCard4Driver1!}</td>
+					<td class="middle">${t.vs.familyCard4Driver2!}</td>
+					<td class="last">${t.vs.familyCard4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="5" style="border-bottom-width:0;border-bottom: 0;">本人对以上证件资料真实性负责</td>
+				</tr>
+				<tr>
+					<td class="middle" colspan="5" style="border-bottom-width:0;text-align: right;border-top: 0;border-bottom: 0;">申请人:__________________________日期:____________</td>
+				</tr>
+				<!--  
+				<tr>
+					<td class="middle" colspan="5" style="border-bottom-width:0;text-align: right;border-top: 0;border-bottom: 0;">审验人:_____________日期:____________</td>
+				</tr>
+				-->
+				</table>
+				<table class="row" cellspacing="0" cellpadding="0" style="border-top: 0;">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">合同管理员审验证件</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t01SendOutInstructions"><#-- 车辆技术部发出出车指示 -->
+			<table cellspacing="0" cellpadding="0" class="row" style="margin: 0;padding: 0;width: 100%;">
+				<tr class="widthMarker">
+					<td style="width: 70px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;">&nbsp;</td>
+					<td style="width: 120px;text-align: center;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">车牌号:</td>
+					<td class="middle">${vs.plate_gl!}</td>
+					<td class="middle" style="text-align: right;">分公司:</td>
+					<td class="middle" >${vs.filiale_gl!}</td>
+					<td class="middle" style="text-align: right;">车队:</td>
+					<td class="middle" >${vs.motorcadeName_gl!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: right;">管理号:</td>
+					<td class="middle">${vs.manageNo_gl!}</td>
+					<td class="middle" style="text-align: right;">营运性质:</td>
+					<td class="middle" >${vs.bsType!}</td>
+					<td class="middle" style="text-align: right;">出车性质:</td>
+					<td class="last" >${vs.carActiveType!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="height: 26px;text-align: center;border-bottom-width:0;" rowspan="3">驾驶员<br>资料</td>
+					<td class="middle" style="height: 26px;text-align: center;">迁出人员</td>
+					<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+					<td class="middle" style="height: 26px;text-align: center;">迁入人员</td>
+					<td class="middle" style="height: 26px;text-align: center;">资格证号</td>
+					<td class="last" style="height: 26px;text-align: center;">驾驶员性质</td>
+				</tr>
+				<tr>
+					<td class="middle" >1&nbsp;&nbsp;&nbsp;${vs.oldDriver1_gl!}</td>
+					<td class="middle" >${vs.certFwzg4oldDriver1_gl!}</td>
+					<td class="middle" >1&nbsp;&nbsp;&nbsp;${vs.driver1_gl!}</td>
+					<td class="middle" >${vs.certFwzg4Driver1_gl!}</td>
+					<td class="last" >${vs.charger4driver1!}</td>
+				</tr>
+				<tr>
+					<td class="middle" style="border-bottom-width:0;">2&nbsp;&nbsp;&nbsp;${vs.oldDriver2_gl!}</td>
+					<td class="middle" style="border-bottom-width:0;">${vs.certFwzg4oldDriver2_gl!}</td>
+					<td class="middle" style="border-bottom-width:0;">2&nbsp;&nbsp;&nbsp;${vs.driver2_gl!}</td>
+					<td class="middle" style="border-bottom-width:0;">${vs.certFwzg4Driver2_gl!}</td>
+					<td class="last" style="border-bottom-width:0;">${vs.charger4driver2!}</td>
+				</tr>
+			</table>
+			<table class="row" cellspacing="0" cellpadding="0" style="border-top: 0;">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">车辆技术部发出出车指示</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t03Affirm4Motorcade"><#-- 车队长确认 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<div class="content line">
-								当事司机：<span class="value">${vs.driver!}</span>&nbsp;&nbsp;&nbsp;&nbsp;服务资格证号：<span class="value">${vs.cert4fwzg!}</span>&nbsp;&nbsp;&nbsp;&nbsp;入职时间：<span class="value">${vs.workDate!}</span>
-							</div>
-							<pre class="content">违章事实核定情况：</pre>
-							<pre class="content value line textIndent">${t.vs.vouchFactDesc!}</pre>
-							<pre class="content">安全服务统计情况：</pre>
-							<pre class="content value line textIndent">${t.vs.securityServiceInfo!}</pre>
-							<pre class="content">规定处理意见：</pre>
-							<pre class="content value line textIndent">${t.vs.provisionsHandleDesc!}</pre>
-							<pre class="content">驾驶员保证书检查情况：</pre>
-							<pre class="content value line textIndent"><#if t.vs.isGuarantee??><#if t.vs.isGuarantee==0>已检查并上传扫描件<#else>无法提供</#if></#if></pre>
 							<#if t.vs.motorcadeDesc??&&t.vs.motorcadeDesc != "">
-								<pre class="content">车队长意见：</pre>
-								<pre class="content value textIndent">${t.vs.motorcadeDesc!}</pre>
+								<pre class="content value">${t.vs.motorcadeDesc!}</pre>
 							</#if>
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">车队长确认违法驾驶员</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">车队长确认</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t030CheckingCaseAdviceInfo"><#-- 服务督办员审校 -->
+		<#elseif t.code=="t04Affirm4BranchManager"><#-- 分公司经理确认 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
-								<pre class="content value">>返回车队长重办</pre>
-							</#if>
-							<#if t.vs.supervisoryMemberDesc??&&t.vs.supervisoryMemberDesc != "">
-								<pre class="content value">${t.vs.supervisoryMemberDesc!}</pre>
-							</#if>
-							<#if t.attachs_str != "">
-								<div class="attach">附件：${t.attachs_str}</div>
-							</#if>
-							<div class="assignee"><span class="group">服务督办员审核</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
-						</div>
-					</td>
-				</tr>
-			</table>
-		<#elseif t.code=="t040Affirm4BranchManager"><#-- 分公司经理确认 -->
-			<table class="row" cellspacing="0" cellpadding="0">
-				<tr>
-					<td class="signItems">
-						<div class="signItem" >
-							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
-								<pre class="content value">>返回车队长重办</pre>
-							</#if>
 							<#if t.vs.branchManagerDesc??&&t.vs.branchManagerDesc != "">
 								<pre class="content value">${t.vs.branchManagerDesc!}</pre>
 							</#if>
@@ -102,62 +189,281 @@
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t050Auditing4MonitoringGroup"><#-- 服务监督组审核 -->
+		<#elseif t.code=="t05SocialSecurityTransact"><#-- 人力资源部社保办理 -->
 			<table class="row" cellspacing="0" cellpadding="0">
+				<tr class="widthMarker">
+					<td style="width: 100px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" style="text-align: center;">驾驶员</td>
+					<td class="middle" style="text-align: center;">户口性质</td>
+					<td class="middle" style="text-align: center;">投保时间</td>
+					<td class="last" style="text-align: center;">备注</td>
+				</tr>
+				<tr>
+					<td class="first">${vs.driver1_gl!}</td>
+					<td class="middle">${t.vs.houseType4Driver1!}</td>
+					<td class="middle">${t.vs.insuranceTime4Driver1!}</td>
+					<td class="last">${t.vs.insuranceDesc4Driver1!}</td>
+				</tr>
+				<tr>
+					<td class="first" style="border-bottom-width:0;">${vs.driver2_gl!}</td>
+					<td class="middle" style="border-bottom-width:0;">${t.vs.houseType4Driver2!}</td>
+					<td class="middle" style="border-bottom-width:0;">${t.vs.insuranceTime4Driver2!}</td>
+					<td class="last" style="border-bottom-width:0;">${t.vs.insuranceDesc4Driver2!}</td>
+				</tr>
+			</table>
+			<table class="row" cellspacing="0" cellpadding="0" style="border-top: 0;">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
-								<pre class="content value">>返回车队长重办</pre>
-							</#if>
-							<#if t.vs.grade??>
-								<pre class="content">投诉处理质量评分：<span class="value"><#if t.vs.grade=0>优秀<#elseif t.vs.grade=1>良好<#elseif t.vs.grade=2>合格<#elseif t.vs.grade=3>不合格</#if></span></pre>
-							</#if>
-							<#if t.vs.supervisoryMemberDesc??&&t.vs.supervisoryMemberDesc != "">
-								<pre class="content value">${t.vs.supervisoryMemberDesc!}</pre>
+							<#if t.vs.socialSecurityTransactDesc??&&t.vs.socialSecurityTransactDesc != "">
+								<pre class="content value">${t.vs.socialSecurityTransactDesc!}</pre>
 							</#if>
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">服务监督组审核</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">人力资源部社保办理</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t060AccraditationCaseAdviceInfo"><#-- 营运总监审批 -->
+		<#elseif t.code=="t06CasualtyInsuranceTransact"><#-- 人力资源部人意险办理 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<#if t.vs.isReturn_lc??&&t.vs.isReturn_lc>
-								<pre class="content value">>返回服务监督组重办</pre>
-							</#if>
-							<#if t.vs.isDcFlow_lc??&&t.vs.isDcFlow_lc>
-								<pre class="content value">>送相关部门协办</pre>
-							</#if>
-							<#if t.vs.majordomoDesc??&&t.vs.majordomoDesc != "">
-								<pre class="content value">${t.vs.majordomoDesc!}</pre>
+							<#if t.vs.casualtyInsuranceTransactDesc??&&t.vs.casualtyInsuranceTransactDesc != "">
+								<pre class="content value">${t.vs.casualtyInsuranceTransactDesc!}</pre>
 							</#if>
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">营运总监审批</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">人力资源部人意险办理</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>
 			</table>
-		<#elseif t.code=="t070DepartmentCooperation"><#-- 相关部门协办 -->
+		<#elseif t.code=="t07ContractSigned"><#-- 人力资源部合同签署 -->
 			<table class="row" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="signItems">
 						<div class="signItem" >
-							<#if t.vs.view??&&t.vs.view != "">
-								<pre class="content value">${t.vs.view!}</pre>
+							<#if t.vs.contractSignedDesc??&&t.vs.contractSignedDesc != "">
+								<pre class="content value">${t.vs.contractSignedDesc!}</pre>
 							</#if>
 							<#if t.attachs_str != "">
 								<div class="attach">附件：${t.attachs_str}</div>
 							</#if>
-							<div class="assignee"><span class="group">相关部门协办（${t.vs.mname!}）</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+							<div class="assignee"><span class="group">人力资源部合同签署</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t08AuditFeeNotice"><#-- 人力资源部主管审核收费通知 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.auditFeeNoticeDesc??&&t.vs.auditFeeNoticeDesc != "">
+								<pre class="content value">${t.vs.auditFeeNoticeDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">人力资源部主管审核收费通知</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t09ChargesCollectComputation"><#-- 计财部收费汇总计算 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.chargesCollectComputationDesc??&&t.vs.chargesCollectComputationDesc != "">
+								<pre class="content value">${t.vs.chargesCollectComputationDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">计财部收费汇总计算</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t10AuditComputation"><#-- 计财部会计主管审核 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.auditComputationDesc??&&t.vs.auditComputationDesc != "">
+								<pre class="content value">${t.vs.auditComputationDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">计财部会计主管审核</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t11Toll4FinancialDepartment"><#-- 计财部前台收费 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr class="widthMarker">
+					<td style="width: 107px;">&nbsp;</td>
+					<td style="width: 107px;">&nbsp;</td>
+					<td style="width: 107px;">&nbsp;</td>
+					<td style="width: 107px;">&nbsp;</td>
+					<td >&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="first" rowspan="2" colspan="2" style="text-align: center;">项目</td>
+					<td class="middle" colspan="2" style="text-align: center;">金额</td>
+					<td class="last" rowspan="2" style="text-align: center;">备注</td>
+				</tr>
+				<tr>
+					<td class="middle">驾驶员1</td>
+					<td class="middle">驾驶员2</td>
+				</tr>
+				<tr>
+					<td class="first" colspan="2" style="text-align: center;">合同保证金</td>
+					<td class="middle">${t.vs.contractMoney4Driver1!}</td>
+					<td class="middle">${t.vs.contractMoney4Driver2!}</td>
+					<td class="last">${t.vs.contractMoney4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="first" colspan="2" style="text-align: center;">安全互助金</td>
+					<td class="middle">${t.vs.safetyMutualGold4Driver1!}</td>
+					<td class="middle">${t.vs.safetyMutualGold4Driver2!}</td>
+					<td class="last">${t.vs.safetyMutualGold4Desc!}</td>
+				</tr>
+				<tr>
+					<td class="first" colspan="2">&nbsp;${t.vs.project1!}</td>
+					<td class="middle">&nbsp;${t.vs.project14Driver1!}</td>
+					<td class="middle">&nbsp;${t.vs.project14Driver2!}</td>
+					<td class="last">&nbsp;${t.vs.project14Desc!}</td>
+				</tr>
+				<tr>
+					<td class="first" colspan="2" style="border-bottom-width:0;">&nbsp;${t.vs.project2!}</td>
+					<td class="middle" style="border-bottom-width:0;">&nbsp;${t.vs.project24Driver1!}</td>
+					<td class="middle" style="border-bottom-width:0;">&nbsp;${t.vs.project24Driver2!}</td>
+					<td class="last" style="border-bottom-width:0;">&nbsp;${t.vs.project24Desc!}</td>
+				</tr>
+			</table>
+			<div class="row" style="padding-left:0.5em;border-top-width: 0;">
+				<div style="display:inline-block;vertical-align:top;">备注：</div>
+				<#if t.vs.financialDepartmentDesc??&&t.vs.financialDepartmentDesc != "">
+					<pre class="content value">${t.vs.financialDepartmentDesc!}</pre>
+				</#if>
+			</div>
+			<table class="row" cellspacing="0" cellpadding="0" style="border-top-width: 0;">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">计财部前台收费</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t12UpdateCarByDriver"><#-- 车辆技术部更新人车对应关系 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.updateCarByDriverDesc??&&t.vs.updateCarByDriverDesc != "">
+								<pre class="content value">${t.vs.updateCarByDriverDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">车辆技术部更新人车对应关系</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t13SendCertificate"><#-- 车辆技术部发证件给合同管理员 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.sendCertificateDesc??&&t.vs.sendCertificateDesc != "">
+								<pre class="content value">${t.vs.sendCertificateDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">车辆技术部发证件给合同管理员</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t14SignBroughtCertificate"><#-- 合同管理员确认司机签领证件 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.signBroughtCertificateDesc??&&t.vs.signBroughtCertificateDesc != "">
+								<pre class="content value">${t.vs.signBroughtCertificateDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">合同管理员确认司机签领证件</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t15AffirmReceivingCar"><#-- 修理厂确认司机提车 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.affirmReceivingCarDesc??&&t.vs.affirmReceivingCarDesc != "">
+								<pre class="content value">${t.vs.affirmReceivingCarDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">修理厂确认司机提车</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t17Filing4cheliangjishubu"><#-- 车辆技术部归档 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.filing4cheliangjishubuDesc??&&t.vs.filing4cheliangjishubuDesc != "">
+								<pre class="content value">${t.vs.filing4cheliangjishubuDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">车辆技术部归档</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<#elseif t.code=="t16Filing4renliziyuanbu"><#-- 人力资源部归档 -->
+			<table class="row" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="signItems">
+						<div class="signItem" >
+							<#if t.vs.filing4renliziyuanbuDesc??&&t.vs.filing4renliziyuanbuDesc != "">
+								<pre class="content value">${t.vs.filing4renliziyuanbuDesc!}</pre>
+							</#if>
+							<#if t.attachs_str != "">
+								<div class="attach">附件：${t.attachs_str}</div>
+							</#if>
+							<div class="assignee"><span class="group">人力资源部归档</span>&nbsp;&nbsp;&nbsp;&nbsp;签名：<span class="name">${t.assignee}</span>日期：<span class="date">${t.endTime2m}</span></div>
 						</div>
 					</td>
 				</tr>

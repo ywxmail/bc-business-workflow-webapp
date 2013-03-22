@@ -1,11 +1,15 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carActive.t08AuditFeeNoticeForm"
-	data-js='js:bc_identity,bc-business/bs.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:t08AuditFeeNotice2Js_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;width:635px;">
-			<div style="display:inline-block;vertical-align:top;">计财部意见：</div>
+			<div style="display:inline-block;vertical-align:top;">人力资源部主管意见：</div>
 			<textarea name="auditFeeNoticeDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;width:635px;">
+			<div id="addFeeNotice" style="display:inline-block;vertical-align:top;cursor: pointer;">点击获取${plate_gl!}的收费通知</div>
+			<input type="hidden" name="carId" class="ui-widget-content" value="${carId_gl!}" class="ignore"/>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">

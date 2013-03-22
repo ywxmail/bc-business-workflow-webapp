@@ -10,6 +10,7 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 				carId: carId,
 				multiple: true,
 				success: function(info){
+					if(info.driver){
 						if(info.driver.length>0){
 						var drivers=info.driver;
 						$.each(drivers,function(i,carMan){
@@ -43,6 +44,10 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 									var gradDriverId = $form.find(":input[name='case4InfractTrafficr_driverId']").val();
 									//本次扣分
 									var points = $form.find(":input[name='case4InfractTrafficr_jeom']").val();
+									//如果发起流程时没有填写本次扣分就设置为0
+									if(points==''){
+										points=0;	
+									}
 									//违法的司机与抓取的司机相同
 									if(carMan.id==gradDriverId){
 										$form.find(":input[name='happenNumber']").val(json.count);
@@ -89,6 +94,7 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 							});
 
 						});
+					}
 					}
 				}
 			});			
@@ -163,6 +169,10 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 				var gradDriverId = $form.find(":input[name='case4InfractTrafficr_driverId']").val();
 				//本次扣分
 				var points = $form.find(":input[name='case4InfractTrafficr_jeom']").val();
+				//如果发起流程时没有填写本次扣分就设置为0
+				if(points==''){
+					points=0;	
+				}
 				//违法的司机与抓取的司机相同
 				if(ui.item.id==gradDriverId){
 					$form.find(":input[name='happenNumber']").val(json.count);

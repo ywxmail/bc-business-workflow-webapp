@@ -2,14 +2,98 @@
 	data-namespace="bswf.carActive.t05SocialSecurityTransactForm"
 	data-js='js:bc_identity,bc-business/bs.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div class="bc-grid header" style="padding : 0px 0px;height: 100%;width: 650px;">
 	<#if readonly == 'false'>
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;border: 1xp;">
+			<tr class="widthMarker">
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first"style="text-align: center;">驾驶员</td>
+				<td class="middle" style="text-align: center;">户口性质</td>
+				<td class="middle" style="text-align: center;">起保时间</td>
+				<td class="last" style="text-align: center;border-right: 1px solid #CCC;">备注</td>
+			</tr>
+			<tr>
+				<td class="first">${driver1_gl!}</td>
+				<td class="middle">
+					<select name="houseType4Driver1" class="ui-widget-content"  data-validate="required" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="外地城镇">外地城镇</option>
+							<option value="外地农村">外地农村</option>
+							<option value="本地城镇">本地城镇</option>
+							<option value="本地农村">本地农村</option>
+					</select>
+				</td>
+				<td class="middle">
+					<input type="text" name="insuranceTime4Driver1" class="ui-widget-content" value="${insuranceTime4Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="insuranceDesc4Driver1" class="ui-widget-content" value="${insuranceDesc4Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="middle">${driver2_gl!}</td>
+				<td class="middle">
+					<select name="houseType4Driver2" class="ui-widget-content"  data-validate="required" style="border: none;width: 100%;">
+					        <option></option>
+							<option value="外地城镇">外地城镇</option>
+							<option value="外地农村">外地农村</option>
+							<option value="本地城镇">本地城镇</option>
+							<option value="本地农村">本地农村</option>
+					</select>
+				</td>
+				<td class="middle">
+					<input type="text" name="insuranceTime4Driver2" class="ui-widget-content" value="${insuranceTime4Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="insuranceDesc4Driver2" class="ui-widget-content" value="${insuranceDesc4Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+		</table>
+		<!--  
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">人力资源部主管意见：</div>
 			<textarea name="socialSecurityTransactDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
 		</div>
+		-->
 	<#else>
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;border: 1xp;">
+			<tr class="widthMarker">
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td style="width: 100px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" style="text-align: center;">驾驶员</td>
+				<td class="middle" style="text-align: center;">户口性质</td>
+				<td class="middle" style="text-align: center;">起保时间</td>
+				<td class="last" style="text-align: center;border-right: 1px solid #CCC;">备注</td>
+			</tr>
+			<tr>
+				<td class="first">${driver1_gl!}</td>
+				<td class="middle">${houseType4Driver1!}</td>
+				<td class="middle">${insuranceTime4Driver1!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">${insuranceDesc4Driver1!}</td>
+			</tr>
+			<tr>
+				<td class="first">${driver2_gl!}</td>
+				<td class="middle">${houseType4Driver2!}</td>
+				<td class="middle">${insuranceTime4Driver2!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">${insuranceDesc4Driver2!}</td>
+			</tr>
+		</table>
+		<!--  
 		<div style="padding-left:0.5em;">
 			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${socialSecurityTransactDesc!}</pre></div>
 		</div>
+		-->
 	</#if>
+	</div>
 </form>

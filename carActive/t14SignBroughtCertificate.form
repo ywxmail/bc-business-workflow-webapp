@@ -1,11 +1,16 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carActive.t14SignBroughtCertificateForm"
-	data-js='js:bc_identity,bc-business/bs.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:t14SignBroughtCertificate2Js_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">分公司合同管理员意见：</div>
 			<textarea name="signBroughtCertificateDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+			<div style="display:inline-block;vertical-align:top;">是否已上传车辆接收确认书：<input type="radio" name="vehicleReceivingConfirmation" 
+				 value="0" data-scope="global" Style="width:auto;" class="ignore"/><label>已上传</label>
+				 &nbsp;<input type="radio" name="vehicleReceivingConfirmation" value="1" data-scope="global" Style="width:auto;" class="ignore"/><label>未上传</label>
+				 <input type="hidden" name="vehicleReceivingConfirmation" class="ui-widget-content" value="${vehicleReceivingConfirmation!}" data-scope="global" data-type="int"/> 	
+	  		</div>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">

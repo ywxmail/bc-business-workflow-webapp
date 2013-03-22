@@ -1,11 +1,21 @@
 <form class="bc-page" data-type='form' style="overflow: auto;"
 	data-namespace="bswf.carActive.t13SendCertificateForm"
-	data-js='js:bc_identity,bc-business/bs.js'
+	data-js='js:bc_identity,bc-business/bs.js,wf:t13SendCertificate2Js_${pd_id}.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
 	<#if readonly == 'false'>
 		<div style="padding-left:0.5em;width:635px;">
 			<div style="display:inline-block;vertical-align:top;">车辆技术部意见：</div>
 			<textarea name="sendCertificateDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+			<#if status4Car?? && status4Car=='-1'>
+			<div style="padding-left:0.5em;width:635px;">
+				<div style="display:inline-block;vertical-align:top;">是否将${plate_gl!}入库：</div>
+				<input type="radio" name="isUpdate" value="true" data-scope="global" Style="width:auto;"/>
+				<label style="margin-left: -6px;">是</label>&nbsp;
+				<input type="radio" name="isUpdate" value="false" data-scope="global" Style="width:auto;"/>
+				<label style="margin-left: -6px;">否</label>
+				<input type="hidden" name="isUpdate" class="ui-widget-content" value="" data-scope="global" data-type="boolean">
+			</div>
+	  		</#if>
 		</div>
 	<#else>
 		<div style="padding-left:0.5em;">

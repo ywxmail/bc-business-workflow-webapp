@@ -18,7 +18,6 @@
 			<input type="hidden" name="isReturn_lc" class="ui-widget-content" value="" data-type="boolean">
 			<input type="hidden" name="isTransact4BranchManager" value="true" data-scope="global" data-type="boolean">
 			<input type="hidden" name="isTransact4SupervisoryMember" value="true" data-scope="global" data-type="boolean">
-			<input type="hidden" name="isDelete" value="" data-scope="global" data-type="boolean">
 		</div>
 	<#elseif readonly == 'false'&& isTransact4SupervisoryMember==false>
 		<div style="padding-left:0.5em;width:635px;border-top: 1px;">

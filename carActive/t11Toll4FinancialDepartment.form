@@ -2,14 +2,129 @@
 	data-namespace="bswf.carActive.t11Toll4FinancialDepartmentForm"
 	data-js='js:bc_identity,bc-business/bs.js'
 	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div class="bc-grid header" style="padding : 0px 0px;height: 100%;width: 650px;">
 	<#if readonly == 'false'>
-		<div style="padding-left:0.5em;width:635px;">
-			<div style="display:inline-block;vertical-align:top;">计财部意见：</div>
-			<textarea name="financialDepartmentDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(填写意见)"/>
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;border: 1xp;">
+			<tr class="widthMarker">
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" rowspan="2" colspan="2" style="text-align: center;">项目</td>
+				<td class="middle" colspan="2" style="text-align: center;">金额</td>
+				<td class="last" rowspan="2" style="text-align: center;border-right: 1px solid #CCC;">备注</td>
+			</tr>
+			<tr>
+				<td class="middle">驾驶员1</td>
+				<td class="middle">驾驶员2</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2" style="text-align: center;">合同保证金</td>
+				<td class="middle"><input type="text" name="contractMoney4Driver1" class="ui-widget-content" value="${contractMoney4Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="contractMoney4Driver2" class="ui-widget-content" value="${contractMoney4Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="contractMoney4Desc" class="ui-widget-content" value="${contractMoney4Desc!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2" style="text-align: center;">安全互助金</td>
+				<td class="middle"><input type="text" name="safetyMutualGold4Driver1" class="ui-widget-content" value="${safetyMutualGold4Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="safetyMutualGold4Driver2" class="ui-widget-content" value="${safetyMutualGold4Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="safetyMutualGold4Desc" class="ui-widget-content" value="${safetyMutualGold4Desc!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2"><input type="text" name="project1" class="ui-widget-content" value="${project1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="project14Driver1" class="ui-widget-content" value="${project14Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="project14Driver2" class="ui-widget-content" value="${project14Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="project14Desc" class="ui-widget-content" value="${project14Desc!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2"><input type="text" name="project2" class="ui-widget-content" value="${project2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="project24Driver1" class="ui-widget-content" value="${project24Driver1!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="middle"><input type="text" name="project24Driver2" class="ui-widget-content" value="${project24Driver2!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+				<td class="last" style="border-right: 1px solid #CCC;"><input type="text" name="project24Desc" class="ui-widget-content" value="${project24Desc!}" 
+					style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;"/>
+				</td>
+			</tr>
+		</table>
+		<div style="padding-left:0.5em;width:635px; border: ">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
+			<textarea name="financialDepartmentDesc" class="autoHeight ui-widget-content" style="width:100%;border:none;"  placeholder="(填写备注)"/>
 		</div>
 	<#else>
-		<div style="padding-left:0.5em;">
+		<table cellspacing="0"  cellpadding="0" style="width: 100%;border: 1xp;">
+			<tr class="widthMarker">
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td style="width: 107px;">&nbsp;</td>
+				<td >&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="first" rowspan="2" colspan="2" style="text-align: center;">项目</td>
+				<td class="middle" colspan="2" style="text-align: center;">金额</td>
+				<td class="last" rowspan="2" style="text-align: center;border-right: 1px solid #CCC;">备注</td>
+			</tr>
+			<tr>
+				<td class="middle">驾驶员1</td>
+				<td class="middle">驾驶员2</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2" style="text-align: center;">合同保证金</td>
+				<td class="middle">${contractMoney4Driver1!}</td>
+				<td class="middle">${contractMoney4Driver2!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">${contractMoney4Desc!}</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2" style="text-align: center;">安全互助金</td>
+				<td class="middle">${safetyMutualGold4Driver1!}</td>
+				<td class="middle">${safetyMutualGold4Driver2!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">${safetyMutualGold4Desc!}</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2">&nbsp;${project1!}</td>
+				<td class="middle">&nbsp;${project14Driver1!}</td>
+				<td class="middle">&nbsp;${project14Driver2!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">&nbsp;${project14Desc!}</td>
+			</tr>
+			<tr>
+				<td class="first" colspan="2">&nbsp;${project2!}</td>
+				<td class="middle">&nbsp;${project24Driver1!}</td>
+				<td class="middle">&nbsp;${project24Driver2!}</td>
+				<td class="last" style="border-right: 1px solid #CCC;">&nbsp;${project24Desc!}</td>
+			</tr>
+		</table>
+		<div style="padding-left:0.5em;width:635px; border: ">
+			<div style="display:inline-block;vertical-align:top;">备注：</div>
 			<div class="text" style="width:635px;"><pre class="text" style="padding:0;margin:0;width:630px;word-break: break-all; word-wrap:break-word;font-family:inherit;">${financialDepartmentDesc!}</pre></div>
 		</div>
 	</#if>
+	</div>
 </form>

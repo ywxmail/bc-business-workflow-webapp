@@ -59,8 +59,8 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 										//已经扣完分
 										if(remainder-points<0 || remainder-points==0){
 											remainder=0;
-											accumulatedPoints=12;
-											//accumulatedPoints+=parseInt(points);
+											//accumulatedPoints=12;
+											accumulatedPoints+=parseInt(points);
 											$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
 											$form.find(":input[name='availableScore']").val(remainder);
 										}else{
@@ -184,8 +184,8 @@ bswf.carTrafficHandle.confirmIllegal4DriverForm = {
 					//已经扣完分
 					if(remainder-points<0 || remainder-points==0){
 						remainder=0;
-						accumulatedPoints=12;
-						//accumulatedPoints+=parseInt(points);
+						//accumulatedPoints=12;
+						accumulatedPoints+=parseInt(points);
 						$form.find("input[name='accumulatedPoints']").val(accumulatedPoints);
 						$form.find(":input[name='availableScore']").val(remainder);
 					}else{

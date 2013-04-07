@@ -16,8 +16,7 @@
 				<td class="first" style="text-align: right;">车牌号:</td>
 				<td class="middle">
 					<div style="position:relative;">
-						<input type="text" name="plate_gl" value="${plate_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" class="ui-widget-content" readonly="readonly" data-validate="required"/>
-						<input type="hidden" name="plate_gl" class="ui-widget-content" value="${plate!plate_gl!}" data-scope="global" />
+						<input type="text" name="plate_gl" value="${plate_gl!}" style="width:90%;height:100%;border:none;margin:0;padding:0 0 0 2px;background:none;" class="ui-widget-content" readonly="readonly" data-validate="required" data-scope="global"/>
 						<input type="hidden" name="carId_gl" class="ui-widget-content" value="${carId_gl!}" data-scope="global" data-type="Long"/>
 						<input type="hidden" name="filialeId_gl" class="ui-widget-content" value="${filialeId_gl!}" data-scope="global" data-type="long"/>
 						<input type="hidden" name="subject" class="ui-widget-content" value='${subject!}' data-scope="global" />

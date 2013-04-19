@@ -1,0 +1,20 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.financeCashierRefundNewCarDepositForm"
+	data-js='<#if readonly == "false">wf:t100FinanceCashierRefundNewCarDeposit2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left: 0.5em;">
+			*已退还新车定金：<input type="text" name="refundNewCarDeposit" class="ui-widget-content" data-scope="global" style="width:8em;"
+								data-validate='{"required":true,"type":"number"}' />元
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			*单据编号：<input type="text" name="refundReceiptNo" class="ui-widget-content" data-scope="global" style="width:10em;"
+								data-validate='required' />
+		</div>
+	<#else>
+		<div style="padding-left: 0.5em;min-height:22px;">
+			退还新车定金：<span style="border: 1px solid #fff;border-bottom-color: #000;">${refundNewCarDeposit!}</span>元
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			单据编号：<span style="border: 1px solid #fff;border-bottom-color: #000;">${refundReceiptNo!}</span>
+		</div>
+	</#if>
+</form>

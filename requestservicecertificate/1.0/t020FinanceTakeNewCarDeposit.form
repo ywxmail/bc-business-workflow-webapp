@@ -1,0 +1,22 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.financeTakeNewCarDepositForm"
+	data-js='<#if readonly == "false">wf:t020FinanceTakeNewCarDeposit2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width:640px;min-height:22px;">
+		<#if readonly == 'false'>
+			<div style="padding-left: 0.5em;">
+				*已收新车定金：<input type="text" name="newCarDeposit" class="ui-widget-content" data-scope="global" style="width:8em;"
+									data-validate='{"required":true,"type":"number"}' />元
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				*收据单号：<input type="text" name="receiptNo" class="ui-widget-content" data-scope="global" style="width:10em;"
+									data-validate='required' />
+			</div>
+		<#else>
+			<div style="padding-left: 0.5em;">
+				已收新车定金：${newCarDeposit!}元,
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				收据单号：${receiptNo!}
+			</div>
+		</#if>
+	</div>
+</form>

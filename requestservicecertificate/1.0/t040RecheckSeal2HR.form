@@ -1,0 +1,22 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.recheckSeal2HRForm"
+	data-js='<#if readonly == "false">wf:t040RecheckSeal2HR2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<div style="width:640px;">
+		<#if readonly == 'false'>
+			<div style="padding-left:0.5em;">
+				*下一步相关操作：
+				<input type="hidden" name="isPass" data-scope="global" data-type="boolean" />
+				<input type="hidden" name="isPass_lc" data-type="boolean" />
+				<input type="radio"  name="risPass" value="true" 	class="ignore" 	style="width:auto;" />
+				<label>通过</label>
+				<input type="radio"  name="risPass" value="false"  class="ignore" 	style="width:auto;" />
+				<label>不通过</label>
+			</div>
+		<#else>
+			<div style="padding-left:0.5em;">
+				><#if isPass_lc??><#if isPass_lc>通过<#else>不通过</#if></#if>
+			</div>
+		</#if>
+	</div>
+</form>

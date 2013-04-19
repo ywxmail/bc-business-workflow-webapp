@@ -1,0 +1,26 @@
+<form class="bc-page" data-type='form' style="overflow-y:auto;overflow-x:hidden;"
+	data-namespace="bswf.requestServiceCertificate.recruiterRecheckForm"
+	data-js='<#if readonly == "false">wf:t050RecruiterRecheck2JS_${pd_id}.js</#if>'
+	data-readonly="<#if readonly??>${readonly}<#else>false</#if>">
+	<#if readonly == 'false'>
+		<div style="padding-left:0.5em;width:635px;">
+			<textarea name="view" class="autoHeight ui-widget-content" style="width:100%;border:none;" data-validate="required" placeholder="(这里填写意见)"/>
+		</div>
+		<div style="padding-left:0.5em;">
+			*下一步相关操作：
+			<input type="hidden" name="isRecheck" data-scope="global" data-type="boolean" />
+			<input type="hidden" name="isRecheck_lc" data-type="boolean" />
+			<input type="radio"  name="risRecheck" value="true" class="ignore" style="width:auto;" />
+			<label>需重审</label>
+			<input type="radio"  name="risRecheck" value="false" class="ignore" style="width:auto;" />
+			<label>放弃办证</label>
+		</div>
+	<#else>	
+		<div style="padding-left:0.5em;">
+			<div class="text" style="width:635px;word-break: break-all">${view!}</div>
+		</div>
+		<div style="padding-left:0.5em;">
+			><#if isRecheck_lc??><#if isRecheck_lc>需重审<#else>放弃办证</#if></#if>
+		</div>
+	</#if>
+</form>

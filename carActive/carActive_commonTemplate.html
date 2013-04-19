@@ -10,6 +10,7 @@
 <body>
 <div class="paper">
 	<h1 class="title">驾驶员出车审批表</h1>
+	<div style="text-align: right;" >出车日期：${vs.carActiveDate_gl!}</div>
 <div class="rows">
 <#if tasks??>
 	<#list tasks?sort_by("endTime") as t>
